@@ -8,22 +8,22 @@ public class Mesa {
         this.status = false;
         this.numero = numero;
     }
-    public getCapacidade() {
+    public int getCapacidade() {
         return this.capacidade;
     }
-    public setCapacidade(int capacidade) {
+    public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
-    public getsStatus() {
+    public boolean getsStatus() {
         return this.status;
     }
-    public setStatus(boolean status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
-    public getnumero() {
+    public int getnumero() {
         return this.numero;
     }
-    public setnumero(int numero) {
+    public void setnumero(int numero) {
         this.numero = numero;
     }
 
@@ -34,6 +34,6 @@ public class Mesa {
         this.status = false;
     }
     public void verificarFila(){
-        
+        //?
     }
 }

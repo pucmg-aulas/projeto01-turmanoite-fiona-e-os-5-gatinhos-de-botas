@@ -8,8 +8,8 @@ public class Requisicao {
     private Mesa mesa;
     private boolean status;
 
-    public Requisicao( int idRequisição, Date dataHora, Date saida, Cliente cliente, Mesa mesa, boolean status) {
-        this.idRequisicao = idRequisição;
+    public Requisicao( int idRequisicao, Date dataHora, Date saida, Cliente cliente, Mesa mesa, boolean status) {
+        this.idRequisicao = idRequisicao;
         this.dataHora = dataHora;
         this.saida = saida;
         this.cliente = cliente;
@@ -31,8 +31,8 @@ public class Requisicao {
     public void setDataHora(Date dataHora) {
         this.dataHora = dataHora;
     }
-    public void setIdRequisicao(int idRequisição) {
-        this.idRequisicao = idRequisição;
+    public void setIdRequisicao(int idRequisicao) {
+        this.idRequisicao = idRequisicao;
     }
     public void setSaida(Date saida) {
         this.saida = saida;
@@ -42,6 +42,6 @@ public class Requisicao {
     }
 
     public void encontrarMesa(){
-        
+
     }
 }
