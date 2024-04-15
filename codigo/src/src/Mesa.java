@@ -14,17 +14,11 @@ public class Mesa {
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
-    public boolean getsStatus() {
+    public boolean getStatus() {
         return this.status;
-    }
-    public void setStatus(boolean status) {
-        this.status = status;
     }
     public int getnumero() {
         return this.numero;
-    }
-    public void setnumero(int numero) {
-        this.numero = numero;
     }
 
     public void ocuparMesa() {
