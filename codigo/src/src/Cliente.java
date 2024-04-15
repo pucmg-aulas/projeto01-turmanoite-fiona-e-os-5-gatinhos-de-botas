@@ -1,4 +1,3 @@
-import java.util.Date;
 
 public class Cliente {
     private int id;
