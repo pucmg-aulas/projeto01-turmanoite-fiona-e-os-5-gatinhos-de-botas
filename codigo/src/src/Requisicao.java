@@ -1,5 +1,6 @@
 import java.time.LocalTime;
-import java.util.Date;
+import java.util.ArrayList;
+
 
 public class Requisicao {
     private int idRequisicao;
@@ -16,6 +17,7 @@ public class Requisicao {
         this.cliente = cliente;
         this.mesa = mesa;
         this.status = status;
+
     }
     public LocalTime getEntrada() {
         return entrada;
@@ -35,16 +37,24 @@ public class Requisicao {
     public void setIdRequisicao(int idRequisicao) {
         this.idRequisicao = idRequisicao;
     }
-    public void setSaida(LocalTime saida) {
-        this.saida = saida;
-    }
-    public void encontrarMesa(){
-        
+    public void setSaida() {
+        this.saida = LocalTime.now();
+        this.status = true;
     }
 
-    public void alocarClienteEmMesa(Mesa m){
+
+    public void encontrarMesa(){
+        int convidados=this.cliente.getQntPessoas();
+        if (convidados<= mesa.getCapacidade()) {
+            mesa.ocuparMesa();
+            this.setSaida();
+        }
+
+    }
+
+    public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){
        m.ocuparMesa();
-       this.setSaida(LocalTime.now());
+       this.setSaida();
     }
 
 //END CLASS
