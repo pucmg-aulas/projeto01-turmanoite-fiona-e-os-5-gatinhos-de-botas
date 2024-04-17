@@ -41,6 +41,7 @@ public class Requisicao {
         this.saida = LocalTime.now();
         this.status = true;
     }
+<<<<<<< Updated upstream
 
 
     public void encontrarMesa(){
@@ -50,12 +51,19 @@ public class Requisicao {
             this.setSaida();
         }
 
+=======
+    public int getConvidados() {
+        return this.cliente.getQntPessoas();
+>>>>>>> Stashed changes
     }
+
+
 
     public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){
        m.ocuparMesa();
        this.setSaida();
     }
+
 
 //END CLASS
 }
