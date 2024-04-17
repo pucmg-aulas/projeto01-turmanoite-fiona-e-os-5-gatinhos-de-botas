@@ -45,11 +45,12 @@ public class Requisicao {
 
     public void encontrarMesa(){
         int convidados=this.cliente.getQntPessoas();
-        if (convidados<= mesa.getCapacidade()) {
-            mesa.ocuparMesa();
-            this.setSaida();
+        for(int i=0; i<mesas.size(); i++){
+            if (convidados<= mesas[i].getCapacidade()) {
+                mesa.ocuparMesa();
+                this.setSaida();
+            }
         }
-
     }
 
     public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){

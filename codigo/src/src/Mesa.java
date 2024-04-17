@@ -26,6 +26,7 @@ public class Mesa {
     }
     public void desocuparMesa() {
         this.status = false;
+        verificarFila();
     }
     public void verificarFila(){
         //?
