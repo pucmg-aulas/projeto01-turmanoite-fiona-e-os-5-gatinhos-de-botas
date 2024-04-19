@@ -45,18 +45,28 @@ public class Requisicao {
 
     public void encontrarMesa(){
         int convidados=this.cliente.getQntPessoas();
-        for(int i=0; i<mesas.size(); i++){
-            if (convidados<= mesas[i].getCapacidade()) {
-                mesa.ocuparMesa();
-                this.setSaida();
+
+        for(Mesa m:mesas){
+
+            if(m.getCapacidade() >= convidados){
+                m.ocuparMesa();
+                this.alocarClienteEmMesa(m);
+            }
+            else{
+                this.colocarEmFilaEspera();
             }
         }
+    }// check
+
+    public void alocarClienteEmMesa(Mesa m){
+        m.ocuparMesa();
+        this.tirarDaFilaEspera();
     }
 
-    public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){
-       m.ocuparMesa();
-       this.setSaida();
+    public void colocarEmFilaEspera(){
+        filaDeEspera.add(this);
     }
+
 
 //END CLASS
 }
