@@ -1,3 +1,5 @@
+package code;
+
 public class Mesa {
     private int capacidade;
     private boolean status;

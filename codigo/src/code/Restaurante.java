@@ -1,3 +1,5 @@
+package code;
+
 import java.util.ArrayList;
 
 public class Restaurante {
@@ -17,7 +19,16 @@ public class Restaurante {
         mesas.add(m1);
         mesas.add(m2);
         mesas.add(m3);
+        mesas.add(m4);
+        mesas.add(m5);
+        mesas.add(m6);
 
+        
+        public void verificarFila(){
+            for (filaDeEspera f: filaDeEspera){
+                encontrarMesa(f);
+            }
+        }
         
 
     }

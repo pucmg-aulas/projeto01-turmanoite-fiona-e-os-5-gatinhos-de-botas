@@ -43,17 +43,17 @@ public class Requisicao {
     }
 
 
-    public void encontrarMesa(){
+    public void encontrarMesa(Requisicao r){
         int convidados=this.cliente.getQntPessoas();
 
-        for(Mesa m:mesas){
+        for(Mesa m: mesas){
 
             if(m.getCapacidade() >= convidados){
                 m.ocuparMesa();
-                this.alocarClienteEmMesa(m);
+                r.alocarClienteEmMesa(m);
             }
             else{
-                this.colocarEmFilaEspera();
+                r.colocarEmFilaEspera();
             }
         }
     }// check
@@ -65,6 +65,10 @@ public class Requisicao {
 
     public void colocarEmFilaEspera(){
         filaDeEspera.add(this);
+    }
+
+    public void tirarDaFilaEspera(){
+        filaDeEspera.remove(this);
     }
 
 
