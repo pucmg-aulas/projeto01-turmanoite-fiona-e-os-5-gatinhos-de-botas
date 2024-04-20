@@ -7,13 +7,28 @@ public class Restaurante {
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
 
     static {
-        Mesa m1 = new Mesa(8, 1);
-        Mesa m2 = new Mesa(8, 2);
-        Mesa m3 = new Mesa(8, 3);
+        Mesa m1 = new Mesa(4, 1);
+        Mesa m2 = new Mesa(4, 2);
+        Mesa m3 = new Mesa(4, 3);
+        Mesa m4 = new Mesa(4, 4);
+        Mesa m5 = new Mesa(6, 5);
+        Mesa m6 = new Mesa(6, 6);
+        Mesa m7 = new Mesa(6, 7);
+        Mesa m8 = new Mesa(6, 8);
+        Mesa m9 = new Mesa(8, 9);
+        Mesa m10 = new Mesa(8, 10);
 
         mesas.add(m1);
         mesas.add(m2);
         mesas.add(m3);
+        mesas.add(m4);
+        mesas.add(m5);
+        mesas.add(m6);
+        mesas.add(m7);
+        mesas.add(m8);
+        mesas.add(m9);
+        mesas.add(m10);
+
     }
 
     public Mesa encontrarMesa(Requisicao r) {

@@ -4,14 +4,13 @@ import java.util.Scanner;
 public class Main {
     
 public static void main(String[] args) throws Exception {
-
-
-    // Menu
+    Restaurante restaurante = new Restaurante();
     Scanner scanner = new Scanner(System.in);
     int opcao;
-    Requisicao r= new Requisicao(opcao, null, null);
+
+    // Menu
     do {
-        System.out.println("\n\n\n\n\n"); // Espaços em branco para centralizar o menu
+        System.out.println("\n\n\n\n\n");
         System.out.println("============== MENU ==============");
         System.out.println("|   1. Fazer requisição          |");
         System.out.println("|   2. Sair da mesa              |");
@@ -22,7 +21,7 @@ public static void main(String[] args) throws Exception {
 
         switch (opcao) {
             case 1:
-                fazerRequisicao();
+                restaurante.fazerRequisicao();
                 break;
             case 2:
                 // sairDaMesa();
