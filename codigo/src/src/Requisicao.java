@@ -10,15 +10,19 @@ public class Requisicao {
     private Mesa mesa;
     private boolean status;
 
-    public Requisicao( int idRequisicao, LocalTime entrada, LocalTime saida, Cliente cliente, Mesa mesa, boolean status) {
+    public Requisicao( int idRequisicao, Cliente cliente, Mesa mesa) {
         this.idRequisicao = idRequisicao;
-        this.entrada = entrada;
-        this.saida = saida;
+        this.entrada = LocalTime.now();
+        this.saida = null;
         this.cliente = cliente;
-        this.mesa = mesa;
-        this.status = status;
+        this.status = false;
 
     }
+    public int getConvidados(){
+        int convidados= this.cliente.getQntPessoas();
+        return convidados;
+    }
+
     public LocalTime getEntrada() {
         return entrada;
     }
@@ -41,7 +45,6 @@ public class Requisicao {
         this.saida = LocalTime.now();
         this.status = true;
     }
-<<<<<<< Updated upstream
 
 
     public void encontrarMesa(){
@@ -51,10 +54,6 @@ public class Requisicao {
             this.setSaida();
         }
 
-=======
-    public int getConvidados() {
-        return this.cliente.getQntPessoas();
->>>>>>> Stashed changes
     }
 
 
