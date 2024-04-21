@@ -72,14 +72,18 @@ public class Restaurante {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o número da mesa que deseja sair: ");
         int numero = scanner.nextInt();
+        boolean mesaEncontrada = false;
+
         for(Mesa mesa : mesas){
             if(mesa.getnumero() == numero){
                 mesa.desocuparMesa();
                 this.verificarFila(mesa);
+                mesaEncontrada = true; 
                 break;
-            }else{
-                System.out.println("Mesa invalida");
             }
+        }
+        if (!mesaEncontrada) {
+            System.out.println("Mesa não encontrada.");
         }
     }
 
@@ -87,9 +91,9 @@ public class Restaurante {
 //VERIFICAR FILA
     public void verificarFila(Mesa m){
         for(Requisicao r : filaDeEspera){
-            if(m.getCapacidade() >= r.getConvidados()){
+            if(m.getCapacidade() >= r.getConvidados() && m.getStatus()==false){
                 m.ocuparMesa();
-                
+                filaDeEspera.remove(r);
                 System.out.println("Mesa ocupada pela fila de espera, Cliente: "+ r.getCliente().getNome());
             }
         }
