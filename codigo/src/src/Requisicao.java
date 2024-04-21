@@ -4,16 +4,12 @@ import java.util.ArrayList;
 
 public class Requisicao {
     private int idRequisicao;
-    private LocalTime entrada;
-    private LocalTime saida;
     private Cliente cliente;
     private Mesa mesa;
     private boolean status;
 
     public Requisicao(Cliente cliente) {
         this.idRequisicao += 1;
-        this.entrada = LocalTime.now();
-        this.saida = null;
         this.cliente = cliente;
         this.status = false;
 
@@ -38,7 +34,7 @@ public class Requisicao {
     public void setSaida(LocalTime saida) {
         this.saida = saida;
     }
-    
+
     public void setDataHora(LocalTime entrada) {
         this.entrada = entrada;
     }
