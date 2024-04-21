@@ -26,7 +26,7 @@ public static void main(String[] args) throws Exception {
         switch (opcao) {
             case 1:
                 restaurante.fazerRequisicao();
-            
+                System.out.println("requisicao feita");
                 break;
             case 2:
                 //restaurante.sairDaMesa();
