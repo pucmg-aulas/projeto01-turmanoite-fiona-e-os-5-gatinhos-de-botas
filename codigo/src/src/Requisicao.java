@@ -49,16 +49,10 @@ public class Requisicao {
     public void setMesa(Mesa m){
         this.mesa = m;
     }
-
-    public void encontrarMesa(){
-        int convidados= this.cliente.getQtdPessoas();
-        if (convidados<= mesa.getCapacidade()) {
-            mesa.ocuparMesa();
-            this.setSaida();
-        }
-
+    
+    public void verificarFila(ArrayList <Requisicao> filaDeEspera){
+        
     }
-
 
 
     public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){

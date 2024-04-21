@@ -14,7 +14,7 @@ public static void main(String[] args) throws Exception {
     
     do {
 
-        System.out.println("\n\n\n\n\n"); // Espaços em branco para centralizar o menu
+        System.out.println("\n\n\n\n\n");
         System.out.println("============== MENU ==============");
         System.out.println("|   1. Fazer requisição          |");
         System.out.println("|   2. Sair da mesa              |");
@@ -26,6 +26,7 @@ public static void main(String[] args) throws Exception {
         switch (opcao) {
             case 1:
                 restaurante.fazerRequisicao();
+            
                 break;
             case 2:
                 //restaurante.sairDaMesa();

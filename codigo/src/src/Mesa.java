@@ -1,3 +1,4 @@
+
 public class Mesa {
     private int capacidade;
     private boolean status;
@@ -11,9 +12,6 @@ public class Mesa {
     public int getCapacidade() {
         return this.capacidade;
     }
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
-    }
     public boolean getStatus() {
         return this.status;
     }
@@ -21,13 +19,12 @@ public class Mesa {
         return this.numero;
     }
 
+//OCUPAR e DESOCUPAR
     public void ocuparMesa() {
         this.status = true;
     }
     public void desocuparMesa() {
         this.status = false;
     }
-    public void verificarFila(){
-        //?
-    }
+
 }

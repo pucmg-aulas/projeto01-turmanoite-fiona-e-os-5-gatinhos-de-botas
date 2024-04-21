@@ -43,7 +43,10 @@ public class Restaurante {
 
         Requisicao req = new Requisicao(cliente);
 
-        encontrarMesa(req);
+        req.setMesa(encontrarMesa(req));
+        if (req.getMesa() == null){
+            colocaFilaDeEspera(req);
+        }
         
         scanner.close();
     }
@@ -60,9 +63,9 @@ public class Restaurante {
 
 //SAIR DA MESA
 
-    public void  sairDaMesa(){
-        Scanner scanner = new Scanner(System.in);
+    // public void  sairDaMesa(){
+    //     Scanner scanner = new Scanner(System.in);
         
-    }
+    // }
 
 }
