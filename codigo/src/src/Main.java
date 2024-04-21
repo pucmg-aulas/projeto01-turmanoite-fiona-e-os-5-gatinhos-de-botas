@@ -26,13 +26,12 @@ public static void main(String[] args) throws Exception {
         System.out.println("|   2. Sair da mesa              |");
         System.out.println("|   3. Sair do programa          |");
         System.out.println("|================================|");
-        System.out.print("   Escolha uma opção: ");
+        System.out.print("   Escolha uma opção: \n");
         opcao = scanner.nextInt();
 
         switch (opcao) {
             case 1:
                 restaurante.fazerRequisicao();
-                System.out.println("requisicao feita");
                 break;
             case 2:
                 restaurante.sairDaMesa();

@@ -8,13 +8,28 @@ public class Restaurante {
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
 //CONSTRUTORES 
     static {
-        Mesa m1 = new Mesa(2, 1);
-        Mesa m2 = new Mesa(8, 2);
-        Mesa m3 = new Mesa(6, 3);
+        Mesa m1 = new Mesa(4, 1);
+        Mesa m2 = new Mesa(4, 2);
+        Mesa m3 = new Mesa(4, 3);
+        Mesa m4 = new Mesa(4, 4);
+        Mesa m5 = new Mesa(6, 5);
+        Mesa m6 = new Mesa(6, 6);
+        Mesa m7 = new Mesa(6, 7);
+        Mesa m8 = new Mesa(6, 8);
+        Mesa m9 = new Mesa(8, 9);
+        Mesa m10 = new Mesa(8, 10);
 
         mesas.add(m1);
         mesas.add(m2);
         mesas.add(m3);
+        mesas.add(m4);
+        mesas.add(m5);
+        mesas.add(m6);
+        mesas.add(m7);
+        mesas.add(m8);
+        mesas.add(m9);
+        mesas.add(m10);
+        
     }
 
 
@@ -35,15 +50,16 @@ public class Restaurante {
     public void fazerRequisicao() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o nome do cliente:");
+        System.out.println("Digite o nome do cliente: ");
         String nomeCliente = scanner.nextLine();
 
-        System.out.println("Digite a quantidade de pessoas:");
+        System.out.println("Digite a quantidade de pessoas no total: ");
         int qntPessoas = scanner.nextInt();
 
         Cliente cliente = new Cliente(nomeCliente, qntPessoas);
 
         Requisicao r = new Requisicao(cliente);
+        System.out.println("Requisicao feita!");
 
         r.setMesa(encontrarMesa(r));
         if (r.getMesa() == null){
@@ -51,15 +67,14 @@ public class Restaurante {
         }
         
         // scanner.close();
-        //burrice do Cury
+        // burrice do Cury, não pode fechar o scanner aqui
     }
 
 
 //FILA DE ESPERA
     public void colocaFilaDeEspera(Requisicao requisicao){
         filaDeEspera.add(requisicao);
-        System.out.println("Nao tem mesas disponiveis, você entrou na fila de espera");
-        System.out.println(filaDeEspera.size());
+        System.out.println("Nao tem mesas disponiveis, você entrou na fila de espera, sua posição é a: " + filaDeEspera.size());
     }
 
     public void tirarFilaDeEspera(Requisicao requisicao){
