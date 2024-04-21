@@ -1,5 +1,4 @@
-package code;
-
+package src;
 public class Mesa {
     private int capacidade;
     private boolean status;
@@ -28,9 +27,11 @@ public class Mesa {
     }
     public void desocuparMesa() {
         this.status = false;
+        System.out.println("Iremos buscar na fila de espera, caso não haja, a mesa ficará livre!");
         verificarFila();
     }
     public void verificarFila(){
-        //?
+        //não sei como faz p verificar a fila
+        Requisicao.encontrarMesa();
     }
 }

@@ -1,3 +1,4 @@
+package src;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -7,18 +8,21 @@ public class Requisicao {
     private LocalTime entrada;
     private LocalTime saida;
     private Cliente cliente;
-    private Mesa mesa;
+    private Mesa mesareq;
     private boolean status;
 
-    public Requisicao( int idRequisicao, LocalTime entrada, LocalTime saida, Cliente cliente, Mesa mesa, boolean status) {
+    public Requisicao( int idRequisicao, Cliente cliente, Mesa mesa) {
         this.idRequisicao = idRequisicao;
-        this.entrada = entrada;
-        this.saida = saida;
+        this.entrada = LocalTime.now();
+        this.saida = null;
         this.cliente = cliente;
-        this.mesa = mesa;
-        this.status = status;
+        this.status = false;
 
     }
+    public int getConvidados(){
+        return this.cliente.getQntPessoas();
+    }
+
     public LocalTime getEntrada() {
         return entrada;
     }
@@ -26,7 +30,7 @@ public class Requisicao {
         return idRequisicao;
     }
     public Mesa getMesa() {
-        return mesa;
+        return mesareq;
     }
     public LocalTime getSaida() {
         return saida;
@@ -43,32 +47,24 @@ public class Requisicao {
     }
 
 
-    public void encontrarMesa(Requisicao r){
+    public void encontrarMesa(){
         int convidados=this.cliente.getQntPessoas();
-
-        for(Mesa m: mesas){
-
-            if(m.getCapacidade() >= convidados){
-                m.ocuparMesa();
-                r.alocarClienteEmMesa(m);
-            }
-            else{
-                r.colocarEmFilaEspera();
+        for (Mesa mesa : Restaurante.mesas) {
+            if (convidados<= mesa.getCapacidade()) {
+                mesa.ocuparMesa();
+                this.setSaida();
+                mesareq = mesa;
+                alocarClienteEmMesa(mesa, null);
             }
         }
-    }// check
-
-    public void alocarClienteEmMesa(Mesa m){
-        m.ocuparMesa();
-        this.tirarDaFilaEspera();
+        // mandar pra lista de espera, não sei como faz
     }
 
-    public void colocarEmFilaEspera(){
-        filaDeEspera.add(this);
-    }
 
-    public void tirarDaFilaEspera(){
-        filaDeEspera.remove(this);
+
+    public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){
+       m.ocuparMesa();
+       this.setSaida();
     }
 
 
