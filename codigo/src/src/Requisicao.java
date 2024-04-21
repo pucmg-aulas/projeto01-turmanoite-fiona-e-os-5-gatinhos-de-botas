@@ -35,6 +35,10 @@ public class Requisicao {
     public LocalTime getSaida() {
         return saida;
     }
+    public void setSaida(LocalTime saida) {
+        this.saida = saida;
+    }
+    
     public void setDataHora(LocalTime entrada) {
         this.entrada = entrada;
     }

@@ -1,4 +1,5 @@
 import java.security.PublicKey;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,7 +30,7 @@ public class Restaurante {
         mesas.add(m8);
         mesas.add(m9);
         mesas.add(m10);
-        
+
     }
 
 
@@ -40,6 +41,9 @@ public class Restaurante {
             if (convidados <= mesa.getCapacidade() && mesa.getStatus()== false) {
                 mesa.ocuparMesa();
                 return mesa;
+            }
+            else if(convidados>8){
+                return null;
             }
         }
 
@@ -60,11 +64,16 @@ public class Restaurante {
 
         Requisicao r = new Requisicao(cliente);
         System.out.println("Requisicao feita!");
+        
 
         r.setMesa(encontrarMesa(r));
-        if (r.getMesa() == null){
+        if(r.getMesa() == null && r.getConvidados()>8){
+            System.out.println("Porém, não temos mesa para mais de 8 pessoas, desculpe.");
+        }
+        else if (r.getMesa() == null){
             colocaFilaDeEspera(r);
         }
+
         
         // scanner.close();
         // burrice do Cury, não pode fechar o scanner aqui
@@ -92,6 +101,8 @@ public class Restaurante {
         for(Mesa mesa : mesas){
             if(mesa.getnumero() == numero){
                 mesa.desocuparMesa();
+                LocalTime diftime = mesa.getSaida().minusNanos(mesa.getEntrada().toNanoOfDay());
+                System.out.println("Tempo de permanência: "+ diftime);
                 this.verificarFila(mesa);
                 mesaEncontrada = true; 
                 break;
