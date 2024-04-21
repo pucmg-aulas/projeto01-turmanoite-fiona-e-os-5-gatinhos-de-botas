@@ -5,12 +5,15 @@ public class Main {
     
 public static void main(String[] args) throws Exception {
 
+    Restaurante restaurante = new Restaurante();
+
 
     // Menu
     Scanner scanner = new Scanner(System.in);
     int opcao;
-    Requisicao r= new Requisicao(opcao, null, null);
+    
     do {
+
         System.out.println("\n\n\n\n\n"); // Espaços em branco para centralizar o menu
         System.out.println("============== MENU ==============");
         System.out.println("|   1. Fazer requisição          |");
@@ -22,10 +25,10 @@ public static void main(String[] args) throws Exception {
 
         switch (opcao) {
             case 1:
-                fazerRequisicao();
+                restaurante.fazerRequisicao();
                 break;
             case 2:
-                // sairDaMesa();
+                //restaurante.sairDaMesa();
                 break;
             case 3:
                 System.out.println("Saindo do programa...");

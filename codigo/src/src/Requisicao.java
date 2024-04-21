@@ -10,8 +10,8 @@ public class Requisicao {
     private Mesa mesa;
     private boolean status;
 
-    public Requisicao( int idRequisicao, Cliente cliente, Mesa mesa) {
-        this.idRequisicao = idRequisicao;
+    public Requisicao(Cliente cliente) {
+        this.idRequisicao += 1;
         this.entrada = LocalTime.now();
         this.saida = null;
         this.cliente = cliente;
@@ -19,7 +19,7 @@ public class Requisicao {
 
     }
     public int getConvidados(){
-        int convidados= this.cliente.getQntPessoas();
+        int convidados= this.cliente.getQtdPessoas();
         return convidados;
     }
 
@@ -46,9 +46,12 @@ public class Requisicao {
         this.status = true;
     }
 
+    public void setMesa(Mesa m){
+        this.mesa = m;
+    }
 
     public void encontrarMesa(){
-        int convidados=this.cliente.getQntPessoas();
+        int convidados= this.cliente.getQtdPessoas();
         if (convidados<= mesa.getCapacidade()) {
             mesa.ocuparMesa();
             this.setSaida();

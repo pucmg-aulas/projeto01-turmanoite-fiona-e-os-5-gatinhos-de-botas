@@ -1,30 +1,17 @@
 
 public class Cliente {
-    private int id;
+    private static int idCliente;
     private String nome;
-    private int qntPessoas;
+    private int qtdPessoas;
 
-    public Cliente(int id, String nome, int qntPessoas) {
-        this.id = id;
+    public Cliente(String nome, int qtdPessoas){
+        Cliente.idCliente += 1;
         this.nome = nome;
-        this.qntPessoas = qntPessoas;
+        this.qtdPessoas = qtdPessoas;
     }
-    public int getId() {
-        return id;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public int getQntPessoas() {
-        return qntPessoas;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public void setQntPessoas(int qntPessoas) {
-        this.qntPessoas = qntPessoas;
+ 
+
+    public int getQtdPessoas(){
+        return this.qtdPessoas;
     }
 }
