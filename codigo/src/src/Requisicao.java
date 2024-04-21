@@ -28,21 +28,10 @@ public class Requisicao {
     public Mesa getMesa() {
         return mesa;
     }
-    public LocalTime getSaida() {
-        return saida;
-    }
-    public void setSaida(LocalTime saida) {
-        this.saida = saida;
-    }
-
-    public void setDataHora(LocalTime entrada) {
-        this.entrada = entrada;
-    }
     public void setIdRequisicao(int idRequisicao) {
         this.idRequisicao = idRequisicao;
     }
     public void setSaida() {
-        this.saida = LocalTime.now();
         this.status = true;
     }
 
