@@ -10,8 +10,10 @@ public class Cliente {
         this.nome = nome;
         this.qtdPessoas = qtdPessoas;
     }
- 
-
+    
+    public String getNome(){
+        return this.nome;
+    }
     public int getQtdPessoas(){
         return this.qtdPessoas;
     }

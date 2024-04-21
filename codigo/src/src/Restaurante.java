@@ -1,3 +1,4 @@
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,9 +8,9 @@ public class Restaurante {
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
 //CONSTRUTORES 
     static {
-        Mesa m1 = new Mesa(8, 1);
+        Mesa m1 = new Mesa(2, 1);
         Mesa m2 = new Mesa(8, 2);
-        Mesa m3 = new Mesa(8, 3);
+        Mesa m3 = new Mesa(6, 3);
 
         mesas.add(m1);
         mesas.add(m2);
@@ -26,6 +27,7 @@ public class Restaurante {
                 return mesa;
             }
         }
+
         return null;
     }
 
@@ -41,20 +43,23 @@ public class Restaurante {
 
         Cliente cliente = new Cliente(nomeCliente, qntPessoas);
 
-        Requisicao req = new Requisicao(cliente);
+        Requisicao r = new Requisicao(cliente);
 
-        req.setMesa(encontrarMesa(req));
-        if (req.getMesa() == null){
-            colocaFilaDeEspera(req);
+        r.setMesa(encontrarMesa(r));
+        if (r.getMesa() == null){
+            colocaFilaDeEspera(r);
         }
         
-        scanner.close();
+        // scanner.close();
+        //burrice do Cury
     }
 
 
 //FILA DE ESPERA
     public void colocaFilaDeEspera(Requisicao requisicao){
         filaDeEspera.add(requisicao);
+        System.out.println("Nao tem mesas disponiveis, você entrou na fila de espera");
+        System.out.println(filaDeEspera.size());
     }
 
     public void tirarFilaDeEspera(Requisicao requisicao){
@@ -63,9 +68,33 @@ public class Restaurante {
 
 //SAIR DA MESA
 
-    // public void  sairDaMesa(){
-    //     Scanner scanner = new Scanner(System.in);
-        
-    // }
+    public void  sairDaMesa(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe o número da mesa que deseja sair: ");
+        int numero = scanner.nextInt();
+        for(Mesa mesa : mesas){
+            if(mesa.getnumero() == numero){
+                mesa.desocuparMesa();
+                this.verificarFila(mesa);
+                break;
+            }else{
+                System.out.println("Mesa invalida");
+            }
+        }
+    }
 
+
+//VERIFICAR FILA
+    public void verificarFila(Mesa m){
+        for(Requisicao r : filaDeEspera){
+            if(m.getCapacidade() >= r.getConvidados()){
+                m.ocuparMesa();
+                
+                System.out.println("Mesa ocupada pela fila de espera, Cliente: "+ r.getCliente().getNome());
+            }
+        }
+    }
+
+
+//end class
 }

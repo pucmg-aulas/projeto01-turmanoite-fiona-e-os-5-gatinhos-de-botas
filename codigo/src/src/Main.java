@@ -2,8 +2,14 @@ import java.util.Scanner;
 
 
 public class Main {
-    
+
+    public void menu(){
+        
+    }
+
 public static void main(String[] args) throws Exception {
+
+
 
     Restaurante restaurante = new Restaurante();
 
@@ -29,7 +35,7 @@ public static void main(String[] args) throws Exception {
                 System.out.println("requisicao feita");
                 break;
             case 2:
-                //restaurante.sairDaMesa();
+                restaurante.sairDaMesa();
                 break;
             case 3:
                 System.out.println("Saindo do programa...");

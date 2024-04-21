@@ -49,16 +49,10 @@ public class Requisicao {
     public void setMesa(Mesa m){
         this.mesa = m;
     }
+    public Cliente getCliente(){
+        return this.cliente;
+    }
     
-    public void verificarFila(ArrayList <Requisicao> filaDeEspera){
-        
-    }
-
-
-    public void alocarClienteEmMesa(Mesa m, ArrayList <Requisicao> requisicoes){
-       m.ocuparMesa();
-       this.setSaida();
-    }
 
 
 //END CLASS

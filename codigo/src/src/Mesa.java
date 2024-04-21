@@ -22,9 +22,11 @@ public class Mesa {
 //OCUPAR e DESOCUPAR
     public void ocuparMesa() {
         this.status = true;
+        System.out.println("mesa "+this.numero+ " ocupada");
     }
     public void desocuparMesa() {
         this.status = false;
+        System.out.println("Mesa desocupada  \n\n");
     }
 
 }
