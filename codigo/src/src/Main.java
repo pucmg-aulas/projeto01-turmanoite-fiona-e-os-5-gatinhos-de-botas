@@ -2,11 +2,6 @@ import java.util.Scanner;
 
 
 public class Main {
-
-    public void menu(){
-        
-    }
-
 public static void main(String[] args) throws Exception {
 
 
@@ -44,6 +39,5 @@ public static void main(String[] args) throws Exception {
         }
     } while (opcao != 3);
 
-    scanner.close();
 }
 }

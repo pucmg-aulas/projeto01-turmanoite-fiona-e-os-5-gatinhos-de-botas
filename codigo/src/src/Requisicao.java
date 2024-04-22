@@ -19,9 +19,6 @@ public class Requisicao {
         return convidados;
     }
 
-    public LocalTime getEntrada() {
-        return entrada;
-    }
     public int getIdRequisicao() {
         return idRequisicao;
     }

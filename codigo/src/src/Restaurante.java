@@ -2,6 +2,7 @@ import java.security.PublicKey;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Restaurante {
     static ArrayList<Requisicao> requisicoes = new ArrayList<Requisicao>();
@@ -116,15 +117,15 @@ public class Restaurante {
 
 //VERIFICAR FILA
     public void verificarFila(Mesa m){
-        for(Requisicao r : filaDeEspera){
-            if(m.getCapacidade() >= r.getConvidados() && m.getStatus()==false){
+        Iterator<Requisicao> iterator = filaDeEspera.iterator();
+        while (iterator.hasNext()) {
+            Requisicao r = iterator.next();
+            if (m.getCapacidade() >= r.getConvidados() && !m.getStatus()) {
                 m.ocuparMesa();
-                filaDeEspera.remove(r);
-                System.out.println("Mesa ocupada pela fila de espera, Cliente: "+ r.getCliente().getNome());
+                iterator.remove(); // Remover de forma segura durante a iteração
+                System.out.println("Mesa ocupada pela fila de espera, Cliente: " + r.getCliente().getNome());
             }
         }
     }
-
-
 //end class
 }
