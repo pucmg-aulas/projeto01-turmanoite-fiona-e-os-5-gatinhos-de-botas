@@ -3,6 +3,8 @@
   O software proposto pelo grupo para gestão do restaurante é bem intuitivo, então, demonstraremos algumas rotas possíveis para algumas funcionalidades, evidenciando que todas são autoexplicativas, mostrando seu uso na prática e descartando a necessidade de uma instrução de uso extensiva, na qual 90% das pessoas não irão ler.
 
 **Cadastro de Requisição, cliente chegou ao restaurante**
+
+
 Primeiramente, o usuário encontrará o menu com as seguintes opções, onde terá de digitar 1, para prosseguir com a requisição:
 
 
@@ -16,6 +18,8 @@ Em seguida, o sistema solicitará ao usuário, o nome do cliente e a quantidade 
 
 
 **E caso não tenham mesas disponíveis para o cliente?**
+
+
 Nesse caso, o sistema retornará ao usuário que não há mesas disponíveis para o cliente, e indicará sua posição na fila, como no exemplo abaixo:
 
 
@@ -23,6 +27,8 @@ Nesse caso, o sistema retornará ao usuário que não há mesas disponíveis par
 
 
 **E quando ele será alocado na mesa?**
+
+
 O cliente que aguarda na fila, será o primeiro a ser verificado, quando alguma mesa for liberada, então quando libera-se uma mesa, e em seguida o sistema retornará o tempo que o último cliente ficou na mesa, além de qual o cliente foi chamado na fila de espera, caso não tenham clientes na fila de espera, ou não seja possível alocar nenhum cliente da fila de espera na mesa liberada, o sistema não retornará nenhuma mensagem.
 
 
