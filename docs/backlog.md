@@ -5,19 +5,19 @@ Atualizado em DD/MM/AAAA
 
 | Tarefa      | Responsável |
 | ----------- | ----------- |
-| 1. Alimentar as galinhas      | Dunga  ✔️     |
-| 2. Espanar os móveis   | Atchim ✔️       |
-| 3. Cortar lenha   | Zangado ✔️       |
-| 4. Pagar as contas   | Mestre ✔️       |
-| 5. Planejamento da semana que vem   | Mestre ✔️       |
-| 6. Organizar o jantar   | Feliz ✔️       |
-| 7. Aguar as plantas   | Dengoso  ✔️      |
+| 1. Método FazerRequisição     | Thiago Cury ✔️     |
+| 2. Escopo Inicial das Classes   | Duda ✔️       |
+| 3. Método encontrarMesa   | Pedro Porto ✔️       |
+| 4. Método ColocarfilaDeEspera   | LucasGiovine ✔️       |
+| 5. Método TirarFiladeEspera   | Albert Luís ✔️       |
+| 6. Método VerificarFila   | Vitor Rebula ✔️       |
+| 7. Método SairdaMesa   | ThiagoCury  ✔️      |
+| 8. Método OcuparMesa  | Duda  ✔️      |
+| 9. Método DesocuparMesa  | Duda  ✔️      |
 ----
 
 ## Tarefas pendentes (em ordem de prioridade)
 
 | Tarefa      | Responsável |
 | ----------- | ----------- |
-| 1. Catar frutas no bosque      | Soneca ➕➖     |
-| 2. Arrumar as camas   | Soneca  ❌    |
-| 3. Consertar a cerca | Zangado  ➕➖ | 
+
