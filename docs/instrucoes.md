@@ -37,7 +37,7 @@ O cliente que aguarda na fila, será o primeiro a ser verificado, quando alguma 
 
 
 
-**deseja consultar a fila de espera?**
+**Deseja consultar a fila de espera?**
 
 Caso esteja em duvida de quantas requisições existem na lista de espera, ou em que posição uma determinada requisição está, basta selecionar a opção de número 4 no menu, assim o sistema imprimierá a lista de espera:
 
