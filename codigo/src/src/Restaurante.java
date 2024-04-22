@@ -8,7 +8,7 @@ public class Restaurante {
     static ArrayList<Requisicao> requisicoes = new ArrayList<Requisicao>();
     static ArrayList<Requisicao> filaDeEspera = new ArrayList<Requisicao>();
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
-//CONSTRUTORES 
+    // CONSTRUTORES
     static {
         Mesa m1 = new Mesa(4, 1);
         Mesa m2 = new Mesa(4, 2);
@@ -34,16 +34,14 @@ public class Restaurante {
 
     }
 
-
-//ENCONTRAR MESA
+    // ENCONTRAR MESA
     public Mesa encontrarMesa(Requisicao r) {
         int convidados = r.getConvidados();
         for (Mesa mesa : mesas) {
-            if (convidados <= mesa.getCapacidade() && mesa.getStatus()== false) {
+            if (convidados <= mesa.getCapacidade() && mesa.getStatus() == false) {
                 mesa.ocuparMesa();
                 return mesa;
-            }
-            else if(convidados>8){
+            } else if (convidados > 8) {
                 return null;
             }
         }
@@ -51,7 +49,7 @@ public class Restaurante {
         return null;
     }
 
-//FAZER REQUISICAO
+    // FAZER REQUISICAO
     public void fazerRequisicao() {
         Scanner scanner = new Scanner(System.in);
 
@@ -65,47 +63,44 @@ public class Restaurante {
 
         Requisicao r = new Requisicao(cliente);
         System.out.println("Requisicao feita!");
-        
 
         r.setMesa(encontrarMesa(r));
-        if(r.getMesa() == null && r.getConvidados()>8){
+        if (r.getMesa() == null && r.getConvidados() > 8) {
             System.out.println("Porém, não temos mesa para mais de 8 pessoas, desculpe.");
-        }
-        else if (r.getMesa() == null){
+        } else if (r.getMesa() == null) {
             colocaFilaDeEspera(r);
         }
 
-        
         // scanner.close();
         // burrice do Cury, não pode fechar o scanner aqui
     }
 
-
-//FILA DE ESPERA
-    public void colocaFilaDeEspera(Requisicao requisicao){
+    // FILA DE ESPERA
+    public void colocaFilaDeEspera(Requisicao requisicao) {
         filaDeEspera.add(requisicao);
-        System.out.println("Nao tem mesas disponiveis, você entrou na fila de espera, sua posição é a: " + filaDeEspera.size());
+        System.out.println(
+                "Nao tem mesas disponiveis, você entrou na fila de espera, sua posição é a: " + filaDeEspera.size());
     }
 
-    public void tirarFilaDeEspera(Requisicao requisicao){
+    public void tirarFilaDeEspera(Requisicao requisicao) {
         filaDeEspera.remove(requisicao);
     }
 
-//SAIR DA MESA
+    // SAIR DA MESA
 
-    public void  sairDaMesa(){
+    public void sairDaMesa() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o número da mesa que deseja sair: ");
         int numero = scanner.nextInt();
         boolean mesaEncontrada = false;
 
-        for(Mesa mesa : mesas){
-            if(mesa.getnumero() == numero){
+        for (Mesa mesa : mesas) {
+            if (mesa.getnumero() == numero) {
                 mesa.desocuparMesa();
                 LocalTime diftime = mesa.getSaida().minusNanos(mesa.getEntrada().toNanoOfDay());
-                System.out.println("Tempo de permanência: "+ diftime);
+                System.out.println("Tempo de permanência: " + diftime);
                 this.verificarFila(mesa);
-                mesaEncontrada = true; 
+                mesaEncontrada = true;
                 break;
             }
         }
@@ -114,9 +109,8 @@ public class Restaurante {
         }
     }
 
-
-//VERIFICAR FILA
-    public void verificarFila(Mesa m){
+    // VERIFICAR FILA
+    public void verificarFila(Mesa m) {
         Iterator<Requisicao> iterator = filaDeEspera.iterator();
         while (iterator.hasNext()) {
             Requisicao r = iterator.next();
@@ -127,5 +121,21 @@ public class Restaurante {
             }
         }
     }
-//end class
+
+    // MOSTRA ESTATISTICAS DA FILA
+    public void statsFila() {
+        if (filaDeEspera.isEmpty()) {
+            System.out.println("A fila de espera está vazia!");
+            return;
+        }
+        System.out.println("A fila de espera possui " + filaDeEspera.size() + " clientes: ");
+        int posição = 1;
+        for (Requisicao r : filaDeEspera) {
+            System.out.println(posição + "." + r.getCliente().getNome());
+            posição++;
+        }
+
+    }
+
+    // end class
 }

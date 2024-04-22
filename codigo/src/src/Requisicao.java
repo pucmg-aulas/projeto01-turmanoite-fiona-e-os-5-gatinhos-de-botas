@@ -1,7 +1,6 @@
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-
 public class Requisicao {
     private int idRequisicao;
     private Cliente cliente;
@@ -14,32 +13,35 @@ public class Requisicao {
         this.status = false;
 
     }
-    public int getConvidados(){
-        int convidados= this.cliente.getQtdPessoas();
+
+    public int getConvidados() {
+        int convidados = this.cliente.getQtdPessoas();
         return convidados;
     }
 
     public int getIdRequisicao() {
         return idRequisicao;
     }
+
     public Mesa getMesa() {
         return mesa;
     }
+
     public void setIdRequisicao(int idRequisicao) {
         this.idRequisicao = idRequisicao;
     }
+
     public void setSaida() {
         this.status = true;
     }
 
-    public void setMesa(Mesa m){
+    public void setMesa(Mesa m) {
         this.mesa = m;
     }
-    public Cliente getCliente(){
+
+    public Cliente getCliente() {
         return this.cliente;
     }
-    
 
-
-//END CLASS
+    // END CLASS
 }
