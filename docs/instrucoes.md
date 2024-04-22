@@ -37,3 +37,18 @@ O cliente que aguarda na fila, será o primeiro a ser verificado, quando alguma 
 
 
 
+**deseja consultar a fila de espera?**
+
+Caso esteja em duvida de quantas requisições existem na lista de espera, ou em que posição uma determinada requisição está, basta selecionar a opção de número 4 no menu, assim o sistema imprimierá a lista de espera:
+
+![image](https://github.com/pucmg-aulas/projeto01-turmanoite-fiona-e-os-5-gatinhos-de-botas/assets/145075008/c0253343-0c47-4e26-b81f-9b952fe0c8b8)
+
+
+Se a lista de espera estiver vazia, a consulta retornará uma mensagem explicando o mesmo:
+
+![image](https://github.com/pucmg-aulas/projeto01-turmanoite-fiona-e-os-5-gatinhos-de-botas/assets/145075008/3d52f670-e41e-486d-88e3-6d49fe1e75d0)
+
+
+
+
+
