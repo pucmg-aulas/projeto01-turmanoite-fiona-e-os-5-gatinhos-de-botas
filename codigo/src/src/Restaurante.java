@@ -8,6 +8,9 @@ public class Restaurante {
     static ArrayList<Requisicao> requisicoes = new ArrayList<Requisicao>();
     static ArrayList<Requisicao> filaDeEspera = new ArrayList<Requisicao>();
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
+    LocalTime entrada;
+    LocalTime saida;
+
     // CONSTRUTORES
     static {
         Mesa m1 = new Mesa(4, 1);
@@ -62,6 +65,7 @@ public class Restaurante {
         Cliente cliente = new Cliente(nomeCliente, qntPessoas);
 
         Requisicao r = new Requisicao(cliente);
+        this.entrada = LocalTime.now();
         System.out.println("Requisicao feita!");
 
         r.setMesa(encontrarMesa(r));
@@ -71,8 +75,6 @@ public class Restaurante {
             colocaFilaDeEspera(r);
         }
 
-        // scanner.close();
-        // burrice do Cury, não pode fechar o scanner aqui
     }
 
     // FILA DE ESPERA
@@ -97,7 +99,8 @@ public class Restaurante {
         for (Mesa mesa : mesas) {
             if (mesa.getnumero() == numero) {
                 mesa.desocuparMesa();
-                LocalTime diftime = mesa.getSaida().minusNanos(mesa.getEntrada().toNanoOfDay());
+                this.saida = LocalTime.now();
+                LocalTime diftime = this.saida.minusNanos(this.entrada.toNanoOfDay());
                 System.out.println("Tempo de permanência: " + diftime);
                 this.verificarFila(mesa);
                 mesaEncontrada = true;
