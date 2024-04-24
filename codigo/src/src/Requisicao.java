@@ -14,6 +14,7 @@ public class Requisicao {
 
     }
 
+
     public int getConvidados() {
         int convidados = this.cliente.getQtdPessoas();
         return convidados;
