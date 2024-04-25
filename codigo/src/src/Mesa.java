@@ -1,5 +1,4 @@
 
-
 public class Mesa {
     private int capacidade;
     private boolean status;
@@ -31,7 +30,7 @@ public class Mesa {
 
     public void desocuparMesa() {
         this.status = false;
-        System.out.println("Mesa " + this.numero +  " desocupada com sucesso! \n \n");
+        System.out.println("Mesa " + this.numero + " desocupada com sucesso! \n \n");
     }
 
 }

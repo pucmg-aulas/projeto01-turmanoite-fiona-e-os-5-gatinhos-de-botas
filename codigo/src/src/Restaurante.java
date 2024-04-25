@@ -1,4 +1,3 @@
-import java.security.PublicKey;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -67,6 +66,7 @@ public class Restaurante {
         Requisicao r = new Requisicao(cliente);
         this.entrada = LocalTime.now();
         System.out.println("Requisicao feita!");
+        this.imprimeRequisicao(r);
 
         r.setMesa(encontrarMesa(r));
         if (r.getMesa() == null && r.getConvidados() > 8) {
@@ -134,10 +134,45 @@ public class Restaurante {
         System.out.println("A fila de espera possui " + filaDeEspera.size() + " clientes: ");
         int posição = 1;
         for (Requisicao r : filaDeEspera) {
-            System.out.println(posição + "." + r.getCliente().getNome());
+            System.out.println(posição + "." + r.getCliente().getNome() + "(Id-" + r.getIdRequisicao() + ")");
             posição++;
         }
 
+    }
+
+    // TIRA UMA REQUISIÇÃO DA FILA DE ESPERA
+    public void cancelarRequisicao() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe o identificador da requisição que deseja cancelar: ");
+        int idCancela;
+        boolean cancelado = false;
+        if (scanner.hasNextInt()) {
+            idCancela = scanner.nextInt();
+            System.out.println("Verificando...\n ");
+            Iterator<Requisicao> iterator = filaDeEspera.iterator();
+            while (iterator.hasNext()) {
+                Requisicao r = iterator.next();
+                if (r.getIdRequisicao() == idCancela) {
+                    iterator.remove();
+                    cancelado = true;
+                    System.out.println("Requisição de id " + r.getIdRequisicao() + " cancelada");
+                    break;
+                }
+
+            }
+            if (!cancelado) {
+                System.out.println("Requisição de id " + idCancela + " não existe");
+            }
+        } else {
+            System.out.println("Opção inválida. Tente novamente.");
+        }
+
+    }
+
+    public void imprimeRequisicao(Requisicao r) {
+        System.out.println("Informações da requisição:\n");
+        System.out.println("Requisição no nome de : " + r.getCliente().getNome());
+        System.out.println("Identificador da requisição: " + r.getIdRequisicao() + "\n");
     }
 
     // end class

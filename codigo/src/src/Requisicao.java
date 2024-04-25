@@ -1,19 +1,17 @@
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class Requisicao {
+    private static int contadorRequisicao = 0;
     private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
     private boolean status;
 
     public Requisicao(Cliente cliente) {
-        this.idRequisicao += 1;
+        this.idRequisicao = ++contadorRequisicao;
         this.cliente = cliente;
         this.status = false;
 
     }
-
 
     public int getConvidados() {
         int convidados = this.cliente.getQtdPessoas();
