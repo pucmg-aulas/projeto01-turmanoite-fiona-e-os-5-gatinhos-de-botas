@@ -1,12 +1,12 @@
 
 public class Cliente {
-    private static int autoCliente = 0;
+    private static int contadorCliente = 0;
     private int idCliente;
     private String nome;
     private int qtdPessoas;
 
     public Cliente(String nome, int qtdPessoas) {
-        this.idCliente = ++autoCliente;
+        this.idCliente = ++contadorCliente;
         this.nome = nome;
         this.qtdPessoas = qtdPessoas;
     }
