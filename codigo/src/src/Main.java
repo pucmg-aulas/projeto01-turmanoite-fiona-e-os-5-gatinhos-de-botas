@@ -20,6 +20,7 @@ public class Main {
             System.out.println("|   5. Cancelar requisição em espera |");
             System.out.println("|====================================|");
             System.out.print("   Escolha uma opção: \n");
+            restaurante.imprimeCardapio();
             if (scanner.hasNextInt()) {
                 opcao = scanner.nextInt();
                 switch (opcao) {
@@ -37,6 +38,11 @@ public class Main {
                         restaurante.statsFila();
                         break;
                     case 5:
+                        System.out.println("Consultando fila...\n");
+                        restaurante.statsFila();
+                        restaurante.cancelarRequisicao();
+                        break;
+                    case 6:
                         System.out.println("Consultando fila...\n");
                         restaurante.statsFila();
                         restaurante.cancelarRequisicao();

@@ -7,6 +7,7 @@ public class Restaurante {
     static ArrayList<Requisicao> requisicoes = new ArrayList<Requisicao>();
     static ArrayList<Requisicao> filaDeEspera = new ArrayList<Requisicao>();
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
+    static ArrayList<Produto> cardapio = new ArrayList<Produto>();
     LocalTime entrada;
     LocalTime saida;
 
@@ -33,6 +34,21 @@ public class Restaurante {
         mesas.add(m8);
         mesas.add(m9);
         mesas.add(m10);
+
+    }
+
+    static { // CARDAPIO
+        cardapio.add(new Produto("Moqueca de Tilápia", 25.0));
+        cardapio.add(new Produto("Falafel Assado", 15.0));
+        cardapio.add(new Produto("Salada Primavera com Macarrão Konjac", 18.0));
+        cardapio.add(new Produto("Escondidinho de Frango", 20.0));
+        cardapio.add(new Produto("Strogonoff", 22.0));
+        cardapio.add(new Produto("Caçarola de carne com legumes", 23.0));
+        cardapio.add(new Produto("Água", 3.0));
+        cardapio.add(new Produto("Suco", 5.0));
+        cardapio.add(new Produto("Refrigerante", 4.0));
+        cardapio.add(new Produto("Cerveja", 6.0));
+        cardapio.add(new Produto("Taça de vinho", 8.0));
 
     }
 
@@ -173,6 +189,54 @@ public class Restaurante {
         System.out.println("Informações da requisição:\n");
         System.out.println("Requisição no nome de : " + r.getCliente().getNome());
         System.out.println("Identificador da requisição: " + r.getIdRequisicao() + "\n");
+    }
+
+    public void imprimeCardapio() {
+        System.out.println("---------");
+        System.out.println("Cardápio:");
+        for (Produto produto : cardapio) {
+            System.out.println("-" + produto.getNome() + " - R$" + produto.getPreço());
+        }
+        System.out.println("---------");
+    }
+
+    public void fazerPedido() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
+        int idReq;
+        int idProd;
+        Produto produtoSelecionado = null;
+        if (scanner.hasNextInt()) {
+            idReq = scanner.nextInt();
+            System.out.println("Verificando...\n ");
+            System.out.println("requisição de id " + idReq + " selecionada ");
+            System.out.println("Informe o id do prato/produto que deseja pedir ");
+            imprimeCardapio();
+            if (scanner.hasNextInt() && scanner.nextInt() < 1 || scanner.nextInt() > cardapio.size()) {
+                idProd = scanner.nextInt();
+                System.out.println("Verificando...\n ");
+                for (Produto produto : cardapio) {
+                    if (produto.getIdProduto() == idProd) {
+                        produtoSelecionado = produto;
+                        break;
+                    }
+                }
+
+                if (produtoSelecionado == null) {
+                    System.out.println("Produto não encontrado.");
+                    return;
+                }
+                System.out.println();
+
+            } else {
+                System.out.println("Opção inválida. Tente novamente.");
+            }
+
+        } else {
+            System.out.println("Opção inválida. Tente novamente.");
+
+        }
+
     }
 
     // end class
