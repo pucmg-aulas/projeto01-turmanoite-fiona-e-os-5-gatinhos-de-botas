@@ -1,34 +1,46 @@
-import java.time.LocalDateTime;
 
 public class Requisicao {
-    private static int idRequisicao;
-    private LocalDateTime dataHoraEntrada;
-    private LocalDateTime dataHoraSaida;
+    private static int contadorRequisicao = 0;
+    private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
     private boolean status;
 
-    public Requisicao(Cliente cliente){
-        Requisicao.idRequisicao += 1;
+    public Requisicao(Cliente cliente) {
+        this.idRequisicao = ++contadorRequisicao;
         this.cliente = cliente;
-        this.dataHoraEntrada = LocalDateTime.now();
-        this.status = false; 
+        this.status = false;
+
     }
 
-    public void setSaida(){
-        this.dataHoraSaida = LocalDateTime.now();
+    public int getConvidados() {
+        int convidados = this.cliente.getQtdPessoas();
+        return convidados;
     }
 
-    public Cliente getCliente(){
+    public int getIdRequisicao() {
+        return idRequisicao;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
+    }
+
+    public void setIdRequisicao(int idRequisicao) {
+        this.idRequisicao = idRequisicao;
+    }
+
+    public void setSaida() {
+        this.status = true;
+    }
+
+    public void setMesa(Mesa m) {
+        this.mesa = m;
+    }
+
+    public Cliente getCliente() {
         return this.cliente;
     }
 
-    public void setMesa(Mesa mesa){
-        this.mesa = mesa;
-    }
-
-    public void setStatus(Boolean status){
-        this.status = status;
-    }
-
+    // END CLASS
 }

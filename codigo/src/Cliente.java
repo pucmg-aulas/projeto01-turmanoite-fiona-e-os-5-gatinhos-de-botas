@@ -14,4 +14,10 @@ public class Cliente {
     public int getQtdPessoas(){
         return this.qtdPessoas;
     }
+
+
+    public String getNome() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNome'");
+    }
 }
