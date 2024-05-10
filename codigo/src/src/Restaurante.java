@@ -82,6 +82,7 @@ public class Restaurante {
         Requisicao r = new Requisicao(cliente);
         this.entrada = LocalTime.now();
         System.out.println("Requisicao feita!");
+        requisicoes.add(r);
         this.imprimeRequisicao(r);
 
         r.setMesa(encontrarMesa(r));
@@ -158,6 +159,9 @@ public class Restaurante {
 
     // TIRA UMA REQUISIÇÃO DA FILA DE ESPERA
     public void cancelarRequisicao() {
+        if (filaDeEspera.isEmpty()) {
+            return;
+        }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o identificador da requisição que deseja cancelar: ");
         int idCancela;
@@ -177,7 +181,7 @@ public class Restaurante {
 
             }
             if (!cancelado) {
-                System.out.println("Requisição de id " + idCancela + " não existe");
+                System.out.println("Requisição de id " + idCancela + " não está na fila de esspera");
             }
         } else {
             System.out.println("Opção inválida. Tente novamente.");
@@ -195,48 +199,119 @@ public class Restaurante {
         System.out.println("---------");
         System.out.println("Cardápio:");
         for (Produto produto : cardapio) {
-            System.out.println("-" + produto.getNome() + " - R$" + produto.getPreço());
+            System.out.println(produto.getIdProduto() + "-" + produto.getNome() + " - R$" + produto.getPreço());
         }
         System.out.println("---------");
     }
+    /*
+     * 
+     * public void fazerPedido() {
+     * Scanner scanner = new Scanner(System.in);
+     * System.out.
+     * println("Informe o identificador da requisição que deseja realizar um pedido: "
+     * );
+     * int idReq;
+     * int idProd;
+     * Produto produtoSelecionado = null;
+     * if (scanner.hasNextInt()) {
+     * idReq = scanner.nextInt();
+     * System.out.println("Verificando...\n ");
+     * System.out.println("requisição de id " + idReq + " selecionada ");
+     * System.out.println("Informe o id do prato/produto que deseja pedir ");
+     * imprimeCardapio();
+     * if (scanner.hasNextInt() && scanner.nextInt() < 1 || scanner.nextInt() >
+     * cardapio.size()) {
+     * idProd = scanner.nextInt();
+     * System.out.println("Verificando...\n ");
+     * for (Produto produto : cardapio) {
+     * if (produto.getIdProduto() == idProd) {
+     * produtoSelecionado = produto;
+     * break;
+     * }
+     * }
+     * 
+     * if (produtoSelecionado == null) {
+     * System.out.println("Produto não encontrado.");
+     * return;
+     * }
+     * System.out.println(produtoSelecionado.getNome() + " Selecionado(a)");
+     * 
+     * } else {
+     * System.out.println("Opção inválida. Tente novamente.");
+     * }
+     * 
+     * } else {
+     * System.out.println("Opção inválida. Tente novamente.");
+     * 
+     * }
+     * 
+     * }
+     */
 
     public void fazerPedido() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
         int idReq;
         int idProd;
-        Produto produtoSelecionado = null;
+
         if (scanner.hasNextInt()) {
             idReq = scanner.nextInt();
-            System.out.println("Verificando...\n ");
-            System.out.println("requisição de id " + idReq + " selecionada ");
-            System.out.println("Informe o id do prato/produto que deseja pedir ");
-            imprimeCardapio();
-            if (scanner.hasNextInt() && scanner.nextInt() < 1 || scanner.nextInt() > cardapio.size()) {
-                idProd = scanner.nextInt();
+            if (posReq(idReq) != -1) {
                 System.out.println("Verificando...\n ");
-                for (Produto produto : cardapio) {
-                    if (produto.getIdProduto() == idProd) {
-                        produtoSelecionado = produto;
-                        break;
-                    }
-                }
+                System.out.println("requisição de id " + idReq + " selecionada ");
+                System.out.println("Informe o id do prato/produto que deseja pedir ");
+                imprimeCardapio();
+                if (scanner.hasNextInt()) {
+                    idProd = scanner.nextInt();
+                    if (posProd(idProd) != -1) {
+                        System.out.println("Verificando...\n ");
+                        System.out.println("produto de id " + idProd + " selecionado: ");
 
-                if (produtoSelecionado == null) {
-                    System.out.println("Produto não encontrado.");
-                    return;
+                        imprimeProd(idProd);
+                        requisicoes.get(posReq(idReq)).getPedido().addProduto(cardapio.get(posProd(idProd)));
+                        requisicoes.get(posReq(idReq)).getPedido().imprimePedido();
+
+                    } else {
+                        System.out.println("produto não encontrado");
+                    }
+
+                } else {
+                    System.out.println("requisição não encontrada");
                 }
-                System.out.println();
 
             } else {
-                System.out.println("Opção inválida. Tente novamente.");
+                System.out.println("Requisição não encontrada");
             }
 
         } else {
             System.out.println("Opção inválida. Tente novamente.");
 
         }
+    }
 
+    public int posReq(int id) {
+        for (Requisicao r : requisicoes) {
+
+            if (id == r.getIdRequisicao()) {
+                return (requisicoes.indexOf(r));
+            }
+        }
+        return (-1);
+    }
+
+    public int posProd(int id) {
+        for (Produto p : cardapio) {
+            if (id == p.getIdProduto()) {
+                return (cardapio.indexOf(p));
+            }
+        }
+        return (-1);
+    }
+
+    public void imprimeProd(int id) {
+
+        System.out.println(cardapio.get(posProd(id)).getIdProduto() + "-" + cardapio.get(posProd(id)).getNome()
+                + " - R$" + cardapio.get(posProd(id)).getPreço());
     }
 
     // end class

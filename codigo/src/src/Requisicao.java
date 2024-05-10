@@ -4,12 +4,14 @@ public class Requisicao {
     private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
+    private Pedido pedido;
     private boolean status;
 
     public Requisicao(Cliente cliente) {
         this.idRequisicao = ++contadorRequisicao;
         this.cliente = cliente;
         this.status = false;
+        this.pedido = new Pedido();
 
     }
 
@@ -40,6 +42,10 @@ public class Requisicao {
 
     public Cliente getCliente() {
         return this.cliente;
+    }
+
+    public Pedido getPedido() {
+        return this.pedido;
     }
 
     // END CLASS

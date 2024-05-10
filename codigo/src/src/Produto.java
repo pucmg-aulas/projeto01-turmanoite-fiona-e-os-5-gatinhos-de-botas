@@ -17,4 +17,8 @@ public class Produto {
     public double getPreço() {
         return preco;
     }
+
+    public int getIdProduto() {
+        return idProduto;
+    }
 }

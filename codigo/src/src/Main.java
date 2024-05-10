@@ -18,9 +18,9 @@ public class Main {
             System.out.println("|   3. Sair do programa              |");
             System.out.println("|   4. Consultar fila de espera      |");
             System.out.println("|   5. Cancelar requisição em espera |");
+            System.out.println("|   6. Realizar um pedido            |");
             System.out.println("|====================================|");
             System.out.print("   Escolha uma opção: \n");
-            restaurante.imprimeCardapio();
             if (scanner.hasNextInt()) {
                 opcao = scanner.nextInt();
                 switch (opcao) {
@@ -44,8 +44,7 @@ public class Main {
                         break;
                     case 6:
                         System.out.println("Consultando fila...\n");
-                        restaurante.statsFila();
-                        restaurante.cancelarRequisicao();
+                        restaurante.fazerPedido();
                         break;
                     default:
                         System.out.println("Opção inválida. Tente novamente.");

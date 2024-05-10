@@ -12,11 +12,24 @@ public class Pedido {
 
     }
 
-    public void adicionarProduto() {
+    public void addProduto(Produto p) {
+        produtos.add(p);
 
+    }
+
+    public void imprimePedido() {
+        System.out.println("---------");
+        System.out.println("Pratos e produtos:");
+        for (Produto produto : produtos) {
+            System.out.println(
+                    produtos.indexOf(produto) + 1 + "-" + produto.getNome() + " - R$" + produto.getPreço() + " ("
+                            + produto.getIdProduto() + ")");
+        }
+        System.out.println("---------");
     }
 
     public void calculaTotal() {
 
     }
+
 }
