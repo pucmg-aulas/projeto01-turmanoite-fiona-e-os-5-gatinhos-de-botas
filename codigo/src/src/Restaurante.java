@@ -112,12 +112,12 @@ public class Restaurante {
 
     public void sairDaMesa() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe o número da mesa que deseja sair: ");
-        int numero = scanner.nextInt();
+        System.out.println("Informe o id da mesa que deseja sair: ");
+        int id = scanner.nextInt();
         boolean mesaEncontrada = false;
 
         for (Mesa mesa : mesas) {
-            if (mesa.getnumero() == numero) {
+            if (mesa.getIdMesa() == id && mesa.getStatus() == true) {
                 mesa.desocuparMesa();
                 reqDaMesa(mesa).reqInativa();
                 this.saida = LocalTime.now();
@@ -129,7 +129,7 @@ public class Restaurante {
             }
         }
         if (!mesaEncontrada) {
-            System.out.println("Mesa não encontrada.");
+            System.out.println("Mesa não encontrada ou não ocupada");
         }
     }
 
