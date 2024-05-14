@@ -1,13 +1,20 @@
 
 public class Mesa {
+    private static int contadorMesa = 0;
+    private int idMesa;
     private int capacidade;
     private boolean status;
     private int numero;
 
     public Mesa(int capacidade, int numero) {
+        this.idMesa = ++contadorMesa;
         this.capacidade = capacidade;
         this.status = false;
         this.numero = numero;
+    }
+
+    public int getIdMesa() {
+        return (this.idMesa);
     }
 
     public int getCapacidade() {

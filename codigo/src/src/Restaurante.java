@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.Iterator;
 
 public class Restaurante {
+
     static ArrayList<Requisicao> requisicoes = new ArrayList<Requisicao>();
     static ArrayList<Requisicao> filaDeEspera = new ArrayList<Requisicao>();
     static ArrayList<Mesa> mesas = new ArrayList<Mesa>();
@@ -58,6 +59,7 @@ public class Restaurante {
         for (Mesa mesa : mesas) {
             if (convidados <= mesa.getCapacidade() && mesa.getStatus() == false) {
                 mesa.ocuparMesa();
+                r.reqAtiva();
                 return mesa;
             } else if (convidados > 8) {
                 return null;
@@ -103,6 +105,7 @@ public class Restaurante {
 
     public void tirarFilaDeEspera(Requisicao requisicao) {
         filaDeEspera.remove(requisicao);
+
     }
 
     // SAIR DA MESA
@@ -116,6 +119,7 @@ public class Restaurante {
         for (Mesa mesa : mesas) {
             if (mesa.getnumero() == numero) {
                 mesa.desocuparMesa();
+                reqDaMesa(mesa).reqInativa();
                 this.saida = LocalTime.now();
                 LocalTime diftime = this.saida.minusNanos(this.entrada.toNanoOfDay());
                 System.out.println("Tempo de permanência: " + diftime);
@@ -203,50 +207,15 @@ public class Restaurante {
         }
         System.out.println("---------");
     }
-    /*
-     * 
-     * public void fazerPedido() {
-     * Scanner scanner = new Scanner(System.in);
-     * System.out.
-     * println("Informe o identificador da requisição que deseja realizar um pedido: "
-     * );
-     * int idReq;
-     * int idProd;
-     * Produto produtoSelecionado = null;
-     * if (scanner.hasNextInt()) {
-     * idReq = scanner.nextInt();
-     * System.out.println("Verificando...\n ");
-     * System.out.println("requisição de id " + idReq + " selecionada ");
-     * System.out.println("Informe o id do prato/produto que deseja pedir ");
-     * imprimeCardapio();
-     * if (scanner.hasNextInt() && scanner.nextInt() < 1 || scanner.nextInt() >
-     * cardapio.size()) {
-     * idProd = scanner.nextInt();
-     * System.out.println("Verificando...\n ");
-     * for (Produto produto : cardapio) {
-     * if (produto.getIdProduto() == idProd) {
-     * produtoSelecionado = produto;
-     * break;
-     * }
-     * }
-     * 
-     * if (produtoSelecionado == null) {
-     * System.out.println("Produto não encontrado.");
-     * return;
-     * }
-     * System.out.println(produtoSelecionado.getNome() + " Selecionado(a)");
-     * 
-     * } else {
-     * System.out.println("Opção inválida. Tente novamente.");
-     * }
-     * 
-     * } else {
-     * System.out.println("Opção inválida. Tente novamente.");
-     * 
-     * }
-     * 
-     * }
-     */
+
+    public Requisicao reqDaMesa(Mesa m) {
+        for (Requisicao r : requisicoes) {
+            if (r.getMesa().getIdMesa() == m.getIdMesa()) {
+                return (r);
+            }
+        }
+        return null;
+    }
 
     public void fazerPedido() {
         Scanner scanner = new Scanner(System.in);
@@ -256,7 +225,7 @@ public class Restaurante {
 
         if (scanner.hasNextInt()) {
             idReq = scanner.nextInt();
-            if (posReq(idReq) != -1) {
+            if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
                 System.out.println("Verificando...\n ");
                 System.out.println("requisição de id " + idReq + " selecionada ");
                 System.out.println("Informe o id do prato/produto que deseja pedir ");
@@ -269,7 +238,7 @@ public class Restaurante {
 
                         imprimeProd(idProd);
                         requisicoes.get(posReq(idReq)).getPedido().addProduto(cardapio.get(posProd(idProd)));
-                        requisicoes.get(posReq(idReq)).getPedido().imprimePedido();
+                        requisicoes.get(posReq(idReq)).imprimePedido();
 
                     } else {
                         System.out.println("produto não encontrado");
