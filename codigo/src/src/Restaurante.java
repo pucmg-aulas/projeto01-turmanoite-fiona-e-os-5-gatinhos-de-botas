@@ -14,16 +14,16 @@ public class Restaurante {
 
     // CONSTRUTORES
     static {
-        Mesa m1 = new Mesa(4, 1);
-        Mesa m2 = new Mesa(4, 2);
-        Mesa m3 = new Mesa(4, 3);
-        Mesa m4 = new Mesa(4, 4);
-        Mesa m5 = new Mesa(6, 5);
-        Mesa m6 = new Mesa(6, 6);
-        Mesa m7 = new Mesa(6, 7);
-        Mesa m8 = new Mesa(6, 8);
-        Mesa m9 = new Mesa(8, 9);
-        Mesa m10 = new Mesa(8, 10);
+        Mesa m1 = new Mesa(4);
+        Mesa m2 = new Mesa(4);
+        Mesa m3 = new Mesa(4);
+        Mesa m4 = new Mesa(4);
+        Mesa m5 = new Mesa(6);
+        Mesa m6 = new Mesa(6);
+        Mesa m7 = new Mesa(6);
+        Mesa m8 = new Mesa(6);
+        Mesa m9 = new Mesa(8);
+        Mesa m10 = new Mesa(8);
 
         mesas.add(m1);
         mesas.add(m2);
@@ -220,6 +220,7 @@ public class Restaurante {
     public void fazerPedido() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
+        imprimeMesasReq();
         int idReq;
         int idProd;
 
@@ -257,6 +258,22 @@ public class Restaurante {
 
         }
     }
+
+
+    
+
+
+public void imprimeMesasReq(){
+
+
+}
+
+
+
+
+
+
+
 
     public int posReq(int id) {
         for (Requisicao r : requisicoes) {
