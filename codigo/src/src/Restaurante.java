@@ -228,38 +228,38 @@ public class Restaurante {
             idReq = scanner.nextInt();
             if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
                 System.out.println("Verificando...\n ");
-                System.out.println("requisição de id " + idReq + " selecionada ");
+                System.out.println("Requisição de id " + idReq + " selecionada ");
                 System.out.println("Informe o id do prato/produto que deseja pedir ");
                 imprimeCardapio();
                 if (scanner.hasNextInt()) {
                     idProd = scanner.nextInt();
                     if (posProd(idProd) != -1) {
                         System.out.println("Verificando...\n ");
-                        System.out.println("produto de id " + idProd + " selecionado: ");
-                        System.out.println("informe quantos pratos/produtos deseja pedir");
+                        System.out.println("Produto de id " + idProd + " selecionado: ");
+                        System.out.println("Informe quantos pratos/produtos deseja pedir");
                         if (scanner.hasNextInt()) {
                             qntProd = scanner.nextInt();
                             if (qntProd > 0) {
                                 System.out.println(
-                                        "produto de id " + idProd + " e quantidade " + qntProd + " selecionado: ");
+                                        "Produto de id " + idProd + " selecionado " + qntProd + " vezes: ");
                                 imprimeProd(idProd);
                                 ItemProduto itemprod = new ItemProduto(cardapio.get(posProd(idProd)), qntProd);
                                 requisicoes.get(posReq(idReq)).getPedido().addItem(itemprod);
                                 requisicoes.get(posReq(idReq)).imprimePedido();
                             } else {
-                                System.out.println("quantidade não é válida");
+                                System.out.println("Quantidade não é válida");
                             }
 
                         } else {
-                            System.out.println("opção invalida");
+                            System.out.println("Opção invalida");
                         }
 
                     } else {
-                        System.out.println("produto não encontrado");
+                        System.out.println("Produto não encontrado");
                     }
 
                 } else {
-                    System.out.println("requisição não encontrada");
+                    System.out.println("Requisição não encontrada");
                 }
 
             } else {
@@ -293,7 +293,7 @@ public class Restaurante {
 
     public void imprimeProd(int id) {
 
-        System.out.println(cardapio.get(posProd(id)).getIdProduto() + "-" + cardapio.get(posProd(id)).getNome()
+        System.out.println(cardapio.get(posProd(id)).getIdProduto() + " - " + cardapio.get(posProd(id)).getNome()
                 + " - R$" + cardapio.get(posProd(id)).getPreço());
     }
 

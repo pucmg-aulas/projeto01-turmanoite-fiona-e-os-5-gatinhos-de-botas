@@ -11,7 +11,7 @@ public class Main {
 
         do {
 
-            System.out.println("\n\n\n\n");
+            System.out.println("\n");
             System.out.println("============== MENU ==================");
             System.out.println("|   1. Fazer requisição              |");
             System.out.println("|   2. Sair da mesa                  |");

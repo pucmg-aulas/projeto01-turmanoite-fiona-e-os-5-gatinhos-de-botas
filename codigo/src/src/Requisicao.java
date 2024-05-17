@@ -22,11 +22,12 @@ public class Requisicao {
     public void imprimePedido() {
 
         System.out.println("---------");
-        System.out.println("Pedido de :" + this.getCliente().getNome() + "(ID-" + this.idRequisicao + ")");
+        System.out.println("Pedido de : " + this.getCliente().getNome() + " (ID-" + this.idRequisicao + ")");
         for (ItemProduto item : this.pedido.getItens()) {
-            System.out.println(this.pedido.getItens().indexOf(item) + 1 + "-" + item.getProduto().getNome() + " R$"
-                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade -"
-                    + item.getQnt());
+            System.out.println(this.pedido.getItens().indexOf(item) + 1 + " - " + item.getProduto().getNome() + " R$"
+                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade - "
+                    + item.getQnt()); // colocar o total desse produto na quantidade especificada, e no final
+                                      // de tudo colocar o valor total do pedido ate o momento
         }
         System.out.println("---------");
     }
