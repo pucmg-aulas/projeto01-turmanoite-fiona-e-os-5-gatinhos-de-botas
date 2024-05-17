@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Pedido {
-    private ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private ArrayList<ItemProduto> produtos = new ArrayList<ItemProduto>();
     private static double TAXA = 0.1;
     private static int contadorPedidos = 0;
     private int idPedido;
@@ -12,11 +12,11 @@ public class Pedido {
 
     }
 
-    public ArrayList<Produto> getProdutos() {
+    public ArrayList<ItemProduto> getItens() {
         return produtos;
     }
 
-    public void addProduto(Produto p) {
+    public void addItem(ItemProduto p) {
         produtos.add(p);
 
     }
@@ -24,10 +24,11 @@ public class Pedido {
     public void imprimePedido() {
         System.out.println("---------");
         System.out.println("Pratos e produtos:");
-        for (Produto produto : produtos) {
+        for (ItemProduto item : produtos) {
+
             System.out.println(
-                    produtos.indexOf(produto) + 1 + "-" + produto.getNome() + " - R$" + produto.getPreço() + " ("
-                            + produto.getIdProduto() + ")");
+                    "-" + item.getProduto().getNome() + " - R$" + item.getProduto().getPreço() +
+                            " (" + item.getProduto().getIdProduto() + ")");
         }
         System.out.println("---------");
     }

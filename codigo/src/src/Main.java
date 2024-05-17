@@ -43,7 +43,7 @@ public class Main {
                         restaurante.cancelarRequisicao();
                         break;
                     case 6:
-                        System.out.println("Consultando fila...\n");
+                        System.out.println("Realizando pedido...\n");
                         restaurante.fazerPedido();
                         break;
                     default:

@@ -220,10 +220,10 @@ public class Restaurante {
     public void fazerPedido() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
-        imprimeMesasReq();
+        imprimeReqsAtivas();
         int idReq;
         int idProd;
-
+        int qntProd;
         if (scanner.hasNextInt()) {
             idReq = scanner.nextInt();
             if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
@@ -236,10 +236,23 @@ public class Restaurante {
                     if (posProd(idProd) != -1) {
                         System.out.println("Verificando...\n ");
                         System.out.println("produto de id " + idProd + " selecionado: ");
+                        System.out.println("informe quantos pratos/produtos deseja pedir");
+                        if (scanner.hasNextInt()) {
+                            qntProd = scanner.nextInt();
+                            if (qntProd > 0) {
+                                System.out.println(
+                                        "produto de id " + idProd + " e quantidade " + qntProd + " selecionado: ");
+                                imprimeProd(idProd);
+                                ItemProduto itemprod = new ItemProduto(cardapio.get(posProd(idProd)), qntProd);
+                                requisicoes.get(posReq(idReq)).getPedido().addItem(itemprod);
+                                requisicoes.get(posReq(idReq)).imprimePedido();
+                            } else {
+                                System.out.println("quantidade não é válida");
+                            }
 
-                        imprimeProd(idProd);
-                        requisicoes.get(posReq(idReq)).getPedido().addProduto(cardapio.get(posProd(idProd)));
-                        requisicoes.get(posReq(idReq)).imprimePedido();
+                        } else {
+                            System.out.println("opção invalida");
+                        }
 
                     } else {
                         System.out.println("produto não encontrado");
@@ -258,22 +271,6 @@ public class Restaurante {
 
         }
     }
-
-
-    
-
-
-public void imprimeMesasReq(){
-
-
-}
-
-
-
-
-
-
-
 
     public int posReq(int id) {
         for (Requisicao r : requisicoes) {
@@ -298,6 +295,13 @@ public void imprimeMesasReq(){
 
         System.out.println(cardapio.get(posProd(id)).getIdProduto() + "-" + cardapio.get(posProd(id)).getNome()
                 + " - R$" + cardapio.get(posProd(id)).getPreço());
+    }
+
+    public void imprimeReqsAtivas() {
+        for (Requisicao req : requisicoes) {
+            System.out.println("mesa " + req.getMesa().getIdMesa() + " - requisição no nome de "
+                    + req.getCliente().getNome() + " (" + req.getIdRequisicao() + ") ");
+        }
     }
 
     // end class

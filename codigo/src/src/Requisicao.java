@@ -23,9 +23,10 @@ public class Requisicao {
 
         System.out.println("---------");
         System.out.println("Pedido de :" + this.getCliente().getNome() + "(ID-" + this.idRequisicao + ")");
-        for (Produto produto : this.pedido.getProdutos()) {
-            System.out.println(this.pedido.getProdutos().indexOf(produto) + 1 + "-" + produto.getNome() + " R$"
-                    + produto.getPreço() + " (" + produto.getIdProduto() + ")");
+        for (ItemProduto item : this.pedido.getItens()) {
+            System.out.println(this.pedido.getItens().indexOf(item) + 1 + "-" + item.getProduto().getNome() + " R$"
+                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade -"
+                    + item.getQnt());
         }
         System.out.println("---------");
     }
