@@ -19,6 +19,7 @@ public class Main {
             System.out.println("|   4. Consultar fila de espera      |");
             System.out.println("|   5. Cancelar requisição em espera |");
             System.out.println("|   6. Realizar um pedido            |");
+            System.out.println("|   7. Finalizar um pedido           |");
             System.out.println("|====================================|");
             System.out.print("   Escolha uma opção: \n");
             if (scanner.hasNextInt()) {
@@ -46,6 +47,10 @@ public class Main {
                         System.out.println("Realizando pedido...\n");
                         restaurante.fazerPedido();
                         break;
+                    case 7:
+                        System.out.println("Finalizando pedido...\n");
+                        restaurante.fecharPedido();
+                        break;
                     default:
                         System.out.println("Opção inválida. Tente novamente.");
                 }
@@ -55,6 +60,5 @@ public class Main {
                 opcao = 0;
             }
         } while (opcao != 3);
-        scanner.close();
     }
 }

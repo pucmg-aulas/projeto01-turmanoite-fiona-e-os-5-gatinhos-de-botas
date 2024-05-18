@@ -93,7 +93,6 @@ public class Restaurante {
         } else if (r.getMesa() == null) {
             colocaFilaDeEspera(r);
         }
-        scanner.close();
     }
 
     // FILA DE ESPERA
@@ -131,7 +130,6 @@ public class Restaurante {
         if (!mesaEncontrada) {
             System.out.println("Mesa não encontrada ou não ocupada");
         }
-        scanner.close();
     }
 
     // VERIFICAR FILA
@@ -191,7 +189,6 @@ public class Restaurante {
         } else {
             System.out.println("Opção inválida. Tente novamente.");
         }
-        scanner.close();
     }
 
     public void imprimeRequisicao(Requisicao r) {
@@ -271,7 +268,6 @@ public class Restaurante {
             System.out.println("Opção inválida. Tente novamente.");
 
         }
-        scanner.close();
     }
 
     public int posReq(int id) {
@@ -301,10 +297,27 @@ public class Restaurante {
 
     public void imprimeReqsAtivas() {
         for (Requisicao req : requisicoes) {
-            System.out.println("mesa " + req.getMesa().getIdMesa() + " - requisição no nome de "
+            System.out.println("Mesa " + req.getMesa().getIdMesa() + " - requisição no nome de "
                     + req.getCliente().getNome() + " (" + req.getIdRequisicao() + ") ");
         }
     }
 
-    // end class
+    public void fecharPedido() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe o identificador da requisição em que deseja finalizar o pedido: ");
+        imprimeReqsAtivas();
+        int idReq;
+        if (scanner.hasNextInt()) {
+            idReq = scanner.nextInt();
+            for (Requisicao requisicao : requisicoes) {
+                if (idReq == requisicao.getIdRequisicao()) {
+                    System.out.println("O valor a se pagar é: " + requisicao.getPedido().calculaTotal());
+                }
+                else{
+                    System.out.println("Requisição não encontrada.");
+                }
+            }
+        }
+        // end class
+    }
 }

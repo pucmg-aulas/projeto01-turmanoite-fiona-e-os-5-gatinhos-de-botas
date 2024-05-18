@@ -33,8 +33,12 @@ public class Pedido {
         System.out.println("---------");
     }
 
-    public void calculaTotal() {
-
+    public double calculaTotal() {
+        totalProdutos = 0;
+        for (ItemProduto itemProduto : produtos) {
+            totalProdutos += itemProduto.getValorTotal();
+        }
+        return totalProdutos;
     }
 
 }
