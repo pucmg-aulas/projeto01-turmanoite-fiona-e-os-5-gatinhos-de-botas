@@ -93,7 +93,7 @@ public class Restaurante {
         } else if (r.getMesa() == null) {
             colocaFilaDeEspera(r);
         }
-
+        scanner.close();
     }
 
     // FILA DE ESPERA
@@ -131,6 +131,7 @@ public class Restaurante {
         if (!mesaEncontrada) {
             System.out.println("Mesa não encontrada ou não ocupada");
         }
+        scanner.close();
     }
 
     // VERIFICAR FILA
@@ -190,7 +191,7 @@ public class Restaurante {
         } else {
             System.out.println("Opção inválida. Tente novamente.");
         }
-
+        scanner.close();
     }
 
     public void imprimeRequisicao(Requisicao r) {
@@ -270,6 +271,7 @@ public class Restaurante {
             System.out.println("Opção inválida. Tente novamente.");
 
         }
+        scanner.close();
     }
 
     public int posReq(int id) {
