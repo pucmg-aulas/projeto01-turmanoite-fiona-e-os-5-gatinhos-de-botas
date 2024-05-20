@@ -20,6 +20,7 @@ public class Main {
             System.out.println("|   5. Cancelar requisição em espera |");
             System.out.println("|   6. Realizar um pedido            |");
             System.out.println("|   7. Finalizar um pedido           |");
+            System.out.println("|   8. Consultar um pedido           |");
             System.out.println("|====================================|");
             System.out.print("   Escolha uma opção: \n");
             if (scanner.hasNextInt()) {
@@ -50,6 +51,10 @@ public class Main {
                     case 7:
                         System.out.println("Finalizando pedido...\n");
                         restaurante.fecharPedido();
+                        break;
+                    case 8:
+                        System.out.println("consultando...\n");
+                        restaurante.consultarPedido();
                         break;
                     default:
                         System.out.println("Opção inválida. Tente novamente.");

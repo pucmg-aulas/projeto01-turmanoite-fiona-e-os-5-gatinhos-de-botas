@@ -351,8 +351,27 @@ public class Restaurante {
                         System.out.println("Requisição não encontrada.");
                     }
                 }
+            } else {
+                System.out.println("opção inválida.");
             }
             // end class
+        } else {
+            System.out.println("não existem requisições ativas no momento");
+        }
+    }
+
+    public void consultarPedido() {
+        Scanner scanner = new Scanner(System.in);
+        if (verificaReqAtiva()) {
+            System.out.println("Informe o identificador da requisição em que deseja consultar o pedido: ");
+            imprimeReqsAtivas();
+            int idReq;
+            if (scanner.hasNextInt()) {
+                idReq = scanner.nextInt();
+                requisicoes.get(posReq(idReq)).imprimePedido();
+            } else {
+                System.out.println("opção inválida.");
+            }
         } else {
             System.out.println("não existem requisições ativas no momento");
         }
