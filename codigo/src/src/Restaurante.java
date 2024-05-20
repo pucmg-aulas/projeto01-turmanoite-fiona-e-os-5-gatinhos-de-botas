@@ -111,24 +111,36 @@ public class Restaurante {
 
     public void sairDaMesa() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe o id da mesa que deseja sair: ");
-        int id = scanner.nextInt();
-        boolean mesaEncontrada = false;
+        if (verificaReqAtiva()) {
+            System.out.println("Informe o número da mesa que deseja sair: ");
+            imprimeReqsAtivas();
+            int id = scanner.nextInt();
+            boolean mesaEncontrada = false;
 
-        for (Mesa mesa : mesas) {
-            if (mesa.getIdMesa() == id && mesa.getStatus() == true) {
-                mesa.desocuparMesa();
-                reqDaMesa(mesa).reqInativa();
-                this.saida = LocalTime.now();
-                LocalTime diftime = this.saida.minusNanos(this.entrada.toNanoOfDay());
-                System.out.println("Tempo de permanência: " + diftime);
-                this.verificarFila(mesa);
-                mesaEncontrada = true;
-                break;
+            for (Mesa mesa : mesas) {
+                if (mesa.getIdMesa() == id && mesa.getStatus() == true && reqDaMesa(mesa).getPedido()
+                        .getStatus() == false) {
+                    mesa.desocuparMesa();
+                    reqDaMesa(mesa).reqInativa();
+                    this.saida = LocalTime.now();
+                    LocalTime diftime = this.saida.minusNanos(this.entrada.toNanoOfDay());
+                    System.out.println("Tempo de permanência: " + diftime);
+                    this.verificarFila(mesa);
+                    mesaEncontrada = true;
+                    break;
+                } else if (mesa.getIdMesa() == id && mesa.getStatus() == true && reqDaMesa(mesa).getPedido()
+                        .getStatus() == true) {
+                    System.out.println("Não é possível sair da mesa sem pagar");
+                    break;
+
+                } else {
+                    System.out.println("Mesa não encontrada ou não ocupada");
+                    break;
+                }
             }
-        }
-        if (!mesaEncontrada) {
-            System.out.println("Mesa não encontrada ou não ocupada");
+
+        } else {
+            System.out.println("Não existem mesas ocupadas no momento");
         }
     }
 
@@ -217,43 +229,50 @@ public class Restaurante {
 
     public void fazerPedido() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
-        imprimeReqsAtivas();
-        int idReq;
-        int idProd;
-        int qntProd;
-        if (scanner.hasNextInt()) {
-            idReq = scanner.nextInt();
-            if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
-                System.out.println("Verificando...\n ");
-                System.out.println("Requisição de id " + idReq + " selecionada ");
-                System.out.println("Informe o id do prato/produto que deseja pedir ");
-                imprimeCardapio();
-                if (scanner.hasNextInt()) {
-                    idProd = scanner.nextInt();
-                    if (posProd(idProd) != -1) {
-                        System.out.println("Verificando...\n ");
-                        System.out.println("Produto de id " + idProd + " selecionado: ");
-                        System.out.println("Informe quantos pratos/produtos deseja pedir");
-                        if (scanner.hasNextInt()) {
-                            qntProd = scanner.nextInt();
-                            if (qntProd > 0) {
-                                System.out.println(
-                                        "Produto de id " + idProd + " selecionado " + qntProd + " vezes: ");
-                                imprimeProd(idProd);
-                                ItemProduto itemprod = new ItemProduto(cardapio.get(posProd(idProd)), qntProd);
-                                requisicoes.get(posReq(idReq)).getPedido().addItem(itemprod);
-                                requisicoes.get(posReq(idReq)).imprimePedido();
+        if (verificaReqAtiva()) {
+
+            System.out.println("Informe o identificador da requisição que deseja realizar um pedido: ");
+            imprimeReqsAtivas();
+            int idReq;
+            int idProd;
+            int qntProd;
+            if (scanner.hasNextInt()) {
+                idReq = scanner.nextInt();
+                if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
+                    System.out.println("Verificando...\n ");
+                    System.out.println("Requisição de id " + idReq + " selecionada ");
+                    System.out.println("Informe o id do prato/produto que deseja pedir ");
+                    imprimeCardapio();
+                    if (scanner.hasNextInt()) {
+                        idProd = scanner.nextInt();
+                        if (posProd(idProd) != -1) {
+                            System.out.println("Verificando...\n ");
+                            System.out.println("Produto de id " + idProd + " selecionado: ");
+                            System.out.println("Informe quantos pratos/produtos deseja pedir");
+                            if (scanner.hasNextInt()) {
+                                qntProd = scanner.nextInt();
+                                if (qntProd > 0) {
+                                    System.out.println(
+                                            "Produto de id " + idProd + " selecionado " + qntProd + " vezes: ");
+                                    imprimeProd(idProd);
+                                    ItemProduto itemprod = new ItemProduto(cardapio.get(posProd(idProd)), qntProd);
+                                    requisicoes.get(posReq(idReq)).getPedido().addItem(itemprod);
+                                    requisicoes.get(posReq(idReq)).imprimePedido();
+                                    requisicoes.get(posReq(idReq)).getPedido().ativaPedido();
+                                } else {
+                                    System.out.println("Quantidade não é válida");
+                                }
+
                             } else {
-                                System.out.println("Quantidade não é válida");
+                                System.out.println("Opção invalida");
                             }
 
                         } else {
-                            System.out.println("Opção invalida");
+                            System.out.println("Produto não encontrado");
                         }
 
                     } else {
-                        System.out.println("Produto não encontrado");
+                        System.out.println("Requisição não encontrada");
                     }
 
                 } else {
@@ -261,12 +280,11 @@ public class Restaurante {
                 }
 
             } else {
-                System.out.println("Requisição não encontrada");
+                System.out.println("Opção inválida. Tente novamente.");
+
             }
-
         } else {
-            System.out.println("Opção inválida. Tente novamente.");
-
+            System.out.println("não existem requisições ativas no momento");
         }
     }
 
@@ -302,22 +320,41 @@ public class Restaurante {
         }
     }
 
-    public void fecharPedido() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Informe o identificador da requisição em que deseja finalizar o pedido: ");
-        imprimeReqsAtivas();
-        int idReq;
-        if (scanner.hasNextInt()) {
-            idReq = scanner.nextInt();
-            for (Requisicao requisicao : requisicoes) {
-                if (idReq == requisicao.getIdRequisicao()) {
-                    System.out.println("O valor a se pagar é: " + requisicao.getPedido().calculaTotal());
-                }
-                else{
-                    System.out.println("Requisição não encontrada.");
-                }
+    public boolean verificaReqAtiva() {
+        boolean reqEncontrada = false;
+        for (Requisicao req : requisicoes) {
+            if (req.getStatus() == true) {
+                reqEncontrada = true;
             }
         }
-        // end class
+        return reqEncontrada;
+    }
+
+    public void fecharPedido() {
+        Scanner scanner = new Scanner(System.in);
+        if (verificaReqAtiva()) {
+
+            System.out.println("Informe o identificador da requisição em que deseja finalizar o pedido: ");
+            imprimeReqsAtivas();
+            int idReq;
+            if (scanner.hasNextInt()) {
+                idReq = scanner.nextInt();
+                for (Requisicao requisicao : requisicoes) {
+                    if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == true) {
+                        System.out.println("O valor a se pagar é: " + requisicao.getPedido().calculaTotal());
+                        requisicao.getPedido().finaliza();
+
+                    } else if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == false) {
+                        System.out.println(" Pedido náo está ativo.");
+
+                    } else {
+                        System.out.println("Requisição não encontrada.");
+                    }
+                }
+            }
+            // end class
+        } else {
+            System.out.println("não existem requisições ativas no momento");
+        }
     }
 }

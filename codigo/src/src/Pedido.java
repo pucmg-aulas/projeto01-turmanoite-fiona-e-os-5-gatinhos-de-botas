@@ -6,6 +6,7 @@ public class Pedido {
     private static int contadorPedidos = 0;
     private int idPedido;
     private double totalProdutos;
+    private boolean ativo = false;
 
     public Pedido() {
         this.idPedido = ++contadorPedidos;
@@ -39,6 +40,18 @@ public class Pedido {
             totalProdutos += itemProduto.getValorTotal();
         }
         return totalProdutos;
+    }
+
+    public void ativaPedido() {
+        this.ativo = true;
+    }
+
+    public void finaliza() {
+        this.ativo = false;
+    }
+
+    public boolean getStatus() {
+        return this.ativo;
     }
 
 }
