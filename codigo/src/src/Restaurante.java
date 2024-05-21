@@ -119,7 +119,7 @@ public class Restaurante {
 
             for (Mesa mesa : mesas) {
                 if (mesa.getIdMesa() == id && mesa.getStatus() == true && reqDaMesa(mesa).getPedido()
-                        .getStatus() == false) {
+                        .getStatus() != 2) {
                     mesa.desocuparMesa();
                     reqDaMesa(mesa).reqInativa();
                     this.saida = LocalTime.now();
@@ -129,7 +129,7 @@ public class Restaurante {
                     mesaEncontrada = true;
                     break;
                 } else if (mesa.getIdMesa() == id && mesa.getStatus() == true && reqDaMesa(mesa).getPedido()
-                        .getStatus() == true) {
+                        .getStatus() == 2) {
                     System.out.println("Não é possível sair da mesa sem pagar");
                     mesaEncontrada = true;
                     break;
@@ -241,7 +241,8 @@ public class Restaurante {
             int qntProd;
             if (scanner.hasNextInt()) {
                 idReq = scanner.nextInt();
-                if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true) {
+                if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true
+                        && requisicoes.get(posReq(idReq)).getPedido().getStatus() != 3) {
                     System.out.println("Verificando...\n ");
                     System.out.println("Requisição de id " + idReq + " selecionada ");
                     System.out.println("Informe o id do prato/produto que deseja pedir ");
@@ -277,9 +278,12 @@ public class Restaurante {
                     } else {
                         System.out.println("Requisição não encontrada");
                     }
-
+                } else if (posReq(idReq) != -1 && requisicoes.get(posReq(idReq)).getStatus() == true
+                        && requisicoes.get(posReq(idReq)).getPedido().getStatus() == 3) {
+                    System.out.println(" Esse pedido não está ativo");
                 } else {
-                    System.out.println("Requisição não encontrada");
+                    System.out.println(" Requisição não encontrada");
+
                 }
 
             } else {
@@ -346,18 +350,21 @@ public class Restaurante {
             if (scanner.hasNextInt()) {
                 idReq = scanner.nextInt();
                 for (Requisicao requisicao : requisicoes) {
-                    if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == true) {
+                    if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == 2) {
                         System.out.println("O valor a se pagar é: " + requisicao.getPedido().calculaTotal());
                         System.out.println("O valor para cada pessoa é: "
                                 + requisicao.getPedido().calculaDividido(requisicao));
                         requisicao.getPedido().finaliza();
+                        break;
 
-                    } else if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == false) {
+                    } else if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() != 2) {
                         System.out.println(" Pedido náo está ativo.");
+                        break;
 
                     } else {
                         System.out.println("Requisição não encontrada.");
                     }
+
                 }
             } else {
                 System.out.println("opção inválida.");
