@@ -18,6 +18,7 @@ public class Produto {
         return preco;
     }
 
+<<<<<<< HEAD:codigo/src/Produto.java
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -37,4 +38,9 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }    
+=======
+    public int getIdProduto() {
+        return idProduto;
+    }
+>>>>>>> 9f5ad96ba268c4d4f93c005c53bea8bd507a16b4:codigo/src/src/Produto.java
 }
