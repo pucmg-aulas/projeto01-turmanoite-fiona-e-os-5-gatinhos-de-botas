@@ -131,12 +131,14 @@ public class Restaurante {
                 } else if (mesa.getIdMesa() == id && mesa.getStatus() == true && reqDaMesa(mesa).getPedido()
                         .getStatus() == true) {
                     System.out.println("Não é possível sair da mesa sem pagar");
+                    mesaEncontrada = true;
                     break;
 
-                } else {
-                    System.out.println("Mesa não encontrada ou não ocupada");
-                    break;
                 }
+            }
+
+            if (mesaEncontrada == false) {
+                System.out.println("Mesa não encontrada ou não ocupada");
             }
 
         } else {
@@ -228,6 +230,7 @@ public class Restaurante {
     }
 
     public void fazerPedido() {
+
         Scanner scanner = new Scanner(System.in);
         if (verificaReqAtiva()) {
 
@@ -315,8 +318,11 @@ public class Restaurante {
 
     public void imprimeReqsAtivas() {
         for (Requisicao req : requisicoes) {
-            System.out.println("Mesa " + req.getMesa().getIdMesa() + " - requisição no nome de "
-                    + req.getCliente().getNome() + " (" + req.getIdRequisicao() + ") ");
+            if (req.getStatus() == true) {
+
+                System.out.println("Mesa " + req.getMesa().getIdMesa() + " - requisição no nome de "
+                        + req.getCliente().getNome() + " (" + req.getIdRequisicao() + ") ");
+            }
         }
     }
 
@@ -342,6 +348,8 @@ public class Restaurante {
                 for (Requisicao requisicao : requisicoes) {
                     if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == true) {
                         System.out.println("O valor a se pagar é: " + requisicao.getPedido().calculaTotal());
+                        System.out.println("O valor para cada pessoa é: "
+                                + requisicao.getPedido().calculaDividido(requisicao));
                         requisicao.getPedido().finaliza();
 
                     } else if (idReq == requisicao.getIdRequisicao() && requisicao.getPedido().getStatus() == false) {
