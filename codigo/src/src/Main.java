@@ -15,12 +15,12 @@ public class Main {
             System.out.println("============== MENU ==================");
             System.out.println("|   1. Fazer requisição              |");
             System.out.println("|   2. Sair da mesa                  |");
-            System.out.println("|   3. Sair do programa              |");
+            System.out.println("|   3. Consultar um pedido           |");
             System.out.println("|   4. Consultar fila de espera      |");
             System.out.println("|   5. Cancelar requisição em espera |");
             System.out.println("|   6. Realizar um pedido            |");
             System.out.println("|   7. Finalizar um pedido           |");
-            System.out.println("|   8. Consultar um pedido           |");
+            System.out.println("|   8. Sair do programa              |");
             System.out.println("|====================================|");
             System.out.print("   Escolha uma opção: \n");
             if (scanner.hasNextInt()) {
@@ -33,7 +33,8 @@ public class Main {
                         restaurante.sairDaMesa();
                         break;
                     case 3:
-                        System.out.println("Saindo do programa...");
+                        System.out.println("consultando...\n");
+                        restaurante.consultarPedido();
                         break;
                     case 4:
                         System.out.println("Consultando fila...\n");
@@ -53,9 +54,9 @@ public class Main {
                         restaurante.fecharPedido();
                         break;
                     case 8:
-                        System.out.println("consultando...\n");
-                        restaurante.consultarPedido();
+                        System.out.println("Saindo do programa...");
                         break;
+                        
                     default:
                         System.out.println("Opção inválida. Tente novamente.");
                 }
