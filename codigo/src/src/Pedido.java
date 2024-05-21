@@ -6,7 +6,7 @@ public class Pedido {
     private static int contadorPedidos = 0;
     private int idPedido;
     private double totalProdutos;
-    private boolean ativo = false;
+    private int ativo = 1;
 
     public Pedido() {
         this.idPedido = ++contadorPedidos;
@@ -48,14 +48,14 @@ public class Pedido {
     }
 
     public void ativaPedido() {
-        this.ativo = true;
+        this.ativo = 2;
     }
 
     public void finaliza() {
-        this.ativo = false;
+        this.ativo = 3;
     }
 
-    public boolean getStatus() {
+    public int getStatus() {
         return this.ativo;
     }
 
