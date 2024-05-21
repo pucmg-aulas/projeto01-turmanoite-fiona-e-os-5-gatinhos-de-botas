@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Pedido {
     private ArrayList<ItemProduto> produtos = new ArrayList<ItemProduto>();
-
     private static double TAXA = 1.1;
     private static int contadorPedidos = 0;
     private int idPedido;
@@ -40,14 +39,12 @@ public class Pedido {
         for (ItemProduto itemProduto : produtos) {
             totalProdutos += itemProduto.getValorTotal();
         }
-
         return totalProdutos * TAXA;
 
     }
 
     public double calculaDividido(Requisicao req) {
         return calculaTotal() / req.getConvidados();
-
     }
 
     public void ativaPedido() {
