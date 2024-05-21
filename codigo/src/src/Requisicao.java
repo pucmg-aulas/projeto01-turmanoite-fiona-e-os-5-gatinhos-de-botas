@@ -1,19 +1,39 @@
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class Requisicao {
+    private static int contadorRequisicao = 0;
     private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
+    private Pedido pedido;
     private boolean status;
 
     public Requisicao(Cliente cliente) {
-        this.idRequisicao += 1;
+        this.idRequisicao = ++contadorRequisicao;
         this.cliente = cliente;
         this.status = false;
+        this.pedido = new Pedido();
 
     }
 
+    public boolean getStatus() {
+        return (this.status);
+    }
+
+    public void imprimePedido() {
+
+        System.out.println("---------");
+        System.out.println("Pedido de : " + this.getCliente().getNome() + " (ID da requisição - " + this.idRequisicao + " )");
+        for (ItemProduto item : this.pedido.getItens()) {
+            System.out.println(this.pedido.getItens().indexOf(item) + 1 + " - " + item.getProduto().getNome() + " R$"
+                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade - "
+                    + item.getQnt() + " - valor total: " + item.getValorTotal()); 
+        }
+        System.out.println("---------");
+    }
+
+    public void reqAtiva() {
+        this.status = true;
+    }
 
     public int getConvidados() {
         int convidados = this.cliente.getQtdPessoas();
@@ -32,8 +52,8 @@ public class Requisicao {
         this.idRequisicao = idRequisicao;
     }
 
-    public void setSaida() {
-        this.status = true;
+    public void reqInativa() {
+        this.status = false;
     }
 
     public void setMesa(Mesa m) {
@@ -42,6 +62,10 @@ public class Requisicao {
 
     public Cliente getCliente() {
         return this.cliente;
+    }
+
+    public Pedido getPedido() {
+        return this.pedido;
     }
 
     // END CLASS
