@@ -9,15 +9,20 @@ public class Cliente {
         this.nome = nome;
         this.qtdPessoas = qtdPessoas;
     }
- 
 
     public int getQtdPessoas(){
         return this.qtdPessoas;
     }
 
-
     public String getNome() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getNome'");
+        return this.nome;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setQtdPessoas(int qtdPessoas) {
+        this.qtdPessoas = qtdPessoas;
+    }
+    
 }

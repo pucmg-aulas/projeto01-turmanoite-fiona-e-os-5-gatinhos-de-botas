@@ -18,8 +18,23 @@ public class Produto {
         return preco;
     }
 
-    public int getIdProduto() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getIdProduto'");
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+
+    public int getIdProduto() {
+        return this.idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public double getPreco() {
+        return this.preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }    
 }
