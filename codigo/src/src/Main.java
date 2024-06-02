@@ -1,7 +1,10 @@
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
+        Screen screen = new Screen();
+        screen.initialize();
 
         Restaurante restaurante = new Restaurante();
 
@@ -66,4 +69,5 @@ public class Main {
             }
         } while (opcao != 3);
     }
+
 }
