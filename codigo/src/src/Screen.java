@@ -27,7 +27,8 @@ public class Screen extends JFrame {
         fazerRequisicao.setBounds(30, 50, 200, 30);
         fazerRequisicao.setBackground(new Color(173, 216, 230));
         fazerRequisicao.addActionListener(e -> {
-            restaurante.fazerRequisicao();
+            ScreenFzrRequi screenFzrRequi = new ScreenFzrRequi();
+            screenFzrRequi.iniciarTela();
         });
         add(fazerRequisicao);
 
@@ -66,6 +67,10 @@ public class Screen extends JFrame {
         finalizaPedido.setBounds(30, 290, 200, 30);
         finalizaPedido.setBackground(new Color(173, 216, 230));
         add(finalizaPedido);
+
+        add(mvc);
+        setVisible(true); 
+
     }
 
 }

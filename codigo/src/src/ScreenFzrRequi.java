@@ -2,36 +2,46 @@ import java.awt.*;
 
 import javax.swing.*;
 
-
-package com.example.view;
-
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class GuestFormView extends JFrame {
+public class ScreenFzrRequi extends JFrame {
     private JTextField nameField = new JTextField(20);
     private JTextField numberOfGuestsField = new JTextField(5);
     private JButton submitButton = new JButton("Submit");
 
-    public GuestFormView() {
-        // Set up the frame
-        setTitle("Guest Form");
+    public void iniciarTela() {
+
+        JPanel painel = new JPanel();
+
+        painel.setLayout(new BorderLayout());
+
+        setTitle("Fazer Requisição");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Create a panel to hold the form components
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 2));
-        panel.add(new JLabel("Name:"));
+        panel.add(new JLabel("Nome:"));
         panel.add(nameField);
-        panel.add(new JLabel("Number of Guests:"));
+        panel.add(new JLabel("Número de convidados:"));
         panel.add(numberOfGuestsField);
         panel.add(submitButton);
 
-        // Add the panel to the frame
+        submitButton.addActionListener(e ->{
+            fazerRequisicao();
+        });
+
         add(panel);
+        setVisible(true);
+    }
+
+    public void fazerRequisicao(){
+       String nome = this.getName();
+       int numConvidados = this.getNumberOfGuests();
+       Cliente cliente = new Cliente(nome, numConvidados);
+       Requisicao requisicao = new Requisicao(cliente);
+       System.out.println(requisicao.getConvidados());
     }
 
     public String getName() {
@@ -42,7 +52,7 @@ public class GuestFormView extends JFrame {
         try {
             return Integer.parseInt(numberOfGuestsField.getText());
         } catch (NumberFormatException e) {
-            return 0; // or some other default value or handling
+            return 0;
         }
     }
 
