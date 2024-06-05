@@ -1,10 +1,13 @@
-
 import java.awt.*;
 
 import javax.swing.*;
 
 public class Screen extends JFrame {
     Restaurante restaurante = new Restaurante();
+
+    public Restaurante getRestaurante() {
+        return this.restaurante;
+    }
 
     public void initialize() {
         JPanel mvc = new JPanel();

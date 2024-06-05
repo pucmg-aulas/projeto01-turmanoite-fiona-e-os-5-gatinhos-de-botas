@@ -30,37 +30,39 @@ public class ScreenFzrRequi extends JFrame {
 
         submitButton.addActionListener(e ->{
             fazerRequisicao();
+            JOptionPane.showMessageDialog(null, "Requisição feita com sucesso!");
+            nameField.setText("");
+            numberOfGuestsField.setText("");
         });
 
         add(panel);
         setVisible(true);
     }
-
     public void fazerRequisicao(){
-       String nome = this.getName();
-       int numConvidados = this.getNumberOfGuests();
-       Cliente cliente = new Cliente(nome, numConvidados);
-       Requisicao requisicao = new Requisicao(cliente);
-       System.out.println(requisicao.getConvidados());
-    }
-
-    public String getName() {
-        return nameField.getText();
-    }
-
-    public int getNumberOfGuests() {
-        try {
-            return Integer.parseInt(numberOfGuestsField.getText());
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
-
-    public void addSubmitListener(ActionListener listener) {
-        submitButton.addActionListener(listener);
-    }
-
-    public void displayMessage(String message) {
-        JOptionPane.showMessageDialog(this, message);
-    }
+        String nome = this.getName();
+        int numConvidados = this.getNumberOfGuests();
+        Cliente cliente = new Cliente(nome, numConvidados);
+        Requisicao requisicao = new Requisicao(cliente);
+        System.out.println(requisicao.getConvidados());
+     }
+ 
+     public String getName() {
+         return nameField.getText();
+     }
+ 
+     public int getNumberOfGuests() {
+         try {
+             return Integer.parseInt(numberOfGuestsField.getText());
+         } catch (NumberFormatException e) {
+             return 0;
+         }
+     }
+ 
+     public void addSubmitListener(ActionListener listener) {
+         submitButton.addActionListener(listener);
+     }
+ 
+     public void displayMessage(String message) {
+         JOptionPane.showMessageDialog(this, message);
+     }
 }

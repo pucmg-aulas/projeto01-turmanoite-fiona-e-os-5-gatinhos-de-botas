@@ -12,6 +12,10 @@ public class Restaurante {
     LocalTime entrada;
     LocalTime saida;
 
+    public ArrayList<Mesa> getMesas() {
+        return mesas;
+    }
+
     // CONSTRUTORES
     static {
         Mesa m1 = new Mesa(4);

@@ -19,18 +19,6 @@ public class Requisicao {
         return (this.status);
     }
 
-    public void imprimePedido() {
-
-        System.out.println("---------");
-        System.out.println("Pedido de : " + this.getCliente().getNome() + " (ID da requisição - " + this.idRequisicao + " )");
-        for (ItemProduto item : this.pedido.getItens()) {
-            System.out.println(this.pedido.getItens().indexOf(item) + 1 + " - " + item.getProduto().getNome() + " R$"
-                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade - "
-                    + item.getQnt() + " - valor total: " + item.getValorTotal()); 
-        }
-        System.out.println("---------");
-    }
-
     public void reqAtiva() {
         this.status = true;
     }
@@ -67,6 +55,19 @@ public class Requisicao {
     public Pedido getPedido() {
         return this.pedido;
     }
+
+    public void imprimePedido() {
+
+        System.out.println("---------");
+        System.out.println("Pedido de : " + this.getCliente().getNome() + " (ID da requisição - " + this.idRequisicao + " )");
+        for (ItemProduto item : this.pedido.getItens()) {
+            System.out.println(this.pedido.getItens().indexOf(item) + 1 + " - " + item.getProduto().getNome() + " R$"
+                    + item.getProduto().getPreço() + " (" + item.getProduto().getIdProduto() + ")" + " quantidade - "
+                    + item.getQnt() + " - valor total: " + item.getValorTotal()); 
+        }
+        System.out.println("---------");
+    }
+    //preciso passar essa p controller
 
     // END CLASS
 }
