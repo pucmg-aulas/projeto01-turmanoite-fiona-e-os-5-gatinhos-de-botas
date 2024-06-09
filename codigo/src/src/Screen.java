@@ -10,8 +10,8 @@ public class Screen extends JFrame {
     }
 
     public void initialize() {
+        JFrame telaInicial = new JFrame();
         JPanel mvc = new JPanel();
-
         mvc.setLayout(new BorderLayout());
 
         setTitle("Restaurante a la classe");
