@@ -57,12 +57,20 @@
             <Property name="text" type="java.lang.String" value="Requisi&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="AddReqBtn">
+            <MenuItem class="javax.swing.JMenuItem" name="ListarMesasBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Adicionar"/>
+                <Property name="text" type="java.lang.String" value="Listar mesas"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddReqBtnMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarMesasBtnActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="ListarReqsBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Requisi&#xe7;&#xf5;es"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarReqsBtnActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
