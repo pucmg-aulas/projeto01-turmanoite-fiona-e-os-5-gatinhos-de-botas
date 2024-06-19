@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pedro
  */
-public class Cliente {
+public class Cliente implements Serializable{
     
     private static int contadorClientes = 0;
     private int idCliente;

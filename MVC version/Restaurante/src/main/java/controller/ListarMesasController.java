@@ -44,7 +44,6 @@ public class ListarMesasController {
     }
 
     public void carregaTabelaMesas() {
-
         Object colunas[] = {"ID", "Capacidade", "Disponível"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 

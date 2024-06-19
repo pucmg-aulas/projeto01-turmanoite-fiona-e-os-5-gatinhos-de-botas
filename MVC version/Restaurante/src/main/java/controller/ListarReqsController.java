@@ -46,7 +46,8 @@ public class ListarReqsController {
     public void carregaTabelaRequisicoes() {
         Object colunas[] = {"ID", "Nome do Cliente", "Qtd. Pessoas", "Status", "Numero da Mesa"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
-
+        
+        
         List<Object[]> linhas = requisicoes.listar().stream()
                 .map(r -> new Object[]{
                         r.getIdRequisicao(),
@@ -57,7 +58,7 @@ public class ListarReqsController {
                 .collect(Collectors.toList());
 
         linhas.forEach(tm::addRow);
-
+        
         view.getTbReqs().setModel(tm);
     }
 

@@ -4,21 +4,23 @@
  */
 package dao;
 
+import java.io.Serializable;
 import model.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Requisicoes {
+public class Requisicoes extends AbstractDAO implements Serializable{
 
     private List<Requisicao> requisicoes;
-
+    private final String path = "./src/main/java/data/Requisicoes.dat";
+    
     // Instância única da classe Requisicoes
     private static Requisicoes instancia;
 
     // Construtor privado para evitar instanciamento externo
     private Requisicoes() {
         this.requisicoes = new ArrayList<>();
+        carregaReq();
     }
 
     // Método para obter a instância única da classe
@@ -32,6 +34,7 @@ public class Requisicoes {
     public void adicionar(Requisicao requisicao) {
         if (requisicao != null) {
             requisicoes.add(requisicao);
+            grava();
         } else {
             throw new IllegalArgumentException("A requisição não pode ser nula.");
         }
@@ -45,6 +48,19 @@ public class Requisicoes {
 
     }
 
+
+    public List<Requisicao> listar() {
+        return new ArrayList<>(requisicoes);
+    }
+    
+    private void grava(){
+        super.grava(path, requisicoes);
+    }
+
+    private void carregaReq(){
+        this.requisicoes = super.leitura(path);
+    }
+    
     public Requisicao obter(int idRequisicao) {
         for (Requisicao requisicao : requisicoes) {
             if (requisicao.getIdRequisicao() == idRequisicao) {
@@ -54,10 +70,7 @@ public class Requisicoes {
         return null;
     }
 
-    public List<Requisicao> listar() {
-        return new ArrayList<>(requisicoes);
-    }
-
+   
     @Override
     public String toString() {
         return "Requisicoes{"

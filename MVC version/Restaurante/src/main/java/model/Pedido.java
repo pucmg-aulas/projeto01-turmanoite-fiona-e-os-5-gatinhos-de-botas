@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pedro
  */
-public class Pedido {
+public class Pedido implements Serializable{
     
    // private ArrayList<ItemProduto> produtos = new ArrayList<ItemProduto>();
     private static double TAXA = 1.1;

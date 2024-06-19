@@ -3,6 +3,7 @@ view\SelecionarMesaView.class
 main\Main$1.class
 model\Carro.class
 controller\AddMesaController.class
+controller\AddReqController.class
 main\Main.class
 view\TelaNova$1.class
 main\Main$6.class
@@ -21,6 +22,7 @@ dao\AbstractDAO.class
 model\ItemProduto.class
 view\TelaNova.class
 dao\Mesas.class
+main\Main$5.class
 model\Pedido.class
 view\IncluirCarroView.class
 main\Main$2.class

@@ -9,9 +9,10 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mesas {
+public class Mesas extends AbstractDAO{
 
     private List<Mesa> mesas;
+    private final String path = "./src/main/java/data/Mesas.dat";
 
     // Instância única da classe Mesas
     private static Mesas instancia;
@@ -19,6 +20,7 @@ public class Mesas {
     // Construtor privado para evitar instanciamento externo
     private Mesas() {
         this.mesas = new ArrayList<>();
+        carregaMesas();
     }
 
     public void iniciaMesas() {
@@ -47,10 +49,15 @@ public class Mesas {
         }
         return instancia;
     }
-
+    private void grava(){
+        super.grava(path, mesas);
+    }
+    
+    
     public void adicionar(Mesa mesa) {
         if (mesa != null) {
             mesas.add(mesa);
+            grava(path, mesas);
         } else {
             throw new IllegalArgumentException("A mesa não pode ser nula.");
         }
@@ -58,6 +65,7 @@ public class Mesas {
 
     public void removerMesa(Mesa m) {
         mesas.remove(m);
+        grava();
     }
 
     public Mesa obter(int idMesa) {
@@ -78,5 +86,9 @@ public class Mesas {
         return "Mesas{"
                 + "mesas=" + mesas
                 + '}';
+    }
+
+    private void carregaMesas() {
+        this.mesas = super.leitura(path);
     }
 }
