@@ -52,7 +52,7 @@ public class ListarCarroController {
     private void carregaTabela(){
         Object colunas[] = {"Nome", "Marca"};
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
-        
+       
         tm.setNumRows(0);
         Iterator<Carro> it = carros.getCarros().iterator();
         while (it.hasNext()) {

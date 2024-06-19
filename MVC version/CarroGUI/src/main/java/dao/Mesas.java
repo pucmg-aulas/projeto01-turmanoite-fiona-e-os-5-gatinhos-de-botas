@@ -19,7 +19,6 @@ public class Mesas {
     // Construtor privado para evitar instanciamento externo
     private Mesas() {
         this.mesas = new ArrayList<>();
-        iniciaMesas();
     }
 
     public void iniciaMesas() {
@@ -36,7 +35,7 @@ public class Mesas {
 
     }
     
-    public List<Mesa> getMesas(){
+    public List getMesas(){
         return mesas;
     }
     
@@ -48,15 +47,7 @@ public class Mesas {
         }
         return instancia;
     }
-    public List<Mesa> getMesasOcupadas() {
-        List<Mesa> ocupadas = new ArrayList<>();
-        for (Mesa mesa : mesas) {
-            if (mesa.getStatus()) {
-                ocupadas.add(mesa);
-            }
-        }
-        return ocupadas;
-    }
+
     public void adicionar(Mesa mesa) {
         if (mesa != null) {
             mesas.add(mesa);

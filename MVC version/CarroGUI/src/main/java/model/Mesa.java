@@ -20,7 +20,7 @@ public class Mesa {
     public Mesa(int capacidade) {
         this.idMesa = ++contadorMesa;
         this.capacidade = capacidade;
-        this.status = false;
+        this.status = true;
 
     }
 
@@ -34,11 +34,8 @@ public class Mesa {
         this.capacidade = capacidade;
     }
 
-    public void ocuparMesa() {
-        this.status = true;
-    }
-    public void desocuparMesa() {
-        this.status = false;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public int getIdMesa() {
@@ -53,9 +50,4 @@ public class Mesa {
         return status;
 
     }
-
-    public String getNomeCliente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

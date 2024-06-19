@@ -1,9 +1,6 @@
 package main;
 
-import controller.FzrPedidoMenuController;
-import controller.AddReqController;
-import controller.IncluirCarroController;
-import controller.ListarCarroController;
+import controller.*;
 import dao.*;
 
 /*
@@ -22,7 +19,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
-        
+        mesas.iniciaMesas();
         
         Carros carros = Carros.getInstance();
         this.setVisible(true);
@@ -39,72 +36,75 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuAcoes = new javax.swing.JMenu();
-        AddReqBtn = new javax.swing.JMenuItem();
-        FzrPedidoBtn = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        addCarroMenuBtn = new javax.swing.JMenuItem();
+        exitMenuBtn = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        viewCarsMenuBtn = new javax.swing.JMenuItem();
+        Requisicoes = new javax.swing.JMenu();
+        ListarMesasBtn = new javax.swing.JMenuItem();
+        ListarReqsBtn = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
-        jMenuItem3.setText("jMenuItem3");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        MenuAcoes.setText("Ações");
-        MenuAcoes.setVerifyInputWhenFocusTarget(false);
+        jMenu1.setText("File");
 
-        AddReqBtn.setText("Fazer requisição");
-        AddReqBtn.addActionListener(new java.awt.event.ActionListener() {
+        addCarroMenuBtn.setText("Add Carro");
+        addCarroMenuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddReqBtnActionPerformed(evt);
+                addCarroMenuBtnActionPerformed(evt);
             }
         });
-        MenuAcoes.add(AddReqBtn);
+        jMenu1.add(addCarroMenuBtn);
 
-        FzrPedidoBtn.setText("Fazer pedido");
-        FzrPedidoBtn.addActionListener(new java.awt.event.ActionListener() {
+        exitMenuBtn.setText("Exit");
+        exitMenuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FzrPedidoBtnActionPerformed(evt);
+                exitMenuBtnActionPerformed(evt);
             }
         });
-        MenuAcoes.add(FzrPedidoBtn);
-
-        jMenuItem4.setText("Finalizar pedido");
-        MenuAcoes.add(jMenuItem4);
-
-        jMenuItem5.setText("Cancelar requisicao");
-        MenuAcoes.add(jMenuItem5);
-
-        jMenuBar1.add(MenuAcoes);
-
-        jMenu1.setText("Informações");
-
-        jMenuItem6.setText("Ver fila de espera");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
-
-        jMenuItem7.setText("Ver requisicoes atendidas");
-        jMenu1.add(jMenuItem7);
-
-        jMenuItem8.setText("Ver mesas");
-        jMenu1.add(jMenuItem8);
-
-        jMenuItem9.setText("Ver cardápio");
-        jMenu1.add(jMenuItem9);
+        jMenu1.add(exitMenuBtn);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("View");
+
+        viewCarsMenuBtn.setText("Cars");
+        viewCarsMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewCarsMenuBtnActionPerformed(evt);
+            }
+        });
+        jMenu3.add(viewCarsMenuBtn);
+
+        jMenuBar1.add(jMenu3);
+
+        Requisicoes.setText("Requisições");
+
+        ListarMesasBtn.setText("Listar mesas");
+        ListarMesasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarMesasBtnActionPerformed(evt);
+            }
+        });
+        Requisicoes.add(ListarMesasBtn);
+
+        ListarReqsBtn.setText("Listar Requisições");
+        ListarReqsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarReqsBtnActionPerformed(evt);
+            }
+        });
+        Requisicoes.add(ListarReqsBtn);
+
+        jMenuBar1.add(Requisicoes);
 
         setJMenuBar(jMenuBar1);
 
@@ -120,24 +120,32 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void AddReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddReqBtnActionPerformed
-        new AddReqController();// TODO add your handling code here:
-    }//GEN-LAST:event_AddReqBtnActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void FzrPedidoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FzrPedidoBtnActionPerformed
+    private void addCarroMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCarroMenuBtnActionPerformed
         // TODO add your handling code here:
-        new FzrPedidoMenuController();
-    }//GEN-LAST:event_FzrPedidoBtnActionPerformed
+        new IncluirCarroController();
+    }//GEN-LAST:event_addCarroMenuBtnActionPerformed
 
-    
+    private void exitMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuBtnActionPerformed
+
+        this.dispose();
+
+    }//GEN-LAST:event_exitMenuBtnActionPerformed
+
+
+    private void viewCarsMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCarsMenuBtnActionPerformed
+        new ListarCarroController();
+    }//GEN-LAST:event_viewCarsMenuBtnActionPerformed
+
+    private void ListarReqsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarReqsBtnActionPerformed
+        new ListarReqsController();// TODO add your handling code here:
+    }//GEN-LAST:event_ListarReqsBtnActionPerformed
+
+    private void ListarMesasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarMesasBtnActionPerformed
+        new ListarMesasController();        // TODO add your handling code here:
+    }//GEN-LAST:event_ListarMesasBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -174,18 +182,16 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AddReqBtn;
-    private javax.swing.JMenuItem FzrPedidoBtn;
-    private javax.swing.JMenu MenuAcoes;
+    private javax.swing.JMenuItem ListarMesasBtn;
+    private javax.swing.JMenuItem ListarReqsBtn;
+    private javax.swing.JMenu Requisicoes;
+    private javax.swing.JMenuItem addCarroMenuBtn;
+    private javax.swing.JMenuItem exitMenuBtn;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem viewCarsMenuBtn;
     // End of variables declaration//GEN-END:variables
 }

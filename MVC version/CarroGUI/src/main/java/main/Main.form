@@ -7,74 +7,71 @@
         <Property name="text" type="java.lang.String" value="jMenuItem1"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JMenuItem" name="jMenuItem3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jMenuItem3"/>
-      </Properties>
-    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="MenuAcoes">
+        <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A&#xe7;&#xf5;es"/>
-            <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="AddReqBtn">
+            <MenuItem class="javax.swing.JMenuItem" name="addCarroMenuBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fazer requisi&#xe7;&#xe3;o"/>
+                <Property name="text" type="java.lang.String" value="Add Carro"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddReqBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCarroMenuBtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="FzrPedidoBtn">
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenuBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fazer pedido"/>
+                <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FzrPedidoBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuBtnActionPerformed"/>
               </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Finalizar pedido"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar requisicao"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es"/>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="View"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+            <MenuItem class="javax.swing.JMenuItem" name="viewCarsMenuBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver fila de espera"/>
+                <Property name="text" type="java.lang.String" value="Cars"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewCarsMenuBtnActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="Requisicoes">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Requisi&#xe7;&#xf5;es"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="ListarMesasBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver requisicoes atendidas"/>
+                <Property name="text" type="java.lang.String" value="Listar mesas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarMesasBtnActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+            <MenuItem class="javax.swing.JMenuItem" name="ListarReqsBtn">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver mesas"/>
+                <Property name="text" type="java.lang.String" value="Listar Requisi&#xe7;&#xf5;es"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ver&#xa0;card&#xe1;pio"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ListarReqsBtnActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -87,7 +84,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>

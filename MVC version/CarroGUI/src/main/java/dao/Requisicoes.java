@@ -9,7 +9,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Requisicoes extends AbstractDAO{
+public class Requisicoes {
 
     private List<Requisicao> requisicoes;
 
