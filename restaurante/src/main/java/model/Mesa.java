@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public class Mesa {
+public class Mesa implements Serializable{
 
     private static int contadorMesa = 0;
     private int idMesa;

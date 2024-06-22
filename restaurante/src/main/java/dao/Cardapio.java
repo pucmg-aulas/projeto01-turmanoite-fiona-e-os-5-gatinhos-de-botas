@@ -9,9 +9,11 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cardapio {
+public class Cardapio extends AbstractDAO{
 
     private List<Produto> produtos;
+    
+    private final String path = "./src/main/java/data/Cardapio.dat";
 
     // Instância única da classe Mesas
     private static Cardapio instancia;
@@ -19,6 +21,7 @@ public class Cardapio {
     // Construtor privado para evitar instanciamento externo
     private Cardapio() {
         this.produtos = new ArrayList<>();
+        carregaCardapio();
     }
 
     public void iniciaCardapio() {
@@ -33,7 +36,7 @@ public class Cardapio {
         produtos.add(new Produto("Refrigerante", 4.0));
         produtos.add(new Produto("Cerveja", 6.0));
         produtos.add(new Produto("Taça de vinho", 8.0));
-
+        grava();
     }
     
     public List getProdutos(){
@@ -52,13 +55,15 @@ public class Cardapio {
     public void adicionar(Produto produto) {
         if (produto != null) {
             produtos.add(produto);
+            grava();
         } else {
             throw new IllegalArgumentException("O produto não pode ser nulo.");
         }
     }
 
-    public void removerMesa(Produto m) {
-        produtos.remove(m);
+    public void removerProduto(Produto p) {
+        produtos.remove(p);
+        grava();
     }
 
     public Produto obter(int idProduto) {
@@ -73,11 +78,19 @@ public class Cardapio {
     public List<Produto> listar() {
         return new ArrayList<>(produtos);
     }
+    
+    private void grava(){
+        super.grava(path, produtos);
+    }
 
     @Override
     public String toString() {
         return "Cardapio{"
                 + "produtos=" + produtos
                 + '}';
+    }
+
+    private void carregaCardapio() {
+        this.produtos = super.leitura(path);
     }
 }

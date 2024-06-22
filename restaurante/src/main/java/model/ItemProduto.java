@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pedro
  */
-public class ItemProduto {
+public class ItemProduto implements Serializable{
     private static int contadorItemProduto;
     private int idItemProduto;
     private int qnt;

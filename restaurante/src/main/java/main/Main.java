@@ -19,9 +19,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
-        mesas.iniciaMesas();
+        
         Cardapio c = Cardapio.getInstancia();
-        c.iniciaCardapio();
+        
         Carros carros = Carros.getInstance();
         this.setVisible(true);
 

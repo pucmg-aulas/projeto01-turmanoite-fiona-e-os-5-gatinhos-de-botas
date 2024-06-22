@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido {
+public class Pedido implements Serializable{
 
     private static final double TAXA = 1.1; // Taxa de 10%
     private static int contadorPedidos = 0;

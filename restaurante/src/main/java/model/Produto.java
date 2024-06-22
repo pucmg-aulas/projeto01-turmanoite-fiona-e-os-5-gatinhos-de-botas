@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author pedro
  */
-public class Produto {
+public class Produto implements Serializable{
     
     private static int contadorProdutos = 0;
     private String nome;
