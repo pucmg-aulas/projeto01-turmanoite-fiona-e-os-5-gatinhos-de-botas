@@ -19,7 +19,6 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
-        mesas.iniciaMesas();
         
         Carros carros = Carros.getInstance();
         this.setVisible(true);
@@ -40,7 +39,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         addCarroMenuBtn = new javax.swing.JMenuItem();
         exitMenuBtn = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         viewCarsMenuBtn = new javax.swing.JMenuItem();
         Requisicoes = new javax.swing.JMenu();
@@ -70,9 +68,6 @@ public class Main extends javax.swing.JFrame {
         jMenu1.add(exitMenuBtn);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
 
@@ -188,7 +183,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem addCarroMenuBtn;
     private javax.swing.JMenuItem exitMenuBtn;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

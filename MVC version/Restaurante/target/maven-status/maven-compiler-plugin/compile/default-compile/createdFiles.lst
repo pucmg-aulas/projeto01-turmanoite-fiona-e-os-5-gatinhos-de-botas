@@ -31,5 +31,6 @@ view\ListarReqsView.class
 model\Mesa.class
 main\Main$3.class
 view\ListarCarroView.class
+dao\Cardapio.class
 controller\ListarCarroController.class
 controller\IncluirCarroController.class
