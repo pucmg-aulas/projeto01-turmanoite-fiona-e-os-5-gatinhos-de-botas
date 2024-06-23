@@ -10,10 +10,18 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public class Produto implements Serializable{
-    
+public class Produto implements Serializable {
+
     private static int contadorProdutos = 0;
     private String nome;
+    private int idProduto;
+    private double preco;
+
+    public Produto(String nome, double preco) {
+        this.idProduto = ++contadorProdutos;
+        this.nome = nome;
+        this.preco = preco;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -38,13 +46,4 @@ public class Produto implements Serializable{
     public double getPreco() {
         return preco;
     }
-    private int idProduto;
-    private double preco;
-
-    public Produto(String nome, double preco) {
-        this.idProduto = ++contadorProdutos;
-        this.nome = nome;
-        this.preco = preco;
-    }
-    
 }

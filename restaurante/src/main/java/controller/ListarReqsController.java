@@ -44,6 +44,10 @@ public class ListarReqsController {
         this.view.getAddPedidoControllerBtn().addActionListener((e) -> {
             instanciaAddPedidoControllerComAReqSelecionada();
         });
+        
+         this.view.getListarPedidosBtn().addActionListener((e) -> {
+            instanciaListarPedidoControllerComAReqSelecionada();
+        });
 
     }
 
@@ -111,6 +115,22 @@ public class ListarReqsController {
 
             if (requisicao != null) {
                 new AddPedidoController(requisicao, this);
+            } else {
+                JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(view, "Selecione uma requisição para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    private void instanciaListarPedidoControllerComAReqSelecionada() {
+        int selectedRow = view.getTbReqs().getSelectedRow();
+        if (selectedRow >= 0) {
+            int idRequisicao = (int) view.getTbReqs().getValueAt(selectedRow, 0);
+            Requisicao requisicao = requisicoes.obter(idRequisicao);
+
+            if (requisicao != null) {
+                new ListarPedidoController(requisicao, this);
             } else {
                 JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
             }

@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
@@ -9,19 +9,19 @@ import javax.swing.JTable;
 
 /**
  *
- * @author ticok
+ * @author pedro
  */
-public class ListarPedidosView extends javax.swing.JPanel {
+public class ListarPedidoView extends javax.swing.JFrame {
 
     /**
      * Creates new form ListarPedidosView
      */
-    public ListarPedidosView() {
+    public ListarPedidoView() {
         initComponents();
     }
 
-    public JButton getAdcionarBtn() {
-        return AdcionarBtn;
+    public JButton getAdicionarBtn() {
+        return AdicionarBtn;
     }
 
     public JButton getFinalizarBtn() {
@@ -30,6 +30,10 @@ public class ListarPedidosView extends javax.swing.JPanel {
 
     public JTable getTbPedidos() {
         return tbPedidos;
+    }
+
+    public void setTbPedidos(JTable tbPedidos) {
+        this.tbPedidos = tbPedidos;
     }
 
     /**
@@ -42,24 +46,11 @@ public class ListarPedidosView extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
         tbPedidos = new javax.swing.JTable();
+        AdicionarBtn = new javax.swing.JButton();
         FinalizarBtn = new javax.swing.JButton();
-        AdcionarBtn = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tbPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,20 +63,20 @@ public class ListarPedidosView extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tbPedidos);
+        jScrollPane1.setViewportView(tbPedidos);
 
-        FinalizarBtn.setText("Finalizar pedido");
+        AdicionarBtn.setText("Adicionar");
 
-        AdcionarBtn.setText("Adcionar item");
+        FinalizarBtn.setText("Finalizar Pedido");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AdcionarBtn)
+                .addComponent(AdicionarBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(FinalizarBtn)
                 .addContainerGap())
@@ -93,22 +84,23 @@ public class ListarPedidosView extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FinalizarBtn)
-                    .addComponent(AdcionarBtn))
-                .addGap(0, 52, Short.MAX_VALUE))
+                    .addComponent(AdicionarBtn)
+                    .addComponent(FinalizarBtn))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdcionarBtn;
+    private javax.swing.JButton AdicionarBtn;
     private javax.swing.JButton FinalizarBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable tbPedidos;
     // End of variables declaration//GEN-END:variables
 }

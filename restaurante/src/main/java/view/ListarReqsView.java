@@ -36,7 +36,7 @@ public class ListarReqsView extends javax.swing.JFrame {
         ExcluirReqsBtn = new javax.swing.JButton();
         SelecionarMesaControllerBtn = new javax.swing.JButton();
         AddPedidoControllerBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ListarPedidosBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,7 +63,7 @@ public class ListarReqsView extends javax.swing.JFrame {
 
         AddPedidoControllerBtn.setText("Fazer um Pedido");
 
-        jButton1.setText("jButton1");
+        ListarPedidosBtn.setText("Listar Pedidos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +80,7 @@ public class ListarReqsView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AddPedidoControllerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(SelecionarMesaControllerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class ListarReqsView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExcluirReqsBtn)
-                    .addComponent(jButton1))
+                    .addComponent(ListarPedidosBtn))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
@@ -128,6 +128,10 @@ public class ListarReqsView extends javax.swing.JFrame {
     public JButton getAddPedidoControllerBtn() {
         return AddPedidoControllerBtn;
     }
+
+    public JButton getListarPedidosBtn() {
+        return ListarPedidosBtn;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -135,8 +139,8 @@ public class ListarReqsView extends javax.swing.JFrame {
     private javax.swing.JButton AddReqsBtn;
     private javax.swing.JButton AtualizaTableBtn;
     private javax.swing.JButton ExcluirReqsBtn;
+    private javax.swing.JButton ListarPedidosBtn;
     private javax.swing.JButton SelecionarMesaControllerBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbReqs;
     // End of variables declaration//GEN-END:variables

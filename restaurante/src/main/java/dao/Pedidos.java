@@ -4,14 +4,14 @@
  */
 package dao;
 
-import model.ItemProduto;
+import model.Pedido;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pedidos {
 
-    private List<ItemProduto> items;
+    private List<Pedido> pedidos;
 
     // Instância única da classe Mesas
     private static Pedidos instancia;
@@ -27,46 +27,46 @@ public class Pedidos {
 
     // Construtor privado para evitar instanciamento externo
     private Pedidos() {
-        this.items = new ArrayList<>();
+        this.pedidos = new ArrayList<>();
     }
 
     
     
     public List getItems(){
-        return items;
+        return pedidos;
     }
     
     
 
-    public void adicionar(ItemProduto Item) {
-        if (Item != null) {
-            items.add(Item);
+    public void adicionar(Pedido pedido) {
+        if (pedido != null) {
+            pedidos.add(pedido);
         } else {
-            throw new IllegalArgumentException("O item não pode ser nulo.");
+            throw new IllegalArgumentException("O pedido não pode ser nulo.");
         }
     }
 
-    public void removerMesa(ItemProduto m) {
-        items.remove(m);
+    public void removerMesa(Pedido m) {
+        pedidos.remove(m);
     }
 
-    public ItemProduto obter(int idItemProduto) {
-        for (ItemProduto item : items) {
-            if (item.getIdItemProduto() == idItemProduto) {
-                return item;
+    public Pedido obter(int idPedido) {
+        for (Pedido pedido : pedidos) {
+            if (pedido.getIdPedido() == idPedido) {
+                return pedido;
             }
         }
         return null;
     }
 
-    public List<ItemProduto> listar() {
-        return new ArrayList<>(items);
+    public List<Pedido> listar() {
+        return new ArrayList<>(pedidos);
     }
 
     @Override
     public String toString() {
-        return "Pedido{"
-                + "items=" + items
+        return "Pedidos{"
+                + "pedidos=" + pedidos
                 + '}';
     }
 }

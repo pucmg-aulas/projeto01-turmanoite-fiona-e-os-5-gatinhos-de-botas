@@ -6,6 +6,7 @@ import model.Pedido;
 import model.Produto;
 import model.Requisicao;
 import view.AddPedidoView;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
@@ -68,6 +69,12 @@ public class AddPedidoController {
             int quantidade = Integer.parseInt(qntText);
             if (quantidade <= 0) {
                 JOptionPane.showMessageDialog(view, "A quantidade deve ser maior que zero.");
+                return;
+            }
+
+            // Verificar se a requisição possui uma mesa associada
+            if (requisicaoSelecionada.getMesa() == null) {
+                JOptionPane.showMessageDialog(view, "A requisição deve ter uma mesa associada antes de adicionar itens ao pedido.", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
