@@ -45,7 +45,7 @@ public class AddMesaView extends javax.swing.JFrame {
         AddBtn = new java.awt.Button();
         CancelarBtn = new java.awt.Button();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Capacidade em pessoas");
 

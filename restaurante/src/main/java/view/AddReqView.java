@@ -68,6 +68,8 @@ public class AddReqView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         jLabel1.setText("Nome do cliente:");
 
         jLabel2.setText("Total de pessoas:");
