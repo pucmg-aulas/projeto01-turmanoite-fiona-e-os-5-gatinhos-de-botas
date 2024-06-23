@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido implements Serializable{
+public class Pedido implements Serializable {
 
     private static final double TAXA = 1.1; // Taxa de 10%
     private static int contadorPedidos = 0;
@@ -13,6 +13,9 @@ public class Pedido implements Serializable{
     private List<ItemProduto> produtos;
     private double totalProdutos;
     private int ativo;
+    private double desconto;
+    private double valorFinal;
+    private int prazo;
 
     public Pedido() {
         this.idPedido = ++contadorPedidos;
@@ -51,7 +54,7 @@ public class Pedido implements Serializable{
     private void recalcularTotal() {
         this.totalProdutos = this.produtos.stream()
             .mapToDouble(ItemProduto::getValorTotal)
-            .sum() * TAXA;
+            .sum();
     }
 
     public double getTotalComTaxa() {
@@ -64,6 +67,30 @@ public class Pedido implements Serializable{
 
     public void desativar() {
         this.ativo = 0;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
+    }
+
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+
+    public void setPrazo(int prazo) {
+        this.prazo = prazo;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public double getValorFinal() {
+        return valorFinal;
+    }
+
+    public int getPrazo() {
+        return prazo;
     }
 
     @Override

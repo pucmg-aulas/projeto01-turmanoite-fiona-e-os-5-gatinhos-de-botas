@@ -35,7 +35,7 @@ public class ListarPedidoController {
         });
 
         this.view.getFinalizarBtn().addActionListener((e) -> {
-            this.finalizarPedido();
+            new RealizarPagamentoController(r);
         });
     }
 
