@@ -50,7 +50,7 @@ public class SelecionarMesaView extends javax.swing.JFrame {
         SelecionarMesaBtn = new javax.swing.JButton();
         CancelarBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         TbSelecinarMesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

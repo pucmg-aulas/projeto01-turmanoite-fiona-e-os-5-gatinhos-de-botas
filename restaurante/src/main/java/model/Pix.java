@@ -10,7 +10,7 @@ import interfaces.*;
  *
  * @author pedro
  */
-public class Pix implements FormaDePagamento {
+public class Pix extends FormaDePagamento {
 
     @Override
     public String getTipo() {
@@ -31,4 +31,9 @@ public class Pix implements FormaDePagamento {
     public String gerarNota() {
         return "Pagamento via Pix: Desconto de 1,45% (máximo de R$10), recebimento imediato.";
     }
+        @Override public void calcularValorFinal(){
+        
+    }
+
+    
 }

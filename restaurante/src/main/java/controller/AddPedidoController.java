@@ -1,6 +1,6 @@
 package controller;
 
-import dao.Cardapio;
+import dao.*;
 import model.ItemProduto;
 import model.Pedido;
 import model.Produto;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AddPedidoController {
-
+    private Pedidos pedidos;
     private AddPedidoView view;
     private Cardapio cardapio;
     private Requisicao requisicaoSelecionada;
@@ -24,7 +24,7 @@ public class AddPedidoController {
         this.requisicaoSelecionada = requisicaoSelecionada;
         this.view = new AddPedidoView();
         this.listarReqsController = listarReqsController;
-
+        this.pedidos = Pedidos.getInstancia();
         this.view.getCancelarBtn().addActionListener((e) -> cancelar());
         this.view.getAddPedidoBtn().addActionListener((e) -> selecionarProduto());
 
@@ -93,12 +93,12 @@ public class AddPedidoController {
             Pedido pedido = requisicaoSelecionada.getPedido();
 
             if (pedido == null) {
-                // Cria um novo pedido se ainda não existir na requisição
                 pedido = new Pedido();
                 requisicaoSelecionada.setPedido(pedido);
             }
 
             // Adiciona o itemProduto ao pedido
+            pedido.ativar();
             pedido.adicionarItem(itemProduto);
 
             // Exibe mensagem de sucesso e limpa os campos

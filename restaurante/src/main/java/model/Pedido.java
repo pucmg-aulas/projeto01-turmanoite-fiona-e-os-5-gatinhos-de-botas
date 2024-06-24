@@ -20,7 +20,7 @@ public class Pedido implements Serializable {
         this.idPedido = ++contadorPedidos;
         this.produtos = new ArrayList<>();
         this.totalProdutos = 0.0;
-        this.ativo = 1;
+        this.ativo = 0;
     }
 
     public int getIdPedido() {

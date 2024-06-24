@@ -8,7 +8,7 @@ import interfaces.*;
  *
  * @author pedro
  */
-public class Credito implements FormaDePagamento {
+public class Credito extends FormaDePagamento {
 
     @Override
     public String getTipo() {
@@ -28,5 +28,9 @@ public class Credito implements FormaDePagamento {
     @Override
     public String gerarNota() {
         return "Pagamento via Crédito: Desconto de 3,1%, recebimento em 30 dias.";
+    }
+    
+    @Override public void calcularValorFinal(){
+        
     }
 }

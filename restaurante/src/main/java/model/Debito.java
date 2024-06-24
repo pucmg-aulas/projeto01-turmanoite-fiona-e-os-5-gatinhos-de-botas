@@ -10,7 +10,7 @@ import interfaces.*;
  *
  * @author pedro
  */
-public class Debito implements FormaDePagamento {
+public class Debito extends FormaDePagamento {
 
     @Override
     public String getTipo() {
@@ -31,4 +31,9 @@ public class Debito implements FormaDePagamento {
     public String gerarNota() {
         return "Pagamento via Débito: Desconto de 1,4%, recebimento em 14 dias.";
     }
+    @Override public void calcularValorFinal(){
+        
+    }
+
+    
 }

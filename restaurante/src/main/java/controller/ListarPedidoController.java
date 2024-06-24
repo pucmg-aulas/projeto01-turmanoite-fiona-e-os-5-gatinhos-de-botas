@@ -35,7 +35,11 @@ public class ListarPedidoController {
         });
 
         this.view.getFinalizarBtn().addActionListener((e) -> {
-            new RealizarPagamentoController(r);
+            if (requisicao.getPedido().getAtivo() == 1) {
+                new RealizarPagamentoController(r);
+            } else {
+                JOptionPane.showMessageDialog(view, "Esse pedido não possui itens ou ja foi finalizado.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 

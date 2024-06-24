@@ -8,7 +8,7 @@ import interfaces.*;
  *
  * @author pedro
  */
-public class Dinheiro implements FormaDePagamento {
+public class Dinheiro extends FormaDePagamento {
 
     @Override
     public String getTipo() {
@@ -29,4 +29,9 @@ public class Dinheiro implements FormaDePagamento {
     public String gerarNota() {
         return "Pagamento em Dinheiro: Sem desconto, recebimento imediato.";
     }
+        @Override public void calcularValorFinal(){
+        
+    }
+
+    
 }
