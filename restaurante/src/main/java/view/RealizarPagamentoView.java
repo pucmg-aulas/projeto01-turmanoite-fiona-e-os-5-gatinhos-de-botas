@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author ticok
@@ -17,6 +19,22 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getCreditoBtn() {
+        return creditoBtn;
+    }
+
+    public JButton getDebitoBtn() {
+        return debitoBtn;
+    }
+
+    public JButton getDinheiroBtn() {
+        return dinheiroBtn;
+    }
+
+    public JButton getPixBtn() {
+        return pixBtn;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,7 +44,7 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dinheitoBtn = new javax.swing.JButton();
+        dinheiroBtn = new javax.swing.JButton();
         pixBtn = new javax.swing.JButton();
         debitoBtn = new javax.swing.JButton();
         creditoBtn = new javax.swing.JButton();
@@ -34,7 +52,7 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        dinheitoBtn.setText("Dinheiro");
+        dinheiroBtn.setText("Dinheiro");
 
         pixBtn.setText("PIX");
 
@@ -52,7 +70,7 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(dinheitoBtn)
+                        .addComponent(dinheiroBtn)
                         .addGap(18, 18, 18)
                         .addComponent(pixBtn)
                         .addGap(41, 41, 41)
@@ -71,7 +89,7 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dinheitoBtn)
+                    .addComponent(dinheiroBtn)
                     .addComponent(pixBtn)
                     .addComponent(debitoBtn)
                     .addComponent(creditoBtn))
@@ -86,7 +104,7 @@ public class RealizarPagamentoView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton creditoBtn;
     private javax.swing.JButton debitoBtn;
-    private javax.swing.JButton dinheitoBtn;
+    private javax.swing.JButton dinheiroBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton pixBtn;
     // End of variables declaration//GEN-END:variables

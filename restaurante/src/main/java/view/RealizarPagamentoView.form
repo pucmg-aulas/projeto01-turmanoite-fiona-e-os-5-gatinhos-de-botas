@@ -27,7 +27,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dinheitoBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="dinheiroBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="pixBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="dinheitoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dinheiroBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pixBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="debitoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="creditoBtn" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="dinheitoBtn">
+    <Component class="javax.swing.JButton" name="dinheiroBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dinheiro"/>
       </Properties>
