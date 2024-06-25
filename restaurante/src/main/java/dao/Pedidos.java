@@ -1,53 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import model.Pedido;
-import java.util.Iterator;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedidos {
+public class Pedidos extends AbstractDAO implements Serializable {
 
     private List<Pedido> pedidos;
-
-    // Instância única da classe Mesas
+    private final String path = "./src/main/java/data/Pedidos.dat";
     private static Pedidos instancia;
-    
-    // Método para obter a instância única da classe
+
+    private Pedidos() {
+        this.pedidos = new ArrayList<>();
+        this.carrega(); // Carrega os pedidos salvos anteriormente
+    }
+
     public static Pedidos getInstancia() {
         if (instancia == null) {
             instancia = new Pedidos();
-
         }
         return instancia;
     }
 
-    // Construtor privado para evitar instanciamento externo
-    private Pedidos() {
-        this.pedidos = new ArrayList<>();
-    }
-
-    
-    
-    public List getItems(){
+    public List<Pedido> getPedidos() {
         return pedidos;
     }
-    
-    
 
     public void adicionar(Pedido pedido) {
         if (pedido != null) {
             pedidos.add(pedido);
+            this.grava(); // Salva o pedido adicionado
         } else {
             throw new IllegalArgumentException("O pedido não pode ser nulo.");
         }
     }
 
-    public void removerMesa(Pedido m) {
-        pedidos.remove(m);
+    public void grava() {
+        super.grava(path, pedidos);
+    }
+
+    private void carrega() {
+        this.pedidos = super.leitura(path);
+        if (this.pedidos == null) {
+            this.pedidos = new ArrayList<>(); // Se não houver dados carregados, inicializa uma lista vazia
+        }
+    }
+
+    public void removerPedido(Pedido pedido) {
+        pedidos.remove(pedido);
+        this.grava(); // Salva após remover
     }
 
     public Pedido obter(int idPedido) {
@@ -65,8 +67,8 @@ public class Pedidos {
 
     @Override
     public String toString() {
-        return "Pedidos{"
-                + "pedidos=" + pedidos
-                + '}';
+        return "Pedidos{" +
+                "pedidos=" + pedidos +
+                '}';
     }
 }

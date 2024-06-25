@@ -9,22 +9,22 @@ import java.io.ObjectInputStream;
 /**
  * Classe responsável por gerenciar o índice autoincremental.
  */
-public class IdAuto extends AbstractDAO {
+public class IdAutoReq extends AbstractDAO {
 
     private int id; // índice autoincremental
-    private static IdAuto instancia; // instância única da classe
-    private final String path = "./src/main/java/data/IdAuto.dat"; // caminho do arquivo de serialização
+    private static IdAutoReq instancia; // instância única da classe
+    private final String path = "./src/main/java/data/IdAutoReq.dat"; // caminho do arquivo de serialização
 
     // Construtor privado para evitar instanciamento externo
-    private IdAuto() {
+    private IdAutoReq() {
         this.id = 0;
         carregaId(); // carregar o valor do índice ao inicializar
     }
 
     // Método para obter a instância única da classe
-    public static IdAuto getInstancia() {
+    public static IdAutoReq getInstancia() {
         if (instancia == null) {
-            instancia = new IdAuto();
+            instancia = new IdAutoReq();
         }
         return instancia;
     }

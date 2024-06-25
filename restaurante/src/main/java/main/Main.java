@@ -19,7 +19,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
-
+        Pedidos pedidos = Pedidos.getInstancia();
         Cardapio c = Cardapio.getInstancia();
 
         Carros carros = Carros.getInstance();
@@ -36,15 +36,14 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         ListarFilaBtn = new javax.swing.JButton();
         ListarReqsBtn = new javax.swing.JButton();
         ListarMesasBtn = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-
-        jMenuItem1.setText("jMenuItem1");
+        PedidosBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         ListarFilaBtn.setText("Fila de espera");
         ListarFilaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +70,13 @@ public class Main extends javax.swing.JFrame {
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Restaurante a la Classe");
 
+        PedidosBtn.setText("Pedidos e Vendas");
+        PedidosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PedidosBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,11 +86,13 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ListarReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ListarReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ListarFilaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ListarFilaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -97,7 +105,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ListarReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ListarFilaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
         );
 
@@ -116,6 +125,10 @@ public class Main extends javax.swing.JFrame {
     private void ListarMesasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarMesasBtnActionPerformed
         new ListarMesasController();
     }//GEN-LAST:event_ListarMesasBtnActionPerformed
+
+    private void PedidosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidosBtnActionPerformed
+        new PedidosVendasController();        // TODO add your handling code here:
+    }//GEN-LAST:event_PedidosBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +169,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton ListarFilaBtn;
     private javax.swing.JButton ListarMesasBtn;
     private javax.swing.JButton ListarReqsBtn;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JButton PedidosBtn;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

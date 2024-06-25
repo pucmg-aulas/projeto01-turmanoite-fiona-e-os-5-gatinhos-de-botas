@@ -17,10 +17,13 @@ public class AddMesaController {
 
     private AddMesaView view;
     private Mesas mesas;
+    private ListarMesasController listarMesasController;
 
-    public AddMesaController() {
+    public AddMesaController(ListarMesasController listarMesasController) {
         this.mesas = Mesas.getInstancia();
         this.view = new AddMesaView();
+        this.listarMesasController = listarMesasController;
+        
         this.view.getAddBtn().addActionListener((e) -> {
             this.adicionarMesa();
         });
@@ -51,10 +54,9 @@ public class AddMesaController {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(view, "Por favor, insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+        this.listarMesasController.carregaTabelaMesas();
     }
 
-    public void AddBtn() {
-
-    }
+    
 
 }

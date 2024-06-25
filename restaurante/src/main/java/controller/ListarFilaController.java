@@ -43,7 +43,7 @@ public class ListarFilaController {
 
         // Filtrar apenas requisições não ativas (status = false)
         List<Object[]> linhas = requisicoes.listar().stream()
-                .filter(r -> !r.getStatus()) // Adicionar a condição de status
+                .filter(r -> !r.getStatus()&& r.getMesa()== null) 
                 .map(r -> new Object[]{
                         r.getIdRequisicao(),
                         r.getCliente().getNome(),
@@ -77,6 +77,7 @@ public class ListarFilaController {
         } else {
             JOptionPane.showMessageDialog(view, "Selecione uma requisição para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
+        requisicoes.grava();
     }
 
     private void instanciaSelecionarMesaControllerComAReqSelecionada() {

@@ -25,9 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="AddPedidoControllerBtn" min="-2" pref="200" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
               <Component id="ListarPedidosBtn" min="-2" pref="200" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -38,10 +36,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jScrollPane1" min="-2" pref="263" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="AddPedidoControllerBtn" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="ListarPedidosBtn" min="-2" pref="60" max="-2" attributes="0"/>
-              </Group>
+              <Component id="ListarPedidosBtn" min="-2" pref="60" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -66,11 +61,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="AddPedidoControllerBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fazer um Pedido"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="ListarPedidosBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar Pedidos"/>

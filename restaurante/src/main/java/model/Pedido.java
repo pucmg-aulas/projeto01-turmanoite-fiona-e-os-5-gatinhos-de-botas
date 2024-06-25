@@ -1,5 +1,6 @@
 package model;
 
+import dao.Requisicoes;
 import interfaces.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -65,15 +66,45 @@ public class Pedido implements Serializable {
     }
 
     public void desativar() {
-        this.ativo = 0;
+        this.ativo = 2;
     }
 
-    private void setFormaDePagamento(FormaDePagamento p) {
+    public void setFormaDePagamento(FormaDePagamento p) {
         this.pagamento = p;
+    }
+
+    public FormaDePagamento getPagamento() {
+        return pagamento;
+    }
+
+    public String getEstado() {
+        switch (this.ativo) {
+            case 0:
+                return "não iniciado"; // Pedido não foi iniciado ainda
+            case 1:
+                return "em aberto"; // Pedido está em andamento
+            case 2:
+                return "finalizado"; // Pedido foi finalizado
+            default:
+                return "estado desconhecido"; // Valor de 'ativo' não é esperado
+        }
     }
 
     @Override
     public String toString() {
         return "Pedido #" + idPedido + " - Total: R$ " + totalProdutos + " (Ativo: " + (ativo == 1 ? "Sim" : "Não") + ")";
     }
+
+    public Requisicao reqDoPedido() {
+        Requisicoes requisicoes = Requisicoes.getInstancia();
+
+        // Procura por uma requisição ativa associada a esta mesa
+        Requisicao requisicao = requisicoes.listar().stream()
+                .filter(req -> req.getPedido().getIdPedido() == this.getIdPedido())
+                .findFirst()
+                .orElse(null);
+
+        return requisicao; // Retorna a requisição encontrada
+    }
+
 }

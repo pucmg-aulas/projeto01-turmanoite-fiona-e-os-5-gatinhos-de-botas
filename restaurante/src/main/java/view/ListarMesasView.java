@@ -39,6 +39,10 @@ public class ListarMesasView extends javax.swing.JFrame {
         return ExcluirMesaBtn;
     }
 
+    public JButton getDesocuparBtn() {
+        return DesocuparBtn;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +57,7 @@ public class ListarMesasView extends javax.swing.JFrame {
         AddMesaViewBtn = new javax.swing.JButton();
         AtualizaTableBtn = new javax.swing.JButton();
         ExcluirMesaBtn = new javax.swing.JButton();
+        DesocuparBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,19 +80,23 @@ public class ListarMesasView extends javax.swing.JFrame {
 
         ExcluirMesaBtn.setText("Excluir");
 
+        DesocuparBtn.setText("Desocupar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddMesaViewBtn)
                 .addGap(18, 18, 18)
                 .addComponent(AtualizaTableBtn)
                 .addGap(18, 18, 18)
                 .addComponent(ExcluirMesaBtn)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(DesocuparBtn)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +106,8 @@ public class ListarMesasView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddMesaViewBtn)
                     .addComponent(AtualizaTableBtn)
-                    .addComponent(ExcluirMesaBtn))
+                    .addComponent(ExcluirMesaBtn)
+                    .addComponent(DesocuparBtn))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
@@ -110,6 +120,7 @@ public class ListarMesasView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddMesaViewBtn;
     private javax.swing.JButton AtualizaTableBtn;
+    private javax.swing.JButton DesocuparBtn;
     private javax.swing.JButton ExcluirMesaBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbMesas;

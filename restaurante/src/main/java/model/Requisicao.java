@@ -1,17 +1,14 @@
-
 package model;
-import dao.IdAuto;
+
+import dao.*;
 import java.io.Serializable;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+public class Requisicao implements Serializable {
 
-
-public class Requisicao implements Serializable{
-    
-    
     private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
@@ -19,7 +16,7 @@ public class Requisicao implements Serializable{
     private boolean status;
 
     public Requisicao(Cliente cliente) {
-        this.idRequisicao = IdAuto.getInstancia().getProximoId();
+        this.idRequisicao = IdAutoReq.getInstancia().getProximoId();
         this.cliente = cliente;
         this.status = false;
         this.pedido = new Pedido();
@@ -57,16 +54,16 @@ public class Requisicao implements Serializable{
         this.pedido = pedido;
     }
 
-    @Override
-    public String toString() {
-        return "Requisicao{" +
-                "idRequisicao=" + idRequisicao +
-                ", cliente=" + cliente +
-                ", mesa=" + mesa +
-                ", pedido=" + pedido +
-                ", status=" + status +
-                '}';
-    }
-}
     
 
+    @Override
+    public String toString() {
+        return "Requisicao{"
+                + "idRequisicao=" + idRequisicao
+                + ", cliente=" + cliente
+                + ", mesa=" + mesa
+                + ", pedido=" + pedido
+                + ", status=" + status
+                + '}';
+    }
+}

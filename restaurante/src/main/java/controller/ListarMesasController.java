@@ -4,6 +4,7 @@
  */
 package controller;
 
+import exception.MesaNaoAlocadaException;
 import dao.*;
 import model.*;
 import view.ListarMesasView;
@@ -18,17 +19,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListarMesasController {
 
+    private Requisicoes requisicoes;
     private ListarMesasView view;
     private Mesas mesas;
 
     public ListarMesasController() {
+
+        this.requisicoes = Requisicoes.getInstancia();
         this.mesas = Mesas.getInstancia();
         this.view = new ListarMesasView();
         this.view.setVisible(true);
         this.carregaTabelaMesas();
 
         this.view.getAddMesaViewBtn().addActionListener((e) -> {
-            new AddMesaController();
+            new AddMesaController(this);
         });
 
         this.view.getAtualizaTableBtn().addActionListener((e) -> {
@@ -38,8 +42,10 @@ public class ListarMesasController {
         this.view.getExcluirMesaBtn().addActionListener((e) -> {
             this.excluirMesa();
         });
-        
-        
+
+        this.view.getDesocuparBtn().addActionListener((e) -> {
+            this.desocuparMesa();
+        });
 
     }
 
@@ -61,21 +67,62 @@ public class ListarMesasController {
         int selectedRow = view.getTbMesas().getSelectedRow();
         if (selectedRow >= 0) {
             int idMesa = (int) view.getTbMesas().getValueAt(selectedRow, 0);
+
             Mesa mesa = mesas.obter(idMesa);
 
-            if (mesa != null) {
+            try {
+                Requisicao r = mesa.reqDaMesa();
+
+                JOptionPane.showMessageDialog(view, "Não é possível excluir uma mesa que possui uma requisição ativa.", "Erro", JOptionPane.ERROR_MESSAGE);
+
+            } catch (MesaNaoAlocadaException e) {
                 int response = JOptionPane.showConfirmDialog(view, "Tem certeza que deseja excluir a mesa?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
                 if (response == JOptionPane.YES_OPTION) {
                     mesas.removerMesa(mesa);
                     carregaTabelaMesas();
                     JOptionPane.showMessageDialog(view, "Mesa excluída com sucesso.");
                 }
-            } else {
-                JOptionPane.showMessageDialog(view, "Mesa não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
+
         } else {
             JOptionPane.showMessageDialog(view, "Selecione uma mesa para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
+
+        requisicoes.grava();
+        mesas.grava();
+    }
+
+    public void desocuparMesa() {
+        int selectedRow = view.getTbMesas().getSelectedRow();
+        if (selectedRow >= 0) {
+            int idMesa = (int) view.getTbMesas().getValueAt(selectedRow, 0);
+            Mesa mesa = mesas.obter(idMesa);
+
+            try {
+                Requisicao r = mesa.reqDaMesa();
+
+                if (r.getPedido().getAtivo() != 1) {
+                    int response = JOptionPane.showConfirmDialog(view, "Tem certeza que deseja desocupar a mesa?", "Confirmar", JOptionPane.YES_NO_OPTION);
+                    if (response == JOptionPane.YES_OPTION) {
+                        mesa.setStatus(true);
+                        r.setStatus(false);
+                        carregaTabelaMesas();
+                        JOptionPane.showMessageDialog(view, "Mesa desocupada com sucesso.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(view, "A mesa possui uma requisição com pedido não finalizado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (MesaNaoAlocadaException e) {
+                JOptionPane.showMessageDialog(view, e.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(view, "Selecione uma mesa para desocupar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
+        // Salva as mudanças nos arquivos
+        requisicoes.grava();
+        mesas.grava();
     }
 
 }

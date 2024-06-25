@@ -49,10 +49,12 @@ public class RealizarPagamentoController {
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
+        requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
         JOptionPane.showMessageDialog(view, notaFiscal, "Nota Fiscal - Pagamento via Pix", JOptionPane.INFORMATION_MESSAGE);
         requisicao.getPedido().desativar();
         this.listarPedidoController.carregaTabelaPedido();
+        
     }
 
     private void pagarDinheiro() {
@@ -64,6 +66,7 @@ public class RealizarPagamentoController {
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
+        requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
         JOptionPane.showMessageDialog(view, notaFiscal, "Nota Fiscal - Pagamento via Dinheiro", JOptionPane.INFORMATION_MESSAGE);
         requisicao.getPedido().desativar();
@@ -79,6 +82,7 @@ public class RealizarPagamentoController {
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
+        requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
         JOptionPane.showMessageDialog(view, notaFiscal, "Nota Fiscal - Pagamento via Debito", JOptionPane.INFORMATION_MESSAGE);
         requisicao.getPedido().desativar();
@@ -94,6 +98,7 @@ public class RealizarPagamentoController {
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
+        requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
         JOptionPane.showMessageDialog(view, notaFiscal, "Nota Fiscal - Pagamento via Credito", JOptionPane.INFORMATION_MESSAGE);
         requisicao.getPedido().desativar();

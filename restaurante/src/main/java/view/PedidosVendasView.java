@@ -4,20 +4,27 @@
  */
 package view;
 
-import javax.swing.JButton;
 import javax.swing.JTable;
 
 /**
  *
- * @author Pedro
+ * @author pedro
  */
-public class ListarReqsView extends javax.swing.JFrame {
+public class PedidosVendasView extends javax.swing.JFrame {
 
     /**
-     * Creates new form ListarReqsView
+     * Creates new form PedidosVendasView
      */
-    public ListarReqsView() {
+    public PedidosVendasView() {
         initComponents();
+    }
+
+    public JTable getTbPedidos() {
+        return tbPedidos;
+    }
+
+    public JTable getTbVendas() {
+        return tbVendas;
     }
 
     /**
@@ -29,13 +36,14 @@ public class ListarReqsView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbReqs = new javax.swing.JTable();
-        ListarPedidosBtn = new javax.swing.JButton();
+        aa = new javax.swing.JScrollPane();
+        tbPedidos = new javax.swing.JTable();
+        bb = new javax.swing.JScrollPane();
+        tbVendas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tbReqs.setModel(new javax.swing.table.DefaultTableModel(
+        tbPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -46,48 +54,46 @@ public class ListarReqsView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tbReqs);
+        aa.setViewportView(tbPedidos);
 
-        ListarPedidosBtn.setText("Listar Pedidos");
+        tbVendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        bb.setViewportView(tbVendas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(aa, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(aa, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(bb, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-
-    public JTable getTbReqs() {
-        return tbReqs;
-    }
-
     
 
-    public JButton getListarPedidosBtn() {
-        return ListarPedidosBtn;
-    }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ListarPedidosBtn;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbReqs;
+    private javax.swing.JScrollPane aa;
+    private javax.swing.JScrollPane bb;
+    private javax.swing.JTable tbPedidos;
+    private javax.swing.JTable tbVendas;
     // End of variables declaration//GEN-END:variables
 }

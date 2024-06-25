@@ -20,12 +20,13 @@ public class AddPedidoController {
     private Cardapio cardapio;
     private Requisicao requisicaoSelecionada;
     private ListarPedidoController listarPedidoController;
+    private Pedido pedido;
 
     public AddPedidoController(Requisicao requisicaoSelecionada, ListarPedidoController listarPedidoController) {
         this.cardapio = Cardapio.getInstancia();
         this.requisicaoSelecionada = requisicaoSelecionada;
         this.view = new AddPedidoView();
-        
+        this.pedido = requisicaoSelecionada.getPedido();
         this.pedidos = Pedidos.getInstancia();
         this.view.getCancelarBtn().addActionListener((e) -> cancelar());
         this.view.getAddPedidoBtn().addActionListener((e) -> selecionarProduto());
@@ -104,6 +105,7 @@ public class AddPedidoController {
             // Adiciona o itemProduto ao pedido
             pedido.ativar();
             pedido.adicionarItem(itemProduto);
+            pedidos.adicionar(pedido);
 
             // Exibe mensagem de sucesso e limpa os campos
             JOptionPane.showMessageDialog(view, "Produto adicionado com sucesso!");
@@ -115,7 +117,8 @@ public class AddPedidoController {
             JOptionPane.showMessageDialog(view, "Selecione um produto para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-        // Grava as requisições atualizadas
+        pedidos.adicionar(pedido);
         requisicoes.grava();
+        pedidos.grava();
     }
 }

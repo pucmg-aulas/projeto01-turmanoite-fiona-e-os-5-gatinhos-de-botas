@@ -24,9 +24,7 @@ public class ListarReqsController {
         this.view.setVisible(true);
         this.carregaTabelaRequisicoes();
 
-        this.view.getAddPedidoControllerBtn().addActionListener((e) -> {
-            instanciaAddPedidoControllerComAReqSelecionada();
-        });
+        
 
         this.view.getListarPedidosBtn().addActionListener((e) -> {
             instanciaListarPedidoControllerComAReqSelecionada();
@@ -39,6 +37,7 @@ public class ListarReqsController {
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 
         List<Object[]> linhas = requisicoes.listar().stream()
+                .filter(r -> r.getStatus())
                 .map(r -> new Object[]{
             r.getIdRequisicao(),
             r.getCliente().getNome(),
@@ -52,27 +51,7 @@ public class ListarReqsController {
         view.getTbReqs().setModel(tm);
     }
 
-    public void excluirRequisicao() {
-        int selectedRow = view.getTbReqs().getSelectedRow();
-        if (selectedRow >= 0) {
-            int idRequisicao = (int) view.getTbReqs().getValueAt(selectedRow, 0);
-            Requisicao requisicao = requisicoes.obter(idRequisicao);
-
-            if (requisicao != null) {
-                int response = JOptionPane.showConfirmDialog(view, "Tem certeza que deseja excluir a requisição?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
-                if (response == JOptionPane.YES_OPTION) {
-                    requisicoes.removerReq(requisicao);
-                    carregaTabelaRequisicoes();
-                    JOptionPane.showMessageDialog(view, "Requisição excluída com sucesso.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(view, "Selecione uma requisição para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
-
-    }
+    
 
     private void instanciaSelecionarMesaControllerComAReqSelecionada() {
         int selectedRow = view.getTbReqs().getSelectedRow();
@@ -90,21 +69,7 @@ public class ListarReqsController {
         }
     }
 
-    private void instanciaAddPedidoControllerComAReqSelecionada() {
-        int selectedRow = view.getTbReqs().getSelectedRow();
-        if (selectedRow >= 0) {
-            int idRequisicao = (int) view.getTbReqs().getValueAt(selectedRow, 0);
-            Requisicao requisicao = requisicoes.obter(idRequisicao);
-
-            if (requisicao != null) {
-                new AddPedidoController(requisicao, null);
-            } else {
-                JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(view, "Selecione uma requisição para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
-    }
+    
 
     private void instanciaListarPedidoControllerComAReqSelecionada() {
         int selectedRow = view.getTbReqs().getSelectedRow();
