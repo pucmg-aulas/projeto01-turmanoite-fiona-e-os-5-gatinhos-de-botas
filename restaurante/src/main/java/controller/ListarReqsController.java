@@ -24,8 +24,6 @@ public class ListarReqsController {
         this.view.setVisible(true);
         this.carregaTabelaRequisicoes();
 
-        
-
         this.view.getAddPedidoControllerBtn().addActionListener((e) -> {
             instanciaAddPedidoControllerComAReqSelecionada();
         });
