@@ -1,14 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
-import interfaces.*;
+
+import interfaces.FormaDePagamento;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
- *
- * @author pedro
+ * Classe que representa a forma de pagamento Crédito.
  */
-public class Credito extends FormaDePagamento {
+public class Credito extends FormaDePagamento implements Serializable {
+
+    private static final double DESCONTO_CREDITO = 0.031; // 3,1% representado em decimal
+    private static final int PRAZO_RECEBIMENTO = 30; // 30 dias
 
     @Override
     public String getTipo() {
@@ -17,20 +21,29 @@ public class Credito extends FormaDePagamento {
 
     @Override
     public double getDesconto() {
-        return 3.1;
+        return DESCONTO_CREDITO * 100; // Convertendo para porcentagem
     }
 
     @Override
     public int getPrazoRecebimento() {
-        return 30;
+        return PRAZO_RECEBIMENTO;
     }
 
     @Override
     public String gerarNota() {
-        return "Pagamento via Crédito: Desconto de 3,1%, recebimento em 30 dias.";
+        LocalDate dataPagamento = getDataPagamento();
+        String dataFormatada = dataPagamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        return String.format("Pagamento via Cartão de Crédito:\n" +
+                "Desconto de %.2f%%\n" +
+                "Valor final: R$ %.2f\n" +
+                "Data do pagamento: %s\n" +
+                "Prazo de recebimento: %d dias.", getDesconto(), getValorFinal(), dataFormatada, getPrazoRecebimento());
     }
-    
-    @Override public void calcularValorFinal(){
-        
+
+    @Override
+    public void calcularValorFinal(double valorBase) {
+        double desconto = valorBase * DESCONTO_CREDITO;
+        this.valorFinal = valorBase - desconto;
     }
 }

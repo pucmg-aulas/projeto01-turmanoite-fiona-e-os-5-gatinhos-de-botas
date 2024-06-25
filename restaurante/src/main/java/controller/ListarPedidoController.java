@@ -21,22 +21,22 @@ public class ListarPedidoController {
 
     private Requisicao requisicao;
     private ListarPedidoView view;
-    private ListarReqsController listarReqController;
+   
 
-    public ListarPedidoController(Requisicao r, ListarReqsController listarReqController) {
+    public ListarPedidoController(Requisicao r) {
         this.requisicao = r;
         this.view = new ListarPedidoView();
         this.view.setVisible(true);
         this.carregaTabelaPedido();
-        this.listarReqController = listarReqController;
+        
 
         this.view.getAdicionarBtn().addActionListener((e) -> {
-            new AddPedidoController(r, listarReqController);
+            new AddPedidoController(r, this);
         });
 
         this.view.getFinalizarBtn().addActionListener((e) -> {
             if (requisicao.getPedido().getAtivo() == 1) {
-                new RealizarPagamentoController(r);
+                new RealizarPagamentoController(r,this);
             } else {
                 JOptionPane.showMessageDialog(view, "Esse pedido não possui itens ou ja foi finalizado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }

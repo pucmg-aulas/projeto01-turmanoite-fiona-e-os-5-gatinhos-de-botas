@@ -49,7 +49,7 @@ public class Mesas extends AbstractDAO{
         }
         return instancia;
     }
-    private void grava(){
+    public void grava(){
         super.grava(path, mesas);
     }
     

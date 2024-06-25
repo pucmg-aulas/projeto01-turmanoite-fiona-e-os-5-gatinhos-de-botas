@@ -24,28 +24,13 @@ public class ListarReqsController {
         this.view.setVisible(true);
         this.carregaTabelaRequisicoes();
 
-        this.view.getAddReqsBtn().addActionListener((e) -> {
-            new AddReqController(this);
-
-        });
-
-        this.view.getAtualizaTableBtn().addActionListener((e) -> {
-            this.carregaTabelaRequisicoes();
-        });
-
-        this.view.getExcluirReqsBtn().addActionListener((e) -> {
-            this.excluirRequisicao();
-        });
-
-        this.view.getSelecionarMesaControllerBtn().addActionListener((e) -> {
-            instanciaSelecionarMesaControllerComAReqSelecionada();
-        });
         
+
         this.view.getAddPedidoControllerBtn().addActionListener((e) -> {
             instanciaAddPedidoControllerComAReqSelecionada();
         });
-        
-         this.view.getListarPedidosBtn().addActionListener((e) -> {
+
+        this.view.getListarPedidosBtn().addActionListener((e) -> {
             instanciaListarPedidoControllerComAReqSelecionada();
         });
 
@@ -57,11 +42,11 @@ public class ListarReqsController {
 
         List<Object[]> linhas = requisicoes.listar().stream()
                 .map(r -> new Object[]{
-                        r.getIdRequisicao(),
-                        r.getCliente().getNome(),
-                        r.getCliente().getQtdPessoas(),
-                        r.getStatus(),
-                        r.getMesa() != null ? r.getMesa().getIdMesa() : "Sem mesa"})
+            r.getIdRequisicao(),
+            r.getCliente().getNome(),
+            r.getCliente().getQtdPessoas(),
+            r.getStatus(),
+            r.getMesa() != null ? r.getMesa().getIdMesa() : "Sem mesa"})
                 .collect(Collectors.toList());
 
         linhas.forEach(tm::addRow);
@@ -106,7 +91,7 @@ public class ListarReqsController {
             JOptionPane.showMessageDialog(view, "Selecione uma requisição para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
+
     private void instanciaAddPedidoControllerComAReqSelecionada() {
         int selectedRow = view.getTbReqs().getSelectedRow();
         if (selectedRow >= 0) {
@@ -114,7 +99,7 @@ public class ListarReqsController {
             Requisicao requisicao = requisicoes.obter(idRequisicao);
 
             if (requisicao != null) {
-                new AddPedidoController(requisicao, this);
+                new AddPedidoController(requisicao, null);
             } else {
                 JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -122,7 +107,7 @@ public class ListarReqsController {
             JOptionPane.showMessageDialog(view, "Selecione uma requisição para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
+
     private void instanciaListarPedidoControllerComAReqSelecionada() {
         int selectedRow = view.getTbReqs().getSelectedRow();
         if (selectedRow >= 0) {
@@ -130,7 +115,7 @@ public class ListarReqsController {
             Requisicao requisicao = requisicoes.obter(idRequisicao);
 
             if (requisicao != null) {
-                new ListarPedidoController(requisicao, this);
+                new ListarPedidoController(requisicao);
             } else {
                 JOptionPane.showMessageDialog(view, "Requisição não encontrada.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -138,6 +123,5 @@ public class ListarReqsController {
             JOptionPane.showMessageDialog(view, "Selecione uma requisição para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
-    
 
 }

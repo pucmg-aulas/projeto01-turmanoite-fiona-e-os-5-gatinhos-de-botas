@@ -41,16 +41,16 @@ public class Pedido implements Serializable {
 
     public void adicionarItem(ItemProduto item) {
         this.produtos.add(item);
-        recalcularTotal();
+        calcularValorTotal();
     }
 
     public void removerItem(ItemProduto item) {
         if (this.produtos.remove(item)) {
-            recalcularTotal();
+            calcularValorTotal();
         }
     }
 
-    private void recalcularTotal() {
+    public void calcularValorTotal() {
         this.totalProdutos = this.produtos.stream()
                 .mapToDouble(ItemProduto::getValorTotal)
                 .sum();
@@ -67,7 +67,8 @@ public class Pedido implements Serializable {
     public void desativar() {
         this.ativo = 0;
     }
-    private void setFormaDePagamento(FormaDePagamento p){
+
+    private void setFormaDePagamento(FormaDePagamento p) {
         this.pagamento = p;
     }
 

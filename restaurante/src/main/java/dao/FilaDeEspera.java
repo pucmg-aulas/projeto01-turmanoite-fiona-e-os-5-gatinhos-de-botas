@@ -9,24 +9,24 @@ import model.*;
 
 import java.util.*;
 
-public class Requisicoes extends AbstractDAO implements Serializable{
+public class FilaDeEspera extends AbstractDAO implements Serializable{
 
     private List<Requisicao> requisicoes;
-    private final String path = "./src/main/java/data/Requisicoes.dat";
+    
     
     // Instância única da classe Requisicoes
-    private static Requisicoes instancia;
+    private static FilaDeEspera instancia;
 
     // Construtor privado para evitar instanciamento externo
-    private Requisicoes() {
+    private FilaDeEspera() {
         this.requisicoes = new ArrayList<>();
-        carregaReq();
+        
     }
 
     // Método para obter a instância única da classe
-    public static Requisicoes getInstancia() {
+    public static FilaDeEspera getInstancia() {
         if (instancia == null) {
-            instancia = new Requisicoes();
+            instancia = new FilaDeEspera();
         }
         return instancia;
     }
@@ -34,7 +34,6 @@ public class Requisicoes extends AbstractDAO implements Serializable{
     public void adicionar(Requisicao requisicao) {
         if (requisicao != null) {
             requisicoes.add(requisicao);
-            grava();
         } else {
             throw new IllegalArgumentException("A requisição não pode ser nula.");
         }
@@ -53,13 +52,7 @@ public class Requisicoes extends AbstractDAO implements Serializable{
         return new ArrayList<>(requisicoes);
     }
     
-    public void grava(){
-        super.grava(path, requisicoes);
-    }
-
-    private void carregaReq(){
-        this.requisicoes = super.leitura(path);
-    }
+    
     
     public Requisicao obter(int idRequisicao) {
         for (Requisicao requisicao : requisicoes) {

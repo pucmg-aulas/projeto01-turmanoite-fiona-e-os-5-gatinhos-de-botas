@@ -13,22 +13,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AddPedidoController {
+
+    private Requisicoes requisicoes;
     private Pedidos pedidos;
     private AddPedidoView view;
     private Cardapio cardapio;
     private Requisicao requisicaoSelecionada;
-    private ListarReqsController listarReqsController;
+    private ListarPedidoController listarPedidoController;
 
-    public AddPedidoController(Requisicao requisicaoSelecionada, ListarReqsController listarReqsController) {
+    public AddPedidoController(Requisicao requisicaoSelecionada, ListarPedidoController listarPedidoController) {
         this.cardapio = Cardapio.getInstancia();
         this.requisicaoSelecionada = requisicaoSelecionada;
         this.view = new AddPedidoView();
-        this.listarReqsController = listarReqsController;
+        
         this.pedidos = Pedidos.getInstancia();
         this.view.getCancelarBtn().addActionListener((e) -> cancelar());
         this.view.getAddPedidoBtn().addActionListener((e) -> selecionarProduto());
-
+        this.requisicoes = Requisicoes.getInstancia();
         this.carregaTabelaCardapio();
+
+        this.listarPedidoController = listarPedidoController; // Inicializa o ListarPedidoController
 
         this.view.setTitle("Selecionar Produto");
         this.view.setVisible(true);
@@ -104,11 +108,14 @@ public class AddPedidoController {
             // Exibe mensagem de sucesso e limpa os campos
             JOptionPane.showMessageDialog(view, "Produto adicionado com sucesso!");
             clearFields();
+
+            // Atualiza a tabela de pedidos na ListarPedidoController
+            listarPedidoController.carregaTabelaPedido();
         } else {
             JOptionPane.showMessageDialog(view, "Selecione um produto para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-        // Atualiza a tabela de requisições na ListarReqsController
-        listarReqsController.carregaTabelaRequisicoes();
+        // Grava as requisições atualizadas
+        requisicoes.grava();
     }
 }

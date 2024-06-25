@@ -23,12 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="AddPedidoControllerBtn" min="-2" pref="200" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="ListarPedidosBtn" min="-2" pref="200" max="-2" attributes="0"/>
+              <Component id="excluirBtn" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selecionarMesaBtn" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="AdicionarReqBtn" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -36,13 +38,14 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane1" min="-2" pref="263" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="AddPedidoControllerBtn" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="ListarPedidosBtn" min="-2" pref="60" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="234" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="excluirBtn" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="AdicionarReqBtn" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="selecionarMesaBtn" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,7 +55,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tbReqs">
+        <Component class="javax.swing.JTable" name="tbFila">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -66,14 +69,22 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="AddPedidoControllerBtn">
+    <Component class="javax.swing.JButton" name="selecionarMesaBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fazer um Pedido"/>
+        <Property name="text" type="java.lang.String" value="Selecionar Mesa"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Selecionar Mesa"/>
+      </AccessibilityProperties>
+    </Component>
+    <Component class="javax.swing.JButton" name="excluirBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="ListarPedidosBtn">
+    <Component class="javax.swing.JButton" name="AdicionarReqBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar Pedidos"/>
+        <Property name="text" type="java.lang.String" value="Adicionar "/>
       </Properties>
     </Component>
   </SubComponents>

@@ -1,6 +1,6 @@
 
 package model;
-
+import dao.IdAuto;
 import java.io.Serializable;
 
 /*
@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class Requisicao implements Serializable{
     
-    private static int contadorRequisicao = 0;
+    
     private int idRequisicao;
     private Cliente cliente;
     private Mesa mesa;
@@ -19,7 +19,7 @@ public class Requisicao implements Serializable{
     private boolean status;
 
     public Requisicao(Cliente cliente) {
-        this.idRequisicao = ++contadorRequisicao;
+        this.idRequisicao = IdAuto.getInstancia().getProximoId();
         this.cliente = cliente;
         this.status = false;
         this.pedido = new Pedido();

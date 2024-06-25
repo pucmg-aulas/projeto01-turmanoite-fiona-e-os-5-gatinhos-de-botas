@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import interfaces.*;
+import interfaces.FormaDePagamento;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
- *
- * @author pedro
+ * Classe que representa a forma de pagamento Pix.
  */
-public class Pix extends FormaDePagamento {
+public class Pix extends FormaDePagamento implements Serializable {
+
+    private static final double DESCONTO_MAXIMO = 0.0145; // 1,45% representado em decimal
+    private static final double LIMITE_DESCONTO = 10.0; // R$ 10.00
 
     @Override
     public String getTipo() {
@@ -19,21 +21,31 @@ public class Pix extends FormaDePagamento {
 
     @Override
     public double getDesconto() {
-        return 1.45; // Representado em porcentagem
+        double desconto = DESCONTO_MAXIMO * 100; // Convertendo para porcentagem
+        return Math.min(desconto, LIMITE_DESCONTO); // Limitando o desconto ao máximo de R$ 10.00
     }
 
     @Override
     public int getPrazoRecebimento() {
-        return 0;
+        return 0; // Recebimento imediato
     }
 
     @Override
     public String gerarNota() {
-        return "Pagamento via Pix: Desconto de 1,45% (máximo de R$10), recebimento imediato.";
-    }
-        @Override public void calcularValorFinal(){
-        
+        LocalDate dataPagamento = getDataPagamento();
+        String dataFormatada = dataPagamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        return String.format("Pagamento via Pix:\n" +
+                "Desconto de %.2f%% (máximo de R$ %.2f)\n" +
+                "Valor final: R$ %.2f\n" +
+                "Data do pagamento: %s\n" +
+                "Recebimento imediato.", getDesconto(), LIMITE_DESCONTO, getValorFinal(), dataFormatada);
     }
 
-    
+    @Override
+    public void calcularValorFinal(double valorBase) {
+        double desconto = valorBase * DESCONTO_MAXIMO;
+        desconto = Math.min(desconto, LIMITE_DESCONTO); // Limitando o desconto ao máximo de R$ 10.00
+        this.valorFinal = valorBase - desconto;
+    }
 }

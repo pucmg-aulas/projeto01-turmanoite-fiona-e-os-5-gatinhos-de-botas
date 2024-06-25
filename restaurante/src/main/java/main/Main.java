@@ -19,9 +19,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
-        
+
         Cardapio c = Cardapio.getInstancia();
-        
+
         Carros carros = Carros.getInstance();
         this.setVisible(true);
 
@@ -37,114 +37,84 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        addCarroMenuBtn = new javax.swing.JMenuItem();
-        exitMenuBtn = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        viewCarsMenuBtn = new javax.swing.JMenuItem();
-        Requisicoes = new javax.swing.JMenu();
-        ListarMesasBtn = new javax.swing.JMenuItem();
-        ListarReqsBtn = new javax.swing.JMenuItem();
+        ListarFilaBtn = new javax.swing.JButton();
+        ListarReqsBtn = new javax.swing.JButton();
+        ListarMesasBtn = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("File");
-
-        addCarroMenuBtn.setText("Add Carro");
-        addCarroMenuBtn.addActionListener(new java.awt.event.ActionListener() {
+        ListarFilaBtn.setText("Fila de espera");
+        ListarFilaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCarroMenuBtnActionPerformed(evt);
+                ListarFilaBtnActionPerformed(evt);
             }
         });
-        jMenu1.add(addCarroMenuBtn);
 
-        exitMenuBtn.setText("Exit");
-        exitMenuBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuBtnActionPerformed(evt);
-            }
-        });
-        jMenu1.add(exitMenuBtn);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("View");
-
-        viewCarsMenuBtn.setText("Cars");
-        viewCarsMenuBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewCarsMenuBtnActionPerformed(evt);
-            }
-        });
-        jMenu3.add(viewCarsMenuBtn);
-
-        jMenuBar1.add(jMenu3);
-
-        Requisicoes.setText("Requisições");
-
-        ListarMesasBtn.setText("Listar mesas");
-        ListarMesasBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListarMesasBtnActionPerformed(evt);
-            }
-        });
-        Requisicoes.add(ListarMesasBtn);
-
-        ListarReqsBtn.setText("Listar Requisições");
+        ListarReqsBtn.setText("Requisições ativas");
         ListarReqsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListarReqsBtnActionPerformed(evt);
             }
         });
-        Requisicoes.add(ListarReqsBtn);
 
-        jMenuBar1.add(Requisicoes);
+        ListarMesasBtn.setText("Mesas");
+        ListarMesasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarMesasBtnActionPerformed(evt);
+            }
+        });
 
-        setJMenuBar(jMenuBar1);
+        jTextField1.setFont(new java.awt.Font("Segoe UI Emoji", 2, 36)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("Restaurante a la Classe");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ListarReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ListarFilaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ListarReqsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ListarFilaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ListarMesasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addCarroMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCarroMenuBtnActionPerformed
-        // TODO add your handling code here:
-        new IncluirCarroController();
-    }//GEN-LAST:event_addCarroMenuBtnActionPerformed
 
-    private void exitMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuBtnActionPerformed
-
-        this.dispose();
-
-    }//GEN-LAST:event_exitMenuBtnActionPerformed
-
-
-    private void viewCarsMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCarsMenuBtnActionPerformed
-        new ListarCarroController();
-    }//GEN-LAST:event_viewCarsMenuBtnActionPerformed
+    private void ListarFilaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarFilaBtnActionPerformed
+        new ListarFilaController();        // TODO add your handling code here:
+    }//GEN-LAST:event_ListarFilaBtnActionPerformed
 
     private void ListarReqsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarReqsBtnActionPerformed
-        new ListarReqsController();// TODO add your handling code here:
+        new ListarReqsController();
     }//GEN-LAST:event_ListarReqsBtnActionPerformed
 
     private void ListarMesasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarMesasBtnActionPerformed
-        new ListarMesasController();        // TODO add your handling code here:
+        new ListarMesasController();
     }//GEN-LAST:event_ListarMesasBtnActionPerformed
 
     /**
@@ -183,16 +153,10 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ListarMesasBtn;
-    private javax.swing.JMenuItem ListarReqsBtn;
-    private javax.swing.JMenu Requisicoes;
-    private javax.swing.JMenuItem addCarroMenuBtn;
-    private javax.swing.JMenuItem exitMenuBtn;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton ListarFilaBtn;
+    private javax.swing.JButton ListarMesasBtn;
+    private javax.swing.JButton ListarReqsBtn;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem viewCarsMenuBtn;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

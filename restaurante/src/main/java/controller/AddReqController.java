@@ -13,14 +13,14 @@ public class AddReqController {
 
     private Requisicoes requisicoesModel;
     private AddReqView view;
-    private ListarReqsController listarReqsController;
+    private ListarFilaController listarFilaController;
     private Mesas mesasModel;
 
-    public AddReqController(ListarReqsController listarReqsController) {
+    public AddReqController(ListarFilaController listarFilaController) {
         this.requisicoesModel = Requisicoes.getInstancia();
         this.mesasModel = Mesas.getInstancia();
         this.view = new AddReqView();
-        this.listarReqsController = listarReqsController;
+        this.listarFilaController = listarFilaController;
 
         this.view.getjButtonAddReq().addActionListener((e) -> {
             addReq();
@@ -79,6 +79,6 @@ public class AddReqController {
         JOptionPane.showMessageDialog(view, "Requisição no nome de " + nome + ", para " + qtdPessoas + " pessoas, adicionada com sucesso.");
 
         clearFields();
-        listarReqsController.carregaTabelaRequisicoes();
+        listarFilaController.carregaTabelaFila();
     }
 }

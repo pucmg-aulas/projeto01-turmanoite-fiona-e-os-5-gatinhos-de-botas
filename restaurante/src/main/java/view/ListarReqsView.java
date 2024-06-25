@@ -31,10 +31,6 @@ public class ListarReqsView extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbReqs = new javax.swing.JTable();
-        AddReqsBtn = new javax.swing.JButton();
-        AtualizaTableBtn = new javax.swing.JButton();
-        ExcluirReqsBtn = new javax.swing.JButton();
-        SelecionarMesaControllerBtn = new javax.swing.JButton();
         AddPedidoControllerBtn = new javax.swing.JButton();
         ListarPedidosBtn = new javax.swing.JButton();
 
@@ -53,14 +49,6 @@ public class ListarReqsView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbReqs);
 
-        AddReqsBtn.setText("Adicionar");
-
-        AtualizaTableBtn.setText("Atualizar");
-
-        ExcluirReqsBtn.setText("Excluir");
-
-        SelecionarMesaControllerBtn.setText("Selecionar Mesa");
-
         AddPedidoControllerBtn.setText("Fazer um Pedido");
 
         ListarPedidosBtn.setText("Listar Pedidos");
@@ -69,60 +57,32 @@ public class ListarReqsView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ExcluirReqsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AtualizaTableBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddReqsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AddPedidoControllerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                    .addComponent(SelecionarMesaControllerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(AddPedidoControllerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddReqsBtn)
-                    .addComponent(SelecionarMesaControllerBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AtualizaTableBtn)
-                    .addComponent(AddPedidoControllerBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ExcluirReqsBtn)
-                    .addComponent(ListarPedidosBtn))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AddPedidoControllerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ListarPedidosBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getAddReqsBtn() {
-        return AddReqsBtn;
-    }
-
-    public JButton getAtualizaTableBtn() {
-        return AtualizaTableBtn;
-    }
-
-    public JButton getExcluirReqsBtn() {
-        return ExcluirReqsBtn;
-    }
+    
 
     public JTable getTbReqs() {
         return tbReqs;
-    }
-
-    public JButton getSelecionarMesaControllerBtn() {
-        return SelecionarMesaControllerBtn;
     }
 
     public JButton getAddPedidoControllerBtn() {
@@ -132,15 +92,11 @@ public class ListarReqsView extends javax.swing.JFrame {
     public JButton getListarPedidosBtn() {
         return ListarPedidosBtn;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPedidoControllerBtn;
-    private javax.swing.JButton AddReqsBtn;
-    private javax.swing.JButton AtualizaTableBtn;
-    private javax.swing.JButton ExcluirReqsBtn;
     private javax.swing.JButton ListarPedidosBtn;
-    private javax.swing.JButton SelecionarMesaControllerBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbReqs;
     // End of variables declaration//GEN-END:variables

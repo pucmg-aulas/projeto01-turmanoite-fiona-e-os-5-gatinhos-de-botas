@@ -1,5 +1,6 @@
 package interfaces;
 
+import model.*;
 import java.time.LocalDate;
 
 /**
@@ -23,7 +24,7 @@ public abstract class FormaDePagamento {
     public abstract String gerarNota();
 
     // Método abstrato para calcular o valor final com base no valor base
-    public abstract void calcularValorFinal();
+    public abstract void calcularValorFinal(double valorBase);
 
     // Retorna o valor final calculado
     public double getValorFinal() {
@@ -35,9 +36,13 @@ public abstract class FormaDePagamento {
         this.dataPagamento = LocalDate.now();
     }
 
-
     // Retorna a data do pagamento
     public LocalDate getDataPagamento() {
         return dataPagamento;
     }
+
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+    
 }
