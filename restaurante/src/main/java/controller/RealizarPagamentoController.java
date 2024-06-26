@@ -41,11 +41,11 @@ public class RealizarPagamentoController {
     }
 
     private void pagarPix() {
-        FormaDePagamento formaDePagamento = new Pix(); // Cria uma instância de Pix
+        FormaDePagamento formaDePagamento = new Pix(); 
         requisicao.getPedido().calcularValorTotal();
-        double valorPedido = requisicao.getPedido().getTotalProdutos(); // Obtém o valor total do pedido
-        formaDePagamento.calcularValorFinal(valorPedido); // Calcula o valor final com desconto
-        formaDePagamento.setDataPagamento(); // Define a data do pagamento
+        double valorPedido = requisicao.getPedido().getTotalProdutos(); 
+        formaDePagamento.calcularValorFinal(valorPedido); 
+        formaDePagamento.setDataPagamento(); 
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
@@ -60,11 +60,11 @@ public class RealizarPagamentoController {
     }
 
     private void pagarDinheiro() {
-        FormaDePagamento formaDePagamento = new Dinheiro(); // Cria uma instância de Pix
+        FormaDePagamento formaDePagamento = new Dinheiro(); 
         requisicao.getPedido().calcularValorTotal();
-        double valorPedido = requisicao.getPedido().getTotalProdutos(); // Obtém o valor total do pedido
-        formaDePagamento.calcularValorFinal(valorPedido); // Calcula o valor final com desconto
-        formaDePagamento.setDataPagamento(); // Define a data do pagamento
+        double valorPedido = requisicao.getPedido().getTotalProdutos(); 
+        formaDePagamento.calcularValorFinal(valorPedido); 
+        formaDePagamento.setDataPagamento(); 
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
@@ -79,11 +79,11 @@ public class RealizarPagamentoController {
     }
 
     private void pagarDebito() {
-        FormaDePagamento formaDePagamento = new Debito(); // Cria uma instância de Pix
+        FormaDePagamento formaDePagamento = new Debito(); 
         requisicao.getPedido().calcularValorTotal();
-        double valorPedido = requisicao.getPedido().getTotalProdutos(); // Obtém o valor total do pedido
-        formaDePagamento.calcularValorFinal(valorPedido); // Calcula o valor final com desconto
-        formaDePagamento.setDataPagamento(); // Define a data do pagamento
+        double valorPedido = requisicao.getPedido().getTotalProdutos(); 
+        formaDePagamento.calcularValorFinal(valorPedido); 
+        formaDePagamento.setDataPagamento(); 
 
         // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
@@ -98,13 +98,13 @@ public class RealizarPagamentoController {
     }
 
     private void pagarCredito() {
-        FormaDePagamento formaDePagamento = new Credito(); // Cria uma instância de Pix
+        FormaDePagamento formaDePagamento = new Credito(); 
         requisicao.getPedido().calcularValorTotal();
-        double valorPedido = requisicao.getPedido().getTotalProdutos(); // Obtém o valor total do pedido
-        formaDePagamento.calcularValorFinal(valorPedido); // Calcula o valor final com desconto
-        formaDePagamento.setDataPagamento(); // Define a data do pagamento
+        double valorPedido = requisicao.getPedido().getTotalProdutos(); 
+        formaDePagamento.calcularValorFinal(valorPedido); 
+        formaDePagamento.setDataPagamento(); 
 
-        // Exibe a nota fiscal
+        
         String notaFiscal = formaDePagamento.gerarNota();
         requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();

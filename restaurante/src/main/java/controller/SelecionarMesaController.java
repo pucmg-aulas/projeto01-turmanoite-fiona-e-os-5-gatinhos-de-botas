@@ -72,7 +72,7 @@ public class SelecionarMesaController {
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 
         List<Object[]> linhas = mesas.listar().stream()
-                .map(m -> new Object[]{m.getIdMesa(), m.getCapacidade(), !m.getStatus()})
+                .map(m -> new Object[]{m.getIdMesa(), m.getCapacidade(), m.getStatus()})
                 .collect(Collectors.toList());
 
         linhas.forEach(tm::addRow);
