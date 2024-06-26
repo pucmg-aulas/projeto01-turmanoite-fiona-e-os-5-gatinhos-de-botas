@@ -93,21 +93,10 @@ public class AddPedidoController {
                 return;
             }
 
-            ItemProduto itemProduto = new ItemProduto(produtoSelecionado, quantidade);
-
             Pedido pedido = requisicaoSelecionada.getPedido();
-
-            if (pedido == null) {
-                pedido = new Pedido();
-                requisicaoSelecionada.setPedido(pedido);
-            }
-
-            // Adiciona o itemProduto ao pedido
+            pedido.adicionarItem(new ItemProduto(produtoSelecionado, quantidade));
+            requisicaoSelecionada.setPedido(pedido);
             pedido.ativar();
-            pedido.adicionarItem(itemProduto);
-            pedidos.adicionar(pedido);
-
-            // Exibe mensagem de sucesso e limpa os campos
             JOptionPane.showMessageDialog(view, "Produto adicionado com sucesso!");
             clearFields();
 
@@ -117,7 +106,6 @@ public class AddPedidoController {
             JOptionPane.showMessageDialog(view, "Selecione um produto para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-        pedidos.adicionar(pedido);
         requisicoes.grava();
         pedidos.grava();
     }

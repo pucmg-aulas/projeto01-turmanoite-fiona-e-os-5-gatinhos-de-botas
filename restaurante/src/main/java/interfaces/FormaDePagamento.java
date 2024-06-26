@@ -1,12 +1,13 @@
 package interfaces;
 
-import model.*;
+import java.io.Serializable;
+
 import java.time.LocalDate;
 
 /**
  * Classe abstrata que define a estrutura básica para formas de pagamento.
  */
-public abstract class FormaDePagamento {
+public abstract class FormaDePagamento implements Serializable {
 
     protected double valorFinal;
     protected LocalDate dataPagamento;

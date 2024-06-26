@@ -30,8 +30,8 @@ public class PedidosVendasController {
 
         for (Pedido pedido : pedidosFinalizados) {
             Object[] linha = new Object[]{
-                    pedido.reqDoPedido().getIdRequisicao(),
-                    pedido.getTotalComTaxa(), // Alterei para getTotalComTaxa para incluir a taxa
+                    pedido.getIdPedido(),
+                    pedido.getTotalProdutos(), // Alterei para getTotalComTaxa para incluir a taxa
                     pedido.getPagamento().getTipo(),
                     pedido.getPagamento().getDataPagamento()
             };

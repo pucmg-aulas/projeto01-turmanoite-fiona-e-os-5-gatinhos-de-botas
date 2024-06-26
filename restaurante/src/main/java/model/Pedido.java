@@ -8,17 +8,14 @@ import java.util.List;
 
 public class Pedido implements Serializable {
 
-    private static final double TAXA = 1.1; // Taxa de 10%
-    private static int contadorPedidos = 0;
-
     private int idPedido;
     private List<ItemProduto> produtos;
     private double totalProdutos;
     private int ativo;
     private FormaDePagamento pagamento;
 
-    public Pedido() {
-        this.idPedido = ++contadorPedidos;
+    public Pedido(Requisicao r) {
+        this.idPedido = r.getIdRequisicao();
         this.produtos = new ArrayList<>();
         this.totalProdutos = 0.0;
         this.ativo = 0;
@@ -57,9 +54,7 @@ public class Pedido implements Serializable {
                 .sum();
     }
 
-    public double getTotalComTaxa() {
-        return this.totalProdutos * TAXA;
-    }
+    
 
     public void ativar() {
         this.ativo = 1;

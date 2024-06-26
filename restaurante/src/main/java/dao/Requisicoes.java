@@ -77,4 +77,9 @@ public class Requisicoes extends AbstractDAO implements Serializable{
                 + "requisicoes=" + requisicoes
                 + '}';
     }
+    public void reset() {
+        this.requisicoes.clear(); // Limpa a lista de requisições
+        this.grava(); // Salva o estado vazio para persistência
+    }
+    
 }

@@ -1,6 +1,6 @@
 package dao;
 
-import model.Pedido;
+import model.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,4 +71,25 @@ public class Pedidos extends AbstractDAO implements Serializable {
                 "pedidos=" + pedidos +
                 '}';
     }
+
+public void imprimirPedidos() {
+        if (pedidos.isEmpty()) {
+            System.out.println("Não há pedidos cadastrados.");
+            return;
+        }
+
+        for (Pedido pedido : pedidos) {
+            System.out.println(pedido);
+            System.out.println(pedido.getPagamento());
+            for(ItemProduto item :pedido.getProdutos()){
+                System.out.println(item.getQnt());
+                System.out.println(item.getProduto());
+            }
+        }
+    }
+public void reset() {
+        this.pedidos.clear(); // Limpa a lista de pedidos
+        this.grava(); // Salva o estado vazio para persistência
+    }
+
 }

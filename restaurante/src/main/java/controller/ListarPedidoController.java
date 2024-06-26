@@ -67,13 +67,15 @@ private Requisicoes requisicoes;
             requisicao.getPedido().desativar();
             p.adicionar(requisicao.getPedido());
             carregaTabelaPedido();
-            p.grava();
+            
             requisicoes.grava();
             JOptionPane.showMessageDialog(view, "Pedido finalizado com sucesso.");
         }
 
         // Salvar as requisições no banco de dados
         Requisicoes r = Requisicoes.getInstancia();
+        p.grava();
         r.grava();
+        p.imprimirPedidos();
     }
 }

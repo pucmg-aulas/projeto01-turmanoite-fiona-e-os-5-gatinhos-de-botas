@@ -20,9 +20,8 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         Mesas mesas = Mesas.getInstancia();
         Pedidos pedidos = Pedidos.getInstancia();
+        Requisicoes requisicoes = Requisicoes.getInstancia();
         Cardapio c = Cardapio.getInstancia();
-
-        Carros carros = Carros.getInstance();
         this.setVisible(true);
 
     }

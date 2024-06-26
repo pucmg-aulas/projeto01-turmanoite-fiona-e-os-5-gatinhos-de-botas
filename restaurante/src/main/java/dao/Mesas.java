@@ -91,4 +91,9 @@ public class Mesas extends AbstractDAO{
     private void carregaMesas() {
         this.mesas = super.leitura(path);
     }
+    public void reset() {
+        this.mesas.clear(); // Limpa a lista de mesas
+        this.grava(); // Salva o estado vazio para persistência
+    }
+    
 }

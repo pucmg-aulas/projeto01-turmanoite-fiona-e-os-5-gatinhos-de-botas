@@ -19,7 +19,9 @@ public class Requisicao implements Serializable {
         this.idRequisicao = IdAutoReq.getInstancia().getProximoId();
         this.cliente = cliente;
         this.status = false;
-        this.pedido = new Pedido();
+        this.pedido = new Pedido(this);
+        Pedidos pedidos = Pedidos.getInstancia();
+        pedidos.adicionar(pedido);
     }
 
     public int getIdRequisicao() {
@@ -53,8 +55,6 @@ public class Requisicao implements Serializable {
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
-
-    
 
     @Override
     public String toString() {
