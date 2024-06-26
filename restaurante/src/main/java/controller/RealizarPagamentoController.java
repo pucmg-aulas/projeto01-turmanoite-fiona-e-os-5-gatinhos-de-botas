@@ -47,7 +47,7 @@ public class RealizarPagamentoController {
         formaDePagamento.calcularValorFinal(valorPedido); 
         formaDePagamento.setDataPagamento(); 
 
-        // Exibe a nota fiscal
+        
         String notaFiscal = formaDePagamento.gerarNota();
         requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
@@ -57,6 +57,7 @@ public class RealizarPagamentoController {
         pedidos.grava();
         r.grava();
         pedidos.imprimirPedidos();
+        this.view.dispose();
     }
 
     private void pagarDinheiro() {
@@ -66,7 +67,7 @@ public class RealizarPagamentoController {
         formaDePagamento.calcularValorFinal(valorPedido); 
         formaDePagamento.setDataPagamento(); 
 
-        // Exibe a nota fiscal
+        
         String notaFiscal = formaDePagamento.gerarNota();
         requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
@@ -76,6 +77,7 @@ public class RealizarPagamentoController {
         pedidos.grava();
         r.grava();
         pedidos.imprimirPedidos();
+        this.view.dispose();
     }
 
     private void pagarDebito() {
@@ -85,7 +87,6 @@ public class RealizarPagamentoController {
         formaDePagamento.calcularValorFinal(valorPedido); 
         formaDePagamento.setDataPagamento(); 
 
-        // Exibe a nota fiscal
         String notaFiscal = formaDePagamento.gerarNota();
         requisicao.getPedido().setFormaDePagamento(formaDePagamento);
         this.r.grava();
@@ -95,6 +96,7 @@ public class RealizarPagamentoController {
         pedidos.grava();
         r.grava();
         pedidos.imprimirPedidos();
+        this.view.dispose();
     }
 
     private void pagarCredito() {
@@ -114,6 +116,7 @@ public class RealizarPagamentoController {
         pedidos.grava();
         r.grava();
         pedidos.imprimirPedidos();
+        this.view.dispose();
     }
 
 }
