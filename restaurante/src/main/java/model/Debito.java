@@ -35,7 +35,7 @@ public class Debito extends FormaDePagamento implements Serializable {
         String dataFormatada = dataPagamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         return String.format("Pagamento via Cartão de Débito:\n" +
-                "Desconto de %.2f%%\n" +
+                "Taxa de %.2f%%\n" +
                 "Valor final: R$ %.2f\n" +
                 "Data do pagamento: %s\n" +
                 "Prazo de recebimento: %d dias.", getDesconto(), getValorFinal(), dataFormatada, getPrazoRecebimento());
@@ -44,6 +44,6 @@ public class Debito extends FormaDePagamento implements Serializable {
     @Override
     public void calcularValorFinal(double valorBase) {
         double desconto = valorBase * DESCONTO_DEBITO;
-        this.valorFinal = valorBase - desconto;
+        this.valorFinal = valorBase + desconto;
     }
 }
