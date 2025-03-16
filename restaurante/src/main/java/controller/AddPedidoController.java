@@ -1,6 +1,7 @@
 package controller;
 
 import dao.*;
+import factory.ItemProdutoFactory;
 import model.ItemProduto;
 import model.Pedido;
 import model.Produto;
@@ -21,20 +22,23 @@ public class AddPedidoController {
     private Requisicao requisicaoSelecionada;
     private ListarPedidoController listarPedidoController;
     private Pedido pedido;
+    private ItemProdutoFactory itemProdutoFactory; // Fábrica injetada
 
-    public AddPedidoController(Requisicao requisicaoSelecionada, ListarPedidoController listarPedidoController) {
+    // Injete a fábrica via construtor
+    public AddPedidoController(Requisicao requisicaoSelecionada, ListarPedidoController listarPedidoController,
+            ItemProdutoFactory itemProdutoFactory) {
         this.cardapio = Cardapio.getInstancia();
         this.requisicaoSelecionada = requisicaoSelecionada;
         this.view = new AddPedidoView();
         this.pedido = requisicaoSelecionada.getPedido();
         this.pedidos = Pedidos.getInstancia();
+        this.itemProdutoFactory = itemProdutoFactory;
         this.view.getCancelarBtn().addActionListener((e) -> cancelar());
         this.view.getAddPedidoBtn().addActionListener((e) -> selecionarProduto());
         this.requisicoes = Requisicoes.getInstancia();
         this.carregaTabelaCardapio();
 
-        this.listarPedidoController = listarPedidoController; // Inicializa o ListarPedidoController
-
+        this.listarPedidoController = listarPedidoController;
         this.view.setTitle("Selecionar Produto");
         this.view.setVisible(true);
     }
@@ -44,15 +48,14 @@ public class AddPedidoController {
     }
 
     private void carregaTabelaCardapio() {
-        Object colunas[] = {"ID", "Nome", "Preço"};
+        Object colunas[] = { "ID", "Nome", "Preço" };
         DefaultTableModel tm = new DefaultTableModel(colunas, 0);
 
         List<Object[]> linhas = cardapio.listar().stream()
-                .map(p -> new Object[]{p.getIdProduto(), p.getNome(), p.getPreco()})
+                .map(p -> new Object[] { p.getIdProduto(), p.getNome(), p.getPreco() })
                 .collect(Collectors.toList());
 
         linhas.forEach(tm::addRow);
-
         view.getTbCardapio().setModel(tm);
     }
 
@@ -79,7 +82,9 @@ public class AddPedidoController {
 
             // Verificar se a requisição possui uma mesa associada
             if (requisicaoSelecionada.getMesa() == null) {
-                JOptionPane.showMessageDialog(view, "A requisição deve ter uma mesa associada antes de adicionar itens ao pedido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view,
+                        "A requisição deve ter uma mesa associada antes de adicionar itens ao pedido.", "Erro",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -94,7 +99,9 @@ public class AddPedidoController {
             }
 
             Pedido pedido = requisicaoSelecionada.getPedido();
-            pedido.adicionarItem(new ItemProduto(produtoSelecionado, quantidade));
+            // Cria o ItemProduto usando a fábrica
+            ItemProduto item = itemProdutoFactory.criarItemProduto(produtoSelecionado, quantidade);
+            pedido.adicionarItem(item);
             requisicaoSelecionada.setPedido(pedido);
             pedido.ativar();
             JOptionPane.showMessageDialog(view, "Produto adicionado com sucesso!");
@@ -103,7 +110,8 @@ public class AddPedidoController {
             // Atualiza a tabela de pedidos na ListarPedidoController
             listarPedidoController.carregaTabelaPedido();
         } else {
-            JOptionPane.showMessageDialog(view, "Selecione um produto para continuar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(view, "Selecione um produto para continuar.", "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
         }
 
         requisicoes.grava();

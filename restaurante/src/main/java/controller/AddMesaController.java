@@ -1,29 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.Mesas;
+import factory.MesaFactory;
 import model.Mesa;
-import view.*;
+import view.AddMesaView;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author pedro
- */
 public class AddMesaController {
 
     private AddMesaView view;
     private Mesas mesas;
     private ListarMesasController listarMesasController;
+    private MesaFactory mesaFactory;
 
-    public AddMesaController(ListarMesasController listarMesasController) {
+    // Injete a fábrica via construtor (isso facilita testes e desacoplamento)
+    public AddMesaController(ListarMesasController listarMesasController, MesaFactory mesaFactory) {
         this.mesas = Mesas.getInstancia();
         this.view = new AddMesaView();
         this.listarMesasController = listarMesasController;
-        
+        this.mesaFactory = mesaFactory;
+
         this.view.getAddBtn().addActionListener((e) -> {
             this.adicionarMesa();
         });
@@ -33,7 +29,6 @@ public class AddMesaController {
         });
 
         this.view.setTitle("Cadastrar Mesa");
-
         this.view.setVisible(true);
     }
 
@@ -45,18 +40,19 @@ public class AddMesaController {
         try {
             int capacidade = Integer.parseInt(this.view.getQntText().getText());
             if (capacidade <= 0) {
-                JOptionPane.showMessageDialog(view, "A capacidade não pode ser menor que 0.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view, "A capacidade não pode ser menor ou igual a 0.", "Erro",
+                        JOptionPane.ERROR_MESSAGE);
             } else {
-                mesas.adicionar(new Mesa(capacidade));
+                // Cria a mesa usando a fábrica
+                Mesa novaMesa = this.mesaFactory.criarMesa(capacidade);
+                mesas.adicionar(novaMesa);
                 JOptionPane.showMessageDialog(view, "Mesa adicionada com sucesso!");
                 this.view.dispose(); // Fecha a janela após adicionar a mesa
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(view, "Por favor, insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(view, "Por favor, insira um número válido.", "Erro",
+                    JOptionPane.ERROR_MESSAGE);
         }
         this.listarMesasController.carregaTabelaMesas();
     }
-
-    
-
 }

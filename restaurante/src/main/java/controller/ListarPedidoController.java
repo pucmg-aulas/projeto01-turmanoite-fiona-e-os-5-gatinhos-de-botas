@@ -26,7 +26,7 @@ private Requisicoes requisicoes;
         // Adicionar verificação antes de instanciar o AddPedidoController
         this.view.getAdicionarBtn().addActionListener((e) -> {
             if (requisicao.getPedido().getAtivo() != 2) { // Verificar se o pedido está ativo
-                new AddPedidoController(r, this);
+                new AddPedidoController(r, this, null);
             } else {
                 JOptionPane.showMessageDialog(view, "Não é possível adicionar itens a um pedido finalizado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
